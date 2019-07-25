@@ -1,63 +1,63 @@
-1.MySQL°æ±¾£º
+1.MySQLç‰ˆæœ¬ï¼š
 	5.x:
-	5.0-5.1:ÔçÆÚ²úÆ·µÄÑÓĞø£¬Éı¼¶Î¬»¤
-	5.4 - 5.x :  MySQLÕûºÏÁËÈı·½¹«Ë¾µÄĞÂ´æ´¢ÒıÇæ £¨ÍÆ¼ö5.5£©
+	5.0-5.1:æ—©æœŸäº§å“çš„å»¶ç»­ï¼Œå‡çº§ç»´æŠ¤
+	5.4 - 5.x :  MySQLæ•´åˆäº†ä¸‰æ–¹å…¬å¸çš„æ–°å­˜å‚¨å¼•æ“ ï¼ˆæ¨è5.5ï¼‰
 	
-	°²×°£ºrpm -ivh rpmÈí¼şÃû
-	Èç¹û°²×°Ê± ÓëÄ³¸öÈí¼ş  xxx³åÍ»£¬ÔòĞèÒª½«³åÍ»µÄÈí¼şĞ¶ÔØµô£º
+	å®‰è£…ï¼šrpm -ivh rpmè½¯ä»¶å
+	å¦‚æœå®‰è£…æ—¶ ä¸æŸä¸ªè½¯ä»¶  xxxå†²çªï¼Œåˆ™éœ€è¦å°†å†²çªçš„è½¯ä»¶å¸è½½æ‰ï¼š
 		yun -y remove xxx
-	°²×°Ê± ÓĞÈÕÖ¾ÌáÊ¾ÎÒÃÇ¿ÉÒÔĞŞ¸ÄÃÜÂë£º/usr/bin/mysqladmin -u root password 'new-password'
+	å®‰è£…æ—¶ æœ‰æ—¥å¿—æç¤ºæˆ‘ä»¬å¯ä»¥ä¿®æ”¹å¯†ç ï¼š/usr/bin/mysqladmin -u root password 'new-password'
 	
-	×¢Òâ£º 
-		Èç¹ûÌáÊ¾¡°GPG keys...¡±°²×°Ê§°Ü£¬½â¾ö·½°¸£º
-			rpm -ivh rpmÈí¼şÃû  --force --nodoeps
+	æ³¨æ„ï¼š 
+		å¦‚æœæç¤ºâ€œGPG keys...â€å®‰è£…å¤±è´¥ï¼Œè§£å†³æ–¹æ¡ˆï¼š
+			rpm -ivh rpmè½¯ä»¶å  --force --nodoeps
 		
-	ÑéÖ¤£º
+	éªŒè¯ï¼š
 	mysqladmin --version
 
-	Æô¶¯mysqlÓ¦ÓÃ£º service mysql start
-	¹Ø±Õ£º service mysql stop
-	ÖØÆô£º service mysql restart
+	å¯åŠ¨mysqlåº”ç”¨ï¼š service mysql start
+	å…³é—­ï¼š service mysql stop
+	é‡å¯ï¼š service mysql restart
 	
-	ÔÚ¼ÆËã»úrebootºó µÇÂ½MySQL :  mysql
-	¿ÉÄÜ»á±¨´í£º   "/var/lib/mysql/mysql.sock²»´æÔÚ"  
-	--Ô­Òò£ºÊÇMysql·şÎñÃ»ÓĞÆô¶¯
-	½â¾ö £º  Æô¶¯·şÎñ£º 1.Ã¿´ÎÊ¹ÓÃÇ° ÊÖ¶¯Æô¶¯·şÎñ   /etc/init.d/mysql start
-		  	 2.¿ª»ú×ÔÆô   chkconfig mysql on     ,  chkconfig mysql off    
-		¼ì²é¿ª»úÊÇ·ñ×Ô¶¯Æô¶¯£º ntsysv		
+	åœ¨è®¡ç®—æœºrebootå ç™»é™†MySQL :  mysql
+	å¯èƒ½ä¼šæŠ¥é”™ï¼š   "/var/lib/mysql/mysql.sockä¸å­˜åœ¨"  
+	--åŸå› ï¼šæ˜¯MysqlæœåŠ¡æ²¡æœ‰å¯åŠ¨
+	è§£å†³ ï¼š  å¯åŠ¨æœåŠ¡ï¼š 1.æ¯æ¬¡ä½¿ç”¨å‰ æ‰‹åŠ¨å¯åŠ¨æœåŠ¡   /etc/init.d/mysql start
+		  	 2.å¼€æœºè‡ªå¯   chkconfig mysql on     ,  chkconfig mysql off    
+		æ£€æŸ¥å¼€æœºæ˜¯å¦è‡ªåŠ¨å¯åŠ¨ï¼š ntsysv		
 		
-	¸ømysql µÄ³¬¼¶¹ÜÀíÔ±root Ôö¼ÓÃÜÂë£º/usr/bin/mysqladmin -u root password root
+	ç»™mysql çš„è¶…çº§ç®¡ç†å‘˜root å¢åŠ å¯†ç ï¼š/usr/bin/mysqladmin -u root password root
 					
-	µÇÂ½£º
+	ç™»é™†ï¼š
 	mysql -u root -p
 
 
-	Êı¾İ¿â´æ·ÅÄ¿Â¼£º
-	ps -ef|grep mysql  ¿ÉÒÔ¿´µ½£º
-		Êı¾İ¿âÄ¿Â¼£º     datadir=/var/lib/mysql 
-		pidÎÄ¼şÄ¿Â¼£º --pid-file=/var/lib/mysql/bigdata01.pid
+	æ•°æ®åº“å­˜æ”¾ç›®å½•ï¼š
+	ps -ef|grep mysql  å¯ä»¥çœ‹åˆ°ï¼š
+		æ•°æ®åº“ç›®å½•ï¼š     datadir=/var/lib/mysql 
+		pidæ–‡ä»¶ç›®å½•ï¼š --pid-file=/var/lib/mysql/bigdata01.pid
 
-		MySQLºËĞÄÄ¿Â¼£º
-			/var/lib/mysql :mysql °²×°Ä¿Â¼
-			/usr/share/mysql:  ÅäÖÃÎÄ¼ş
-			/usr/bin£ºÃüÁîÄ¿Â¼£¨mysqladmin¡¢mysqldumpµÈ£©
-			/etc/init.d/mysqlÆôÍ£½Å±¾
+		MySQLæ ¸å¿ƒç›®å½•ï¼š
+			/var/lib/mysql :mysql å®‰è£…ç›®å½•
+			/usr/share/mysql:  é…ç½®æ–‡ä»¶
+			/usr/binï¼šå‘½ä»¤ç›®å½•ï¼ˆmysqladminã€mysqldumpç­‰ï¼‰
+			/etc/init.d/mysqlå¯åœè„šæœ¬
 			
-	  MySQLÅäÖÃÎÄ¼ş
-			 my-huge.cnf	¸ß¶Ë·şÎñÆ÷  1-2GÄÚ´æ
-			 my-large.cnf   ÖĞµÈ¹æÄ£
-			 my-medium.cnf  Ò»°ã
-			 my-small.cnf   ½ÏĞ¡
-			µ«ÊÇ£¬ÒÔÉÏÅäÖÃÎÄ¼şmysqlÄ¬ÈÏ²»ÄÜÊ¶±ğ£¬Ä¬ÈÏÖ»ÄÜÊ¶±ğ /etc/my.cnf
-			²ÉÓÃ my-huge.cnf £º
+	  MySQLé…ç½®æ–‡ä»¶
+			 my-huge.cnf	é«˜ç«¯æœåŠ¡å™¨  1-2Gå†…å­˜
+			 my-large.cnf   ä¸­ç­‰è§„æ¨¡
+			 my-medium.cnf  ä¸€èˆ¬
+			 my-small.cnf   è¾ƒå°
+			ä½†æ˜¯ï¼Œä»¥ä¸Šé…ç½®æ–‡ä»¶mysqlé»˜è®¤ä¸èƒ½è¯†åˆ«ï¼Œé»˜è®¤åªèƒ½è¯†åˆ« /etc/my.cnf
+			é‡‡ç”¨ my-huge.cnf ï¼š
 			cp /usr/share/mysql/my-huge.cnf /etc/my.cnf
-			×¢Òâ£ºmysql5.5Ä¬ÈÏÅäÖÃÎÄ¼ş/etc/my.cnf£»Mysql5.6 Ä¬ÈÏÅäÖÃÎÄ¼ş/etc/mysql-default.cnf
+			æ³¨æ„ï¼šmysql5.5é»˜è®¤é…ç½®æ–‡ä»¶/etc/my.cnfï¼›Mysql5.6 é»˜è®¤é…ç½®æ–‡ä»¶/etc/mysql-default.cnf
 			
-	Ä¬ÈÏ¶Ë¿Ú3306
-	mysql×Ö·û±àÂë£º
+	é»˜è®¤ç«¯å£3306
+	mysqlå­—ç¬¦ç¼–ç ï¼š
 		sql  :  show variables like '%char%' ;
-		¿ÉÒÔ·¢ÏÖ²¿·Ö±àÂëÊÇ latin,ĞèÒªÍ³Ò»ÉèÖÃÎªutf-8
-		ÉèÖÃ±àÂë£º
+		å¯ä»¥å‘ç°éƒ¨åˆ†ç¼–ç æ˜¯ latin,éœ€è¦ç»Ÿä¸€è®¾ç½®ä¸ºutf-8
+		è®¾ç½®ç¼–ç ï¼š
 		vi /etc/my.cnf:
 		[mysql]
 		default-character-set=utf8
@@ -69,22 +69,22 @@
 		character_set_client=utf8
 		collation_server=utf8_general_ci
 
-	ÖØÆôMysql:  service mysql restart
+	é‡å¯Mysql:  service mysql restart
 		sql  :  show variables like '%char%' ;
-	×¢ÒâÊÂÏî£ºĞŞ¸Ä±àÂë Ö»¶Ô¡°Ö®ºó¡±´´½¨µÄÊı¾İ¿âÉúĞ§£¬Òò´Ë ÎÒÃÇ½¨Òé ÔÚmysql°²×°Íê±Ïºó£¬µÚÒ»Ê±¼ä Í³Ò»±àÂë¡£
+	æ³¨æ„äº‹é¡¹ï¼šä¿®æ”¹ç¼–ç  åªå¯¹â€œä¹‹åâ€åˆ›å»ºçš„æ•°æ®åº“ç”Ÿæ•ˆï¼Œå› æ­¤ æˆ‘ä»¬å»ºè®® åœ¨mysqlå®‰è£…å®Œæ¯•åï¼Œç¬¬ä¸€æ—¶é—´ ç»Ÿä¸€ç¼–ç ã€‚
 	
-	mysql:ÇåÆÁ    ctrl+L    , system clear
+	mysql:æ¸…å±    ctrl+L    , system clear
 		
-2.Ô­Àí
-	  MYSQLÂß¼­·Ö²ã £ºÁ¬½Ó²ã ·şÎñ²ã ÒıÇæ²ã ´æ´¢²ã
+2.åŸç†
+	  MYSQLé€»è¾‘åˆ†å±‚ ï¼šè¿æ¥å±‚ æœåŠ¡å±‚ å¼•æ“å±‚ å­˜å‚¨å±‚
 
-	  InnoDB(Ä¬ÈÏ) £ºÊÂÎñÓÅÏÈ £¨ÊÊºÏ¸ß²¢·¢²Ù×÷£»ĞĞËø£©
-	  MyISAM £ºĞÔÄÜÓÅÏÈ  £¨±íËø£©
+	  InnoDB(é»˜è®¤) ï¼šäº‹åŠ¡ä¼˜å…ˆ ï¼ˆé€‚åˆé«˜å¹¶å‘æ“ä½œï¼›è¡Œé”ï¼‰
+	  MyISAM ï¼šæ€§èƒ½ä¼˜å…ˆ  ï¼ˆè¡¨é”ï¼‰
 
-	²éÑ¯Êı¾İ¿âÒıÇæ£º  Ö§³ÖÄÄĞ©ÒıÇæ£¿ show engines ;
-			²é¿´µ±Ç°Ê¹ÓÃµÄÒıÇæ   show variables like '%storage_engine%' ;
+	æŸ¥è¯¢æ•°æ®åº“å¼•æ“ï¼š  æ”¯æŒå“ªäº›å¼•æ“ï¼Ÿ show engines ;
+			æŸ¥çœ‹å½“å‰ä½¿ç”¨çš„å¼•æ“   show variables like '%storage_engine%' ;
 	
-	Ö¸¶¨Êı¾İ¿â¶ÔÏóµÄÒıÇæ£º
+	æŒ‡å®šæ•°æ®åº“å¯¹è±¡çš„å¼•æ“ï¼š
 	create table tb(
 		id int(4) auto_increment ,
 		name varchar(5),
@@ -93,90 +93,90 @@
 	)ENGINE=MyISAM AUTO_INCREMENT=1
 	 DEFAULT CHARSET=utf8   ;
 
-3.SQLÓÅ»¯
-	Ô­Òò£ºĞÔÄÜµÍ¡¢Ö´ĞĞÊ±¼äÌ«³¤¡¢µÈ´ıÊ±¼äÌ«³¤¡¢SQLÓï¾äÇ·¼Ñ£¨Á¬½Ó²éÑ¯£©¡¢Ë÷ÒıÊ§Ğ§¡¢·şÎñÆ÷²ÎÊıÉèÖÃ²»ºÏÀí£¨»º³å¡¢Ïß³ÌÊı£©
+3.SQLä¼˜åŒ–
+	åŸå› ï¼šæ€§èƒ½ä½ã€æ‰§è¡Œæ—¶é—´å¤ªé•¿ã€ç­‰å¾…æ—¶é—´å¤ªé•¿ã€SQLè¯­å¥æ¬ ä½³ï¼ˆè¿æ¥æŸ¥è¯¢ï¼‰ã€ç´¢å¼•å¤±æ•ˆã€æœåŠ¡å™¨å‚æ•°è®¾ç½®ä¸åˆç†ï¼ˆç¼“å†²ã€çº¿ç¨‹æ•°ï¼‰
 
-	a.SQL £º
-		±àĞ´¹ı³Ì£º
+	a.SQL ï¼š
+		ç¼–å†™è¿‡ç¨‹ï¼š
 			select dinstinct  ..from  ..join ..on ..where ..group by ...having ..order by ..limit ..
 
-		½âÎö¹ı³Ì£º			
+		è§£æè¿‡ç¨‹ï¼š			
 			from .. on.. join ..where ..group by ....having ...select dinstinct ..order by limit ...
 
 
-	b.SQLÓÅ»¯£¬ Ö÷Òª¾ÍÊÇ ÔÚÓÅ»¯Ë÷Òı
-		Ë÷Òı£º Ïàµ±ÓÚÊéµÄÄ¿Â¼
-		Ë÷Òı£º indexÊÇ°ïÖúMYSQL¸ßĞ§»ñÈ¡Êı¾İµÄÊı¾İ½á¹¹¡£Ë÷ÒıÊÇÊı¾İ½á¹¹£¨Ê÷£ºBÊ÷(Ä¬ÈÏ)¡¢HashÊ÷...£©
+	b.SQLä¼˜åŒ–ï¼Œ ä¸»è¦å°±æ˜¯ åœ¨ä¼˜åŒ–ç´¢å¼•
+		ç´¢å¼•ï¼š ç›¸å½“äºä¹¦çš„ç›®å½•
+		ç´¢å¼•ï¼š indexæ˜¯å¸®åŠ©MYSQLé«˜æ•ˆè·å–æ•°æ®çš„æ•°æ®ç»“æ„ã€‚ç´¢å¼•æ˜¯æ•°æ®ç»“æ„ï¼ˆæ ‘ï¼šBæ ‘(é»˜è®¤)ã€Hashæ ‘...ï¼‰
 	
-		Ë÷ÒıµÄ±×¶Ë£º
-			1.Ë÷Òı±¾ÉíºÜ´ó£¬ ¿ÉÒÔ´æ·ÅÔÚÄÚ´æ/Ó²ÅÌ£¨Í¨³£Îª Ó²ÅÌ£©
-			2.Ë÷Òı²»ÊÇËùÓĞÇé¿ö¾ùÊÊÓÃ£º a.ÉÙÁ¿Êı¾İ  b.Æµ·±¸üĞÂµÄ×Ö¶Î   c.ºÜÉÙÊ¹ÓÃµÄ×Ö¶Î
-			3.Ë÷Òı»á½µµÍÔöÉ¾¸ÄµÄĞ§ÂÊ£¨ÔöÉ¾¸Ä  ²é£©
+		ç´¢å¼•çš„å¼Šç«¯ï¼š
+			1.ç´¢å¼•æœ¬èº«å¾ˆå¤§ï¼Œ å¯ä»¥å­˜æ”¾åœ¨å†…å­˜/ç¡¬ç›˜ï¼ˆé€šå¸¸ä¸º ç¡¬ç›˜ï¼‰
+			2.ç´¢å¼•ä¸æ˜¯æ‰€æœ‰æƒ…å†µå‡é€‚ç”¨ï¼š a.å°‘é‡æ•°æ®  b.é¢‘ç¹æ›´æ–°çš„å­—æ®µ   c.å¾ˆå°‘ä½¿ç”¨çš„å­—æ®µ
+			3.ç´¢å¼•ä¼šé™ä½å¢åˆ æ”¹çš„æ•ˆç‡ï¼ˆå¢åˆ æ”¹  æŸ¥ï¼‰
 
-		ÓÅÊÆ£º1Ìá¸ß²éÑ¯Ğ§ÂÊ£¨½µµÍIOÊ¹ÓÃÂÊ£©
-		      2.½µµÍCPUÊ¹ÓÃÂÊ £¨...order by age desc,ÒòÎª BÊ÷Ë÷Òı ±¾Éí¾ÍÊÇÒ»¸ö ºÃÅÅĞòµÄ½á¹¹£¬Òò´ËÔÚÅÅĞòÊ±  ¿ÉÒÔÖ±½ÓÊ¹ÓÃ£©
+		ä¼˜åŠ¿ï¼š1æé«˜æŸ¥è¯¢æ•ˆç‡ï¼ˆé™ä½IOä½¿ç”¨ç‡ï¼‰
+		      2.é™ä½CPUä½¿ç”¨ç‡ ï¼ˆ...order by age desc,å› ä¸º Bæ ‘ç´¢å¼• æœ¬èº«å°±æ˜¯ä¸€ä¸ª å¥½æ’åºçš„ç»“æ„ï¼Œå› æ­¤åœ¨æ’åºæ—¶  å¯ä»¥ç›´æ¥ä½¿ç”¨ï¼‰
 			
 https://www.cnblogs.com/annsshadow/p/5037667.html
 
 	
-4.Ë÷Òı
-	·ÖÀà£º
-		Ö÷¼üË÷Òı£º  ²»ÄÜÖØ¸´¡£id    ²»ÄÜÊÇnull
-		Î¨Ò»Ë÷Òı  £º²»ÄÜÖØ¸´¡£id    ¿ÉÒÔÊÇnull
-		µ¥ÖµË÷Òı  £º µ¥ÁĞ£¬ age ;Ò»¸ö±í¿ÉÒÔ¶à¸öµ¥ÖµË÷Òı,name¡£
-		¸´ºÏË÷Òı  £º¶à¸öÁĞ¹¹³ÉµÄË÷Òı £¨Ïàµ±ÓÚ ¶ş¼¶Ä¿Â¼ £º  z: zhao£©  (name,age)   (a,b,c,d,...,n)
-	´´½¨Ë÷Òı£º
-		·½Ê½Ò»£º
-		create Ë÷ÒıÀàĞÍ  Ë÷ÒıÃû  on ±í(×Ö¶Î)
-		µ¥Öµ£º
+4.ç´¢å¼•
+	åˆ†ç±»ï¼š
+		ä¸»é”®ç´¢å¼•ï¼š  ä¸èƒ½é‡å¤ã€‚id    ä¸èƒ½æ˜¯null
+		å”¯ä¸€ç´¢å¼•  ï¼šä¸èƒ½é‡å¤ã€‚id    å¯ä»¥æ˜¯null
+		å•å€¼ç´¢å¼•  ï¼š å•åˆ—ï¼Œ age ;ä¸€ä¸ªè¡¨å¯ä»¥å¤šä¸ªå•å€¼ç´¢å¼•,nameã€‚
+		å¤åˆç´¢å¼•  ï¼šå¤šä¸ªåˆ—æ„æˆçš„ç´¢å¼• ï¼ˆç›¸å½“äº äºŒçº§ç›®å½• ï¼š  z: zhaoï¼‰  (name,age)   (a,b,c,d,...,n)
+	åˆ›å»ºç´¢å¼•ï¼š
+		æ–¹å¼ä¸€ï¼š
+		create ç´¢å¼•ç±»å‹  ç´¢å¼•å  on è¡¨(å­—æ®µ)
+		å•å€¼ï¼š
 		create index   dept_index on  tb(dept);
-		Î¨Ò»£º
+		å”¯ä¸€ï¼š
 		create unique index  name_index on tb(name) ;
-		¸´ºÏË÷Òı
+		å¤åˆç´¢å¼•
 		create index dept_name_index on tb(dept,name);
 
-		·½Ê½¶ş£ºalter table ±íÃû Ë÷ÒıÀàĞÍ  Ë÷ÒıÃû£¨×Ö¶Î£©
+		æ–¹å¼äºŒï¼šalter table è¡¨å ç´¢å¼•ç±»å‹  ç´¢å¼•åï¼ˆå­—æ®µï¼‰
 		
-		µ¥Öµ£º
+		å•å€¼ï¼š
 		alter table tb add index dept_index(dept) ;
-		Î¨Ò»£º
+		å”¯ä¸€ï¼š
 		alter table tb add unique index name_index(name);
-		¸´ºÏË÷Òı
+		å¤åˆç´¢å¼•
 		alter table tb add index dept_name_index(dept,name);
 
-		×¢Òâ£ºÈç¹ûÒ»¸ö×Ö¶ÎÊÇprimary key£¬Ôò¸Ä×Ö¶ÎÄ¬ÈÏ¾ÍÊÇ Ö÷¼üË÷Òı	
+		æ³¨æ„ï¼šå¦‚æœä¸€ä¸ªå­—æ®µæ˜¯primary keyï¼Œåˆ™æ”¹å­—æ®µé»˜è®¤å°±æ˜¯ ä¸»é”®ç´¢å¼•	
 	
 
-		É¾³ıË÷Òı£º
-		drop index Ë÷ÒıÃû on ±íÃû ;
+		åˆ é™¤ç´¢å¼•ï¼š
+		drop index ç´¢å¼•å on è¡¨å ;
 		drop index name_index on tb ;
 
-		²éÑ¯Ë÷Òı£º
-		show index from ±íÃû ;
-		show index from ±íÃû \G
+		æŸ¥è¯¢ç´¢å¼•ï¼š
+		show index from è¡¨å ;
+		show index from è¡¨å \G
 
-5.SQLĞÔÄÜÎÊÌâ
-	a.·ÖÎöSQLµÄÖ´ĞĞ¼Æ»®  : explain   £¬¿ÉÒÔÄ£ÄâSQLÓÅ»¯Æ÷Ö´ĞĞSQLÓï¾ä£¬´Ó¶øÈÃ¿ª·¢ÈËÔ± ÖªµÀ×Ô¼º±àĞ´µÄSQL×´¿ö
-	b.MySQL²éÑ¯ÓÅ»¯Æä»á¸ÉÈÅÎÒÃÇµÄÓÅ»¯
+5.SQLæ€§èƒ½é—®é¢˜
+	a.åˆ†æSQLçš„æ‰§è¡Œè®¡åˆ’  : explain   ï¼Œå¯ä»¥æ¨¡æ‹ŸSQLä¼˜åŒ–å™¨æ‰§è¡ŒSQLè¯­å¥ï¼Œä»è€Œè®©å¼€å‘äººå‘˜ çŸ¥é“è‡ªå·±ç¼–å†™çš„SQLçŠ¶å†µ
+	b.MySQLæŸ¥è¯¢ä¼˜åŒ–å…¶ä¼šå¹²æ‰°æˆ‘ä»¬çš„ä¼˜åŒ–
 
-	ÓÅ»¯·½·¨£¬¹ÙÍø£ºhttps://dev.mysql.com/doc/refman/5.5/en/optimization.html
+	ä¼˜åŒ–æ–¹æ³•ï¼Œå®˜ç½‘ï¼šhttps://dev.mysql.com/doc/refman/5.5/en/optimization.html
 
 	
-	²éÑ¯Ö´ĞĞ¼Æ»®£º  explain +SQLÓï¾ä
+	æŸ¥è¯¢æ‰§è¡Œè®¡åˆ’ï¼š  explain +SQLè¯­å¥
 			explain  select  * from tb ;
 
- id : ±àºÅ				
- select_type £º²éÑ¯ÀàĞÍ
- table £º±í
- type   £ºÀàĞÍ
- possible_keys £ºÔ¤²âÓÃµ½µÄË÷Òı 
- key  £ºÊµ¼ÊÊ¹ÓÃµÄË÷Òı
- key_len £ºÊµ¼ÊÊ¹ÓÃË÷ÒıµÄ³¤¶È     
- ref  :±íÖ®¼äµÄÒıÓÃ
- rows £ºÍ¨¹ıË÷Òı²éÑ¯µ½µÄÊı¾İÁ¿ 
- Extra     :¶îÍâµÄĞÅÏ¢
+ id : ç¼–å·				
+ select_type ï¼šæŸ¥è¯¢ç±»å‹
+ table ï¼šè¡¨
+ type   ï¼šç±»å‹
+ possible_keys ï¼šé¢„æµ‹ç”¨åˆ°çš„ç´¢å¼• 
+ key  ï¼šå®é™…ä½¿ç”¨çš„ç´¢å¼•
+ key_len ï¼šå®é™…ä½¿ç”¨ç´¢å¼•çš„é•¿åº¦     
+ ref  :è¡¨ä¹‹é—´çš„å¼•ç”¨
+ rows ï¼šé€šè¿‡ç´¢å¼•æŸ¥è¯¢åˆ°çš„æ•°æ®é‡ 
+ Extra     :é¢å¤–çš„ä¿¡æ¯
 
-×¼±¸Êı¾İ£º
+å‡†å¤‡æ•°æ®ï¼š
 create table course
 (
 cid int(3),
@@ -210,66 +210,66 @@ insert into teacherCard values(1,'tzdesc') ;
 insert into teacherCard values(2,'twdesc') ;
 insert into teacherCard values(3,'tldesc') ;
 
-²éÑ¯¿Î³Ì±àºÅÎª2  »ò ½ÌÊ¦Ö¤±àºÅÎª3  µÄÀÏÊ¦ĞÅÏ¢
+æŸ¥è¯¢è¯¾ç¨‹ç¼–å·ä¸º2  æˆ– æ•™å¸ˆè¯ç¼–å·ä¸º3  çš„è€å¸ˆä¿¡æ¯
 explain +sql:
-(1)id: idÖµÏàÍ¬£¬´ÓÉÏÍùÏÂ Ë³ĞòÖ´ĞĞ¡£  t3-tc3-c4
+(1)id: idå€¼ç›¸åŒï¼Œä»ä¸Šå¾€ä¸‹ é¡ºåºæ‰§è¡Œã€‚  t3-tc3-c4
 
 				  tc3--c4-t6
 
-±íµÄÖ´ĞĞË³Ğò  ÒòÊıÁ¿µÄ¸öÊı¸Ä±ä¶ø¸Ä±äµÄÔ­Òò£º µÑ¿¨¶ù»ı
+è¡¨çš„æ‰§è¡Œé¡ºåº  å› æ•°é‡çš„ä¸ªæ•°æ”¹å˜è€Œæ”¹å˜çš„åŸå› ï¼š ç¬›å¡å„¿ç§¯
 
 		a 	 b  	 c
 		4	3	 2   =  			2*3=6 * 4   =24
 								3*4=12* 2   =24
-Êı¾İĞ¡µÄ±í ÓÅÏÈ²éÑ¯£»
+æ•°æ®å°çš„è¡¨ ä¼˜å…ˆæŸ¥è¯¢ï¼›
 
 
 
-idÖµ²»Í¬£ºidÖµÔ½´óÔ½ÓÅÏÈ²éÑ¯ (±¾ÖÊ£ºÔÚÇ¶Ì××Ó²éÑ¯Ê±£¬ÏÈ²éÄÚ²ã ÔÙ²éÍâ²ã)
+idå€¼ä¸åŒï¼šidå€¼è¶Šå¤§è¶Šä¼˜å…ˆæŸ¥è¯¢ (æœ¬è´¨ï¼šåœ¨åµŒå¥—å­æŸ¥è¯¢æ—¶ï¼Œå…ˆæŸ¥å†…å±‚ å†æŸ¥å¤–å±‚)
 
-²éÑ¯½ÌÊÚSQL¿Î³ÌµÄÀÏÊ¦µÄÃèÊö£¨desc£©
+æŸ¥è¯¢æ•™æˆSQLè¯¾ç¨‹çš„è€å¸ˆçš„æè¿°ï¼ˆdescï¼‰
 explain select tc.tcdesc from teacherCard tc,course c,teacher t where c.tid = t.tid
 and t.tcid = tc.tcid and c.cname = 'sql' ;
 
-½«ÒÔÉÏ ¶à±í²éÑ¯ ×ªÎª×Ó²éÑ¯ĞÎÊ½£º
+å°†ä»¥ä¸Š å¤šè¡¨æŸ¥è¯¢ è½¬ä¸ºå­æŸ¥è¯¢å½¢å¼ï¼š
 
 explain select tc.tcdesc from teacherCard tc where tc.tcid = 
 (select t.tcid from teacher t where  t.tid =  
 	(select c.tid from course c where c.cname = 'sql')
 );
 
-×Ó²éÑ¯+¶à±í£º 
+å­æŸ¥è¯¢+å¤šè¡¨ï¼š 
 explain select t.tname ,tc.tcdesc from teacher t,teacherCard tc where t.tcid= tc.tcid
 and t.tid = (select c.tid from course c where cname = 'sql') ;
 
 
-idÖµÓĞÏàÍ¬£¬ÓÖÓĞ²»Í¬£º idÖµÔ½´óÔ½ÓÅÏÈ£»idÖµÏàÍ¬£¬´ÓÉÏÍùÏÂ Ë³ĞòÖ´ĞĞ
+idå€¼æœ‰ç›¸åŒï¼Œåˆæœ‰ä¸åŒï¼š idå€¼è¶Šå¤§è¶Šä¼˜å…ˆï¼›idå€¼ç›¸åŒï¼Œä»ä¸Šå¾€ä¸‹ é¡ºåºæ‰§è¡Œ
 
 	
-(2)select_type:²éÑ¯ÀàĞÍ
-PRIMARY:°üº¬×Ó²éÑ¯SQLÖĞµÄ Ö÷²éÑ¯ £¨×îÍâ²ã£©
-SUBQUERY£º°üº¬×Ó²éÑ¯SQLÖĞµÄ ×Ó²éÑ¯ £¨·Ç×îÍâ²ã£©
-simple:¼òµ¥²éÑ¯£¨²»°üº¬×Ó²éÑ¯¡¢union£©
-derived:ÑÜÉú²éÑ¯(Ê¹ÓÃµ½ÁËÁÙÊ±±í)
-	a.ÔÚfrom×Ó²éÑ¯ÖĞÖ»ÓĞÒ»ÕÅ±í
+(2)select_type:æŸ¥è¯¢ç±»å‹
+PRIMARY:åŒ…å«å­æŸ¥è¯¢SQLä¸­çš„ ä¸»æŸ¥è¯¢ ï¼ˆæœ€å¤–å±‚ï¼‰
+SUBQUERYï¼šåŒ…å«å­æŸ¥è¯¢SQLä¸­çš„ å­æŸ¥è¯¢ ï¼ˆéæœ€å¤–å±‚ï¼‰
+simple:ç®€å•æŸ¥è¯¢ï¼ˆä¸åŒ…å«å­æŸ¥è¯¢ã€unionï¼‰
+derived:è¡ç”ŸæŸ¥è¯¢(ä½¿ç”¨åˆ°äº†ä¸´æ—¶è¡¨)
+	a.åœ¨fromå­æŸ¥è¯¢ä¸­åªæœ‰ä¸€å¼ è¡¨
 		explain select  cr.cname 	from ( select * from course where tid in (1,2) ) cr ;
 
-	b.ÔÚfrom×Ó²éÑ¯ÖĞ£¬ Èç¹ûÓĞtable1 union table2 £¬Ôòtable1 ¾ÍÊÇderived,table2¾ÍÊÇunion
+	b.åœ¨fromå­æŸ¥è¯¢ä¸­ï¼Œ å¦‚æœæœ‰table1 union table2 ï¼Œåˆ™table1 å°±æ˜¯derived,table2å°±æ˜¯union
 		explain select  cr.cname 	from ( select * from course where tid = 1  union select * from course where tid = 2 ) cr ;
-union:ÉÏÀı
-union result :¸æÖª¿ª·¢ÈËÔ±£¬ÄÇĞ©±íÖ®¼ä´æÔÚunion²éÑ¯
+union:ä¸Šä¾‹
+union result :å‘ŠçŸ¥å¼€å‘äººå‘˜ï¼Œé‚£äº›è¡¨ä¹‹é—´å­˜åœ¨unionæŸ¥è¯¢
 
 
 system > const > eq_ref > ref > fulltext > ref_or_null > index_merge > unique_subquery > index_subquery > range > index > ALL
 
 
 
-(3)type:Ë÷ÒıÀàĞÍ¡¢ÀàĞÍ
-	system>const>eq_ref>ref>range>index>all   £¬Òª¶Ôtype½øĞĞÓÅ»¯µÄÇ°Ìá£ºÓĞË÷Òı
+(3)type:ç´¢å¼•ç±»å‹ã€ç±»å‹
+	system>const>eq_ref>ref>range>index>all   ï¼Œè¦å¯¹typeè¿›è¡Œä¼˜åŒ–çš„å‰æï¼šæœ‰ç´¢å¼•
 
-ÆäÖĞ£ºsystem,constÖ»ÊÇÀíÏëÇé¿ö£»Êµ¼ÊÄÜ´ïµ½ ref>range
+å…¶ä¸­ï¼šsystem,conståªæ˜¯ç†æƒ³æƒ…å†µï¼›å®é™…èƒ½è¾¾åˆ° ref>range
 
-system£¨ºöÂÔ£©: Ö»ÓĞÒ»ÌõÊı¾İµÄÏµÍ³±í £»»ò ÑÜÉú±íÖ»ÓĞÒ»ÌõÊı¾İµÄÖ÷²éÑ¯
+systemï¼ˆå¿½ç•¥ï¼‰: åªæœ‰ä¸€æ¡æ•°æ®çš„ç³»ç»Ÿè¡¨ ï¼›æˆ– è¡ç”Ÿè¡¨åªæœ‰ä¸€æ¡æ•°æ®çš„ä¸»æŸ¥è¯¢
 	
 create table test01
 (
@@ -279,17 +279,17 @@ create table test01
 
 insert into test01 values(1,'a') ;
 commit;
-Ôö¼ÓË÷Òı
+å¢åŠ ç´¢å¼•
 alter table test01 add constraint tid_pk primary key(tid) ;
 explain select * from (select * from test01 )t where tid =1 ;
 
-const:½ö½öÄÜ²éµ½Ò»ÌõÊı¾İµÄSQL ,ÓÃÓÚPrimary key »òuniqueË÷Òı  £¨ÀàĞÍ ÓëË÷ÒıÀàĞÍÓĞ¹Ø£©
+const:ä»…ä»…èƒ½æŸ¥åˆ°ä¸€æ¡æ•°æ®çš„SQL ,ç”¨äºPrimary key æˆ–uniqueç´¢å¼•  ï¼ˆç±»å‹ ä¸ç´¢å¼•ç±»å‹æœ‰å…³ï¼‰
 explain select tid from test01 where tid =1 ;
 alter table test01 drop primary key ;
 create index test01_index on test01(tid) ;
 
-eq_ref:Î¨Ò»ĞÔË÷Òı£º¶ÔÓÚÃ¿¸öË÷Òı¼üµÄ²éÑ¯£¬·µ»ØÆ¥ÅäÎ¨Ò»ĞĞÊı¾İ£¨ÓĞÇÒÖ»ÓĞ1¸ö£¬²»ÄÜ¶à ¡¢²»ÄÜ0£©
-select ... from ..where name = ... .³£¼ûÓÚÎ¨Ò»Ë÷Òı ºÍÖ÷¼üË÷Òı¡£
+eq_ref:å”¯ä¸€æ€§ç´¢å¼•ï¼šå¯¹äºæ¯ä¸ªç´¢å¼•é”®çš„æŸ¥è¯¢ï¼Œè¿”å›åŒ¹é…å”¯ä¸€è¡Œæ•°æ®ï¼ˆæœ‰ä¸”åªæœ‰1ä¸ªï¼Œä¸èƒ½å¤š ã€ä¸èƒ½0ï¼‰
+select ... from ..where name = ... .å¸¸è§äºå”¯ä¸€ç´¢å¼• å’Œä¸»é”®ç´¢å¼•ã€‚
 
  alter table teacherCard add constraint pk_tcid primary key(tcid);
 alter table teacher add constraint uk_tcid unique index(tcid) ;
@@ -297,41 +297,41 @@ alter table teacher add constraint uk_tcid unique index(tcid) ;
 
 explain select t.tcid from teacher t,teacherCard tc where t.tcid = tc.tcid ;
 
-ÒÔÉÏSQL£¬ÓÃµ½µÄË÷ÒıÊÇ t.tcid,¼´teacher±íÖĞµÄtcid×Ö¶Î£»
-Èç¹ûteacher±íµÄÊı¾İ¸öÊı ºÍ Á¬½Ó²éÑ¯µÄÊı¾İ¸öÊıÒ»ÖÂ£¨¶¼ÊÇ3ÌõÊı¾İ£©£¬ÔòÓĞ¿ÉÄÜÂú×ãeq_ref¼¶±ğ£»·ñÔòÎŞ·¨Âú×ã¡£
+ä»¥ä¸ŠSQLï¼Œç”¨åˆ°çš„ç´¢å¼•æ˜¯ t.tcid,å³teacherè¡¨ä¸­çš„tcidå­—æ®µï¼›
+å¦‚æœteacherè¡¨çš„æ•°æ®ä¸ªæ•° å’Œ è¿æ¥æŸ¥è¯¢çš„æ•°æ®ä¸ªæ•°ä¸€è‡´ï¼ˆéƒ½æ˜¯3æ¡æ•°æ®ï¼‰ï¼Œåˆ™æœ‰å¯èƒ½æ»¡è¶³eq_refçº§åˆ«ï¼›å¦åˆ™æ— æ³•æ»¡è¶³ã€‚
 
 
-ref£º·ÇÎ¨Ò»ĞÔË÷Òı£¬¶ÔÓÚÃ¿¸öË÷Òı¼üµÄ²éÑ¯£¬·µ»ØÆ¥ÅäµÄËùÓĞĞĞ£¨0£¬¶à£©
-×¼±¸Êı¾İ£º
+refï¼šéå”¯ä¸€æ€§ç´¢å¼•ï¼Œå¯¹äºæ¯ä¸ªç´¢å¼•é”®çš„æŸ¥è¯¢ï¼Œè¿”å›åŒ¹é…çš„æ‰€æœ‰è¡Œï¼ˆ0ï¼Œå¤šï¼‰
+å‡†å¤‡æ•°æ®ï¼š
  insert into teacher values(4,'tz',4) ;
  insert into teacherCard values(4,'tz222');
 
-²âÊÔ£º
+æµ‹è¯•ï¼š
 alter table teacher add index index_name (tname) ;
 explain select * from teacher 	where tname = 'tz';
 
 
-range£º¼ìË÷Ö¸¶¨·¶Î§µÄĞĞ ,whereºóÃæÊÇÒ»¸ö·¶Î§²éÑ¯(between   ,> < >=,     ÌØÊâ:inÓĞÊ±ºò»áÊ§Ğ§ £¬´Ó¶ø×ªÎª ÎŞË÷Òıall)
+rangeï¼šæ£€ç´¢æŒ‡å®šèŒƒå›´çš„è¡Œ ,whereåé¢æ˜¯ä¸€ä¸ªèŒƒå›´æŸ¥è¯¢(between   ,> < >=,     ç‰¹æ®Š:inæœ‰æ—¶å€™ä¼šå¤±æ•ˆ ï¼Œä»è€Œè½¬ä¸º æ— ç´¢å¼•all)
 alter table teacher add index tid_index (tid) ;
 explain select t.* from teacher t where t.tid in (1,2) ;
 explain select t.* from teacher t where t.tid <3 ;
 
 
 
-index£º²éÑ¯È«²¿Ë÷ÒıÖĞÊı¾İ
-explain select tid from teacher ; --tid ÊÇË÷Òı£¬ Ö»ĞèÒªÉ¨ÃèË÷Òı±í£¬²»ĞèÒªËùÓĞ±íÖĞµÄËùÓĞÊı¾İ
+indexï¼šæŸ¥è¯¢å…¨éƒ¨ç´¢å¼•ä¸­æ•°æ®
+explain select tid from teacher ; --tid æ˜¯ç´¢å¼•ï¼Œ åªéœ€è¦æ‰«æç´¢å¼•è¡¨ï¼Œä¸éœ€è¦æ‰€æœ‰è¡¨ä¸­çš„æ‰€æœ‰æ•°æ®
 
 
-all£º²éÑ¯È«²¿±íÖĞµÄÊı¾İ
-explain select cid from course ;  --cid²»ÊÇË÷Òı£¬ĞèÒªÈ«±íËùÓĞ£¬¼´ĞèÒªËùÓĞ±íÖĞµÄËùÓĞÊı¾İ
+allï¼šæŸ¥è¯¢å…¨éƒ¨è¡¨ä¸­çš„æ•°æ®
+explain select cid from course ;  --cidä¸æ˜¯ç´¢å¼•ï¼Œéœ€è¦å…¨è¡¨æ‰€æœ‰ï¼Œå³éœ€è¦æ‰€æœ‰è¡¨ä¸­çš„æ‰€æœ‰æ•°æ®
 
 
-system/const: ½á¹ûÖ»ÓĞÒ»ÌõÊı¾İ
-eq_ref:½á¹û¶àÌõ£»µ«ÊÇÃ¿ÌõÊı¾İÊÇÎ¨Ò»µÄ £»
-ref£º½á¹û¶àÌõ£»µ«ÊÇÃ¿ÌõÊı¾İÊÇÊÇ0»ò¶àÌõ £»
+system/const: ç»“æœåªæœ‰ä¸€æ¡æ•°æ®
+eq_ref:ç»“æœå¤šæ¡ï¼›ä½†æ˜¯æ¯æ¡æ•°æ®æ˜¯å”¯ä¸€çš„ ï¼›
+refï¼šç»“æœå¤šæ¡ï¼›ä½†æ˜¯æ¯æ¡æ•°æ®æ˜¯æ˜¯0æˆ–å¤šæ¡ ï¼›
 
 
-£¨4£©possible_keys £º¿ÉÄÜÓÃµ½µÄË÷Òı£¬ÊÇÒ»ÖÖÔ¤²â£¬²»×¼¡£
+ï¼ˆ4ï¼‰possible_keys ï¼šå¯èƒ½ç”¨åˆ°çš„ç´¢å¼•ï¼Œæ˜¯ä¸€ç§é¢„æµ‹ï¼Œä¸å‡†ã€‚
 
 alter table  course add index cname_index (cname);
 
@@ -340,36 +340,36 @@ explain select t.tname ,tc.tcdesc from teacher t,teacherCard tc
 and t.tid = (select c.tid from course c where cname = 'sql') ;
 
 
-Èç¹û possible_key/keyÊÇNULL£¬ÔòËµÃ÷Ã»ÓÃË÷Òı
+å¦‚æœ possible_key/keyæ˜¯NULLï¼Œåˆ™è¯´æ˜æ²¡ç”¨ç´¢å¼•
 
 
 explain select tc.tcdesc from teacherCard tc,course c,teacher t where c.tid = t.tid
 and t.tcid = tc.tcid and c.cname = 'sql' ;
 
 
-£¨5£© key £ºÊµ¼ÊÊ¹ÓÃµ½µÄË÷Òı
+ï¼ˆ5ï¼‰ key ï¼šå®é™…ä½¿ç”¨åˆ°çš„ç´¢å¼•
 
 
-£¨6£©key_len £ºË÷ÒıµÄ³¤¶È ;
-    ×÷ÓÃ£ºÓÃÓÚÅĞ¶Ï¸´ºÏË÷ÒıÊÇ·ñ±»ÍêÈ«Ê¹ÓÃ  £¨a,b,c£©¡£
+ï¼ˆ6ï¼‰key_len ï¼šç´¢å¼•çš„é•¿åº¦ ;
+    ä½œç”¨ï¼šç”¨äºåˆ¤æ–­å¤åˆç´¢å¼•æ˜¯å¦è¢«å®Œå…¨ä½¿ç”¨  ï¼ˆa,b,cï¼‰ã€‚
 create table test_kl
 (
 	name char(20) not null default ''
 );
 alter table test_kl add index index_name(name) ;
 explain select * from test_kl where name ='' ;   -- key_len :60
-ÔÚutf8£º1¸ö×Ö·ûÕ¾3¸ö×Ö½Ú  
+åœ¨utf8ï¼š1ä¸ªå­—ç¬¦ç«™3ä¸ªå­—èŠ‚  
 
-alter table test_kl add column name1 char(20) ;  --name1¿ÉÒÔÎªnull
+alter table test_kl add column name1 char(20) ;  --name1å¯ä»¥ä¸ºnull
 
 alter table test_kl add index index_name1(name1) ;
 explain select * from test_kl where name1 ='' ; 
---Èç¹ûË÷Òı×Ö¶Î¿ÉÒÔÎªNull,Ôò»áÊ¹ÓÃ1¸ö×Ö½ÚÓÃÓÚ±êÊ¶¡£
+--å¦‚æœç´¢å¼•å­—æ®µå¯ä»¥ä¸ºNull,åˆ™ä¼šä½¿ç”¨1ä¸ªå­—èŠ‚ç”¨äºæ ‡è¯†ã€‚
 
 drop index index_name on test_kl ;
 drop index index_name1 on test_kl ;
 
-Ôö¼ÓÒ»¸ö¸´ºÏË÷Òı 
+å¢åŠ ä¸€ä¸ªå¤åˆç´¢å¼• 
 alter table test_kl add index name_name1_index (name,name1) ; 
 
 explain select * from test_kl where name1 = '' ; --121
@@ -377,35 +377,35 @@ explain select * from test_kl where name = '' ; --60
 
 
 varchar(20)
-alter table test_kl add column name2 varchar(20) ; --¿ÉÒÔÎªNull 
+alter table test_kl add column name2 varchar(20) ; --å¯ä»¥ä¸ºNull 
 alter table test_kl add index name2_index (name2) ;
 
 explain select * from test_kl where name2 = '' ;  --63
-20*3=60 +  1(null)  +2(ÓÃ2¸ö×Ö½Ú ±êÊ¶¿É±ä³¤¶È)  =63
+20*3=60 +  1(null)  +2(ç”¨2ä¸ªå­—èŠ‚ æ ‡è¯†å¯å˜é•¿åº¦)  =63
 
-utf8:1¸ö×Ö·û3¸ö×Ö½Ú
-gbk:1¸ö×Ö·û2¸ö×Ö½Ú
-latin:1¸ö×Ö·û1¸ö×Ö½Ú
+utf8:1ä¸ªå­—ç¬¦3ä¸ªå­—èŠ‚
+gbk:1ä¸ªå­—ç¬¦2ä¸ªå­—èŠ‚
+latin:1ä¸ªå­—ç¬¦1ä¸ªå­—èŠ‚
 
-(7) ref : ×¢ÒâÓëtypeÖĞµÄrefÖµÇø·Ö¡£
-	×÷ÓÃ£º Ö¸Ã÷µ±Ç°±íËù ²ÎÕÕµÄ ×Ö¶Î¡£
-		select ....where a.c = b.x ;(ÆäÖĞb.x¿ÉÒÔÊÇ³£Á¿£¬const)
+(7) ref : æ³¨æ„ä¸typeä¸­çš„refå€¼åŒºåˆ†ã€‚
+	ä½œç”¨ï¼š æŒ‡æ˜å½“å‰è¡¨æ‰€ å‚ç…§çš„ å­—æ®µã€‚
+		select ....where a.c = b.x ;(å…¶ä¸­b.xå¯ä»¥æ˜¯å¸¸é‡ï¼Œconst)
 
 alter table course  add index tid_index (tid) ;
 
 	explain select * from course c,teacher t where c.tid = t.tid  and t.tname ='tw' ;
 
 
-(8)rows: ±»Ë÷ÒıÓÅ»¯²éÑ¯µÄ Êı¾İ¸öÊı (Êµ¼ÊÍ¨¹ıË÷Òı¶ø²éÑ¯µ½µÄ Êı¾İ¸öÊı)
+(8)rows: è¢«ç´¢å¼•ä¼˜åŒ–æŸ¥è¯¢çš„ æ•°æ®ä¸ªæ•° (å®é™…é€šè¿‡ç´¢å¼•è€ŒæŸ¥è¯¢åˆ°çš„ æ•°æ®ä¸ªæ•°)
 	explain select * from course c,teacher t  where c.tid = t.tid
 	and t.tname = 'tz' ;
 
 
-£¨9£©Extra£º
-	(i).using filesort £º ĞÔÄÜÏûºÄ´ó£»ĞèÒª¡°¶îÍâ¡±µÄÒ»´ÎÅÅĞò£¨²éÑ¯£©  ¡£³£¼ûÓÚ order by Óï¾äÖĞ¡£
-ÅÅĞò£ºÏÈ²éÑ¯
+ï¼ˆ9ï¼‰Extraï¼š
+	(i).using filesort ï¼š æ€§èƒ½æ¶ˆè€—å¤§ï¼›éœ€è¦â€œé¢å¤–â€çš„ä¸€æ¬¡æ’åºï¼ˆæŸ¥è¯¢ï¼‰  ã€‚å¸¸è§äº order by è¯­å¥ä¸­ã€‚
+æ’åºï¼šå…ˆæŸ¥è¯¢
 
-10¸öÈË ¸ù¾İÄêÁäÅÅĞò¡£
+10ä¸ªäºº æ ¹æ®å¹´é¾„æ’åºã€‚
 
 	
 create table test02
@@ -420,15 +420,15 @@ create table test02
 
 explain select * from test02 where a1 ='' order by a1 ;
 
-a1:ĞÕÃû  a2£ºÄêÁä
+a1:å§“å  a2ï¼šå¹´é¾„
 
 
 explain select * from test02 where a1 ='' order by a2 ; --using filesort
-Ğ¡½á£º¶ÔÓÚµ¥Ë÷Òı£¬ Èç¹ûÅÅĞòºÍ²éÕÒÊÇÍ¬Ò»¸ö×Ö¶Î£¬Ôò²»»á³öÏÖusing filesort£»Èç¹ûÅÅĞòºÍ²éÕÒ²»ÊÇÍ¬Ò»¸ö×Ö¶Î£¬Ôò»á³öÏÖusing filesort£»
-	±ÜÃâ£º whereÄÄĞ©×Ö¶Î£¬¾Íorder byÄÇĞ©×Ö¶Î2
+å°ç»“ï¼šå¯¹äºå•ç´¢å¼•ï¼Œ å¦‚æœæ’åºå’ŒæŸ¥æ‰¾æ˜¯åŒä¸€ä¸ªå­—æ®µï¼Œåˆ™ä¸ä¼šå‡ºç°using filesortï¼›å¦‚æœæ’åºå’ŒæŸ¥æ‰¾ä¸æ˜¯åŒä¸€ä¸ªå­—æ®µï¼Œåˆ™ä¼šå‡ºç°using filesortï¼›
+	é¿å…ï¼š whereå“ªäº›å­—æ®µï¼Œå°±order byé‚£äº›å­—æ®µ2
 
 
-¸´ºÏË÷Òı£º²»ÄÜ¿çÁĞ£¨×î¼Ñ×óÇ°×º£©
+å¤åˆç´¢å¼•ï¼šä¸èƒ½è·¨åˆ—ï¼ˆæœ€ä½³å·¦å‰ç¼€ï¼‰
 drop index idx_a1 on test02;
 drop index idx_a2 on test02;
 drop index idx_a3 on test02;
@@ -438,18 +438,18 @@ explain select *from test02 where a1='' order by a3 ;  --using filesort
 explain select *from test02 where a2='' order by a3 ; --using filesort
 explain select *from test02 where a1='' order by a2 ;
 explain select *from test02 where a2='' order by a1 ; --using filesort
-	Ğ¡½á£º±ÜÃâ£º whereºÍorder by °´ÕÕ¸´ºÏË÷ÒıµÄË³ĞòÊ¹ÓÃ£¬²»Òª¿çÁĞ»òÎŞĞòÊ¹ÓÃ¡£
+	å°ç»“ï¼šé¿å…ï¼š whereå’Œorder by æŒ‰ç…§å¤åˆç´¢å¼•çš„é¡ºåºä½¿ç”¨ï¼Œä¸è¦è·¨åˆ—æˆ–æ— åºä½¿ç”¨ã€‚
 
 
-	(ii). using temporary:ĞÔÄÜËğºÄ´ó £¬ÓÃµ½ÁËÁÙÊ±±í¡£Ò»°ã³öÏÖÔÚgroup by Óï¾äÖĞ¡£
+	(ii). using temporary:æ€§èƒ½æŸè€—å¤§ ï¼Œç”¨åˆ°äº†ä¸´æ—¶è¡¨ã€‚ä¸€èˆ¬å‡ºç°åœ¨group by è¯­å¥ä¸­ã€‚
 	explain select a1 from test02 where a1 in ('1','2','3') group by a1 ;
 	explain select a1 from test02 where a1 in ('1','2','3') group by a2 ; --using temporary
-	±ÜÃâ£º²éÑ¯ÄÇĞ©ÁĞ£¬¾Í¸ù¾İÄÇĞ©ÁĞ group by .
+	é¿å…ï¼šæŸ¥è¯¢é‚£äº›åˆ—ï¼Œå°±æ ¹æ®é‚£äº›åˆ— group by .
 
-	(iii). using index :ĞÔÄÜÌáÉı; Ë÷Òı¸²¸Ç£¨¸²¸ÇË÷Òı£©¡£Ô­Òò£º²»¶ÁÈ¡Ô­ÎÄ¼ş£¬Ö»´ÓË÷ÒıÎÄ¼şÖĞ»ñÈ¡Êı¾İ £¨²»ĞèÒª»Ø±í²éÑ¯£©
-		Ö»ÒªÊ¹ÓÃµ½µÄÁĞ È«²¿¶¼ÔÚË÷ÒıÖĞ£¬¾ÍÊÇË÷Òı¸²¸Çusing index
+	(iii). using index :æ€§èƒ½æå‡; ç´¢å¼•è¦†ç›–ï¼ˆè¦†ç›–ç´¢å¼•ï¼‰ã€‚åŸå› ï¼šä¸è¯»å–åŸæ–‡ä»¶ï¼Œåªä»ç´¢å¼•æ–‡ä»¶ä¸­è·å–æ•°æ® ï¼ˆä¸éœ€è¦å›è¡¨æŸ¥è¯¢ï¼‰
+		åªè¦ä½¿ç”¨åˆ°çš„åˆ— å…¨éƒ¨éƒ½åœ¨ç´¢å¼•ä¸­ï¼Œå°±æ˜¯ç´¢å¼•è¦†ç›–using index
 
-	ÀıÈç£ºtest02±íÖĞÓĞÒ»¸ö¸´ºÏË÷Òı(a1,a2,a3)
+	ä¾‹å¦‚ï¼štest02è¡¨ä¸­æœ‰ä¸€ä¸ªå¤åˆç´¢å¼•(a1,a2,a3)
 		explain select a1,a2 from test02 where a1='' or a2= '' ; --using index   
 		
 		drop index idx_a1_a2_a3 on test02;
@@ -458,27 +458,27 @@ explain select *from test02 where a2='' order by a1 ; --using filesort
 		explain select a1,a3 from test02 where a1='' or a3= '' ;
 
 		
-		Èç¹ûÓÃµ½ÁËË÷Òı¸²¸Ç(using indexÊ±)£¬»á¶Ô possible_keysºÍkeyÔì³ÉÓ°Ïì£º
-		a.Èç¹ûÃ»ÓĞwhere£¬ÔòË÷ÒıÖ»³öÏÖÔÚkeyÖĞ£»
-		b.Èç¹ûÓĞwhere£¬ÔòË÷Òı ³öÏÖÔÚkeyºÍpossible_keysÖĞ¡£
+		å¦‚æœç”¨åˆ°äº†ç´¢å¼•è¦†ç›–(using indexæ—¶)ï¼Œä¼šå¯¹ possible_keyså’Œkeyé€ æˆå½±å“ï¼š
+		a.å¦‚æœæ²¡æœ‰whereï¼Œåˆ™ç´¢å¼•åªå‡ºç°åœ¨keyä¸­ï¼›
+		b.å¦‚æœæœ‰whereï¼Œåˆ™ç´¢å¼• å‡ºç°åœ¨keyå’Œpossible_keysä¸­ã€‚
 
 		explain select a1,a2 from test02 where a1='' or a2= '' ;
 		explain select a1,a2 from test02  ;
 
-	(iii).using where £¨ĞèÒª»Ø±í²éÑ¯£©
-		¼ÙÉèageÊÇË÷ÒıÁĞ
-		µ«²éÑ¯Óï¾äselect age,name from ...where age =...,´ËÓï¾äÖĞ±ØĞë»ØÔ­±í²éName£¬Òò´Ë»áÏÔÊ¾using where.
+	(iii).using where ï¼ˆéœ€è¦å›è¡¨æŸ¥è¯¢ï¼‰
+		å‡è®¾ageæ˜¯ç´¢å¼•åˆ—
+		ä½†æŸ¥è¯¢è¯­å¥select age,name from ...where age =...,æ­¤è¯­å¥ä¸­å¿…é¡»å›åŸè¡¨æŸ¥Nameï¼Œå› æ­¤ä¼šæ˜¾ç¤ºusing where.
 		
-	explain select a1,a3 from test02 where a3 = '' ; --a3ĞèÒª»ØÔ­±í²éÑ¯
+	explain select a1,a3 from test02 where a3 = '' ; --a3éœ€è¦å›åŸè¡¨æŸ¥è¯¢
 	
 
-	(iv). impossible where £º where×Ó¾äÓÀÔ¶Îªfalse
+	(iv). impossible where ï¼š whereå­å¥æ°¸è¿œä¸ºfalse
 		explain select * from test02 where a1='x' and a1='y'  ;
 
 
-6.ÓÅ»¯°¸Àı
-	µ¥±íÓÅ»¯¡¢Á½±íÓÅ»¯¡¢Èı±íÓÅ»¯
-	£¨1£©µ¥±íÓÅ»¯
+6.ä¼˜åŒ–æ¡ˆä¾‹
+	å•è¡¨ä¼˜åŒ–ã€ä¸¤è¡¨ä¼˜åŒ–ã€ä¸‰è¡¨ä¼˜åŒ–
+	ï¼ˆ1ï¼‰å•è¡¨ä¼˜åŒ–
 create table book
 (
 	bid int(4) primary key,
@@ -494,36 +494,36 @@ insert into book values(3,'wx',3,2,1) ;
 insert into book values(4,'math',4,2,3) ;	
 commit;	
 
-	²éÑ¯authorid=1ÇÒ typeidÎª2»ò3µÄ	bid
+	æŸ¥è¯¢authorid=1ä¸” typeidä¸º2æˆ–3çš„	bid
 	explain select bid from book where typeid in(2,3) and authorid=1  order by typeid desc ;
 
 	(a,b,c)
 	(a,b)
 
-	ÓÅ»¯£º¼ÓË÷Òı
+	ä¼˜åŒ–ï¼šåŠ ç´¢å¼•
 	alter table book add index idx_bta (bid,typeid,authorid);
 
-	Ë÷ÒıÒ»µ©½øĞĞ Éı¼¶ÓÅ»¯£¬ĞèÒª½«Ö®Ç°·ÏÆúµÄË÷ÒıÉ¾µô£¬·ÀÖ¹¸ÉÈÅ¡£
+	ç´¢å¼•ä¸€æ—¦è¿›è¡Œ å‡çº§ä¼˜åŒ–ï¼Œéœ€è¦å°†ä¹‹å‰åºŸå¼ƒçš„ç´¢å¼•åˆ æ‰ï¼Œé˜²æ­¢å¹²æ‰°ã€‚
 	drop index idx_bta on book;
 
-	¸ù¾İSQLÊµ¼Ê½âÎöµÄË³Ğò£¬µ÷ÕûË÷ÒıµÄË³Ğò£º
-	alter table book add index idx_tab (typeid,authorid,bid); --ËäÈ»¿ÉÒÔ»Ø±í²éÑ¯bid£¬µ«ÊÇ½«bid·Åµ½Ë÷ÒıÖĞ ¿ÉÒÔÌáÉıÊ¹ÓÃusing index ;
+	æ ¹æ®SQLå®é™…è§£æçš„é¡ºåºï¼Œè°ƒæ•´ç´¢å¼•çš„é¡ºåºï¼š
+	alter table book add index idx_tab (typeid,authorid,bid); --è™½ç„¶å¯ä»¥å›è¡¨æŸ¥è¯¢bidï¼Œä½†æ˜¯å°†bidæ”¾åˆ°ç´¢å¼•ä¸­ å¯ä»¥æå‡ä½¿ç”¨using index ;
 	
-	ÔÙ´ÎÓÅ»¯£¨Ö®Ç°ÊÇindex¼¶±ğ£©£ºË¼Â·¡£ÒòÎª·¶Î§²éÑ¯inÓĞÊ±»áÊµÏÖ£¬Òò´Ë½»»» Ë÷ÒıµÄË³Ğò£¬½«typeid in(2,3) ·Åµ½×îºó¡£
+	å†æ¬¡ä¼˜åŒ–ï¼ˆä¹‹å‰æ˜¯indexçº§åˆ«ï¼‰ï¼šæ€è·¯ã€‚å› ä¸ºèŒƒå›´æŸ¥è¯¢inæœ‰æ—¶ä¼šå®ç°ï¼Œå› æ­¤äº¤æ¢ ç´¢å¼•çš„é¡ºåºï¼Œå°†typeid in(2,3) æ”¾åˆ°æœ€åã€‚
 	drop index idx_tab on book;
 	alter table book add index idx_atb (authorid,typeid,bid);
 	explain select bid from book where  authorid=1 and  typeid in(2,3) order by typeid desc ;
 
 	
-	--Ğ¡½á£º	a.×î¼Ñ×öÇ°×º£¬±£³ÖË÷ÒıµÄ¶¨ÒåºÍÊ¹ÓÃµÄË³ĞòÒ»ÖÂĞÔ  b.Ë÷ÒıĞèÒªÖğ²½ÓÅ»¯  c.½«º¬InµÄ·¶Î§²éÑ¯ ·Åµ½whereÌõ¼şµÄ×îºó£¬·ÀÖ¹Ê§Ğ§¡£
+	--å°ç»“ï¼š	a.æœ€ä½³åšå‰ç¼€ï¼Œä¿æŒç´¢å¼•çš„å®šä¹‰å’Œä½¿ç”¨çš„é¡ºåºä¸€è‡´æ€§  b.ç´¢å¼•éœ€è¦é€æ­¥ä¼˜åŒ–  c.å°†å«Inçš„èŒƒå›´æŸ¥è¯¢ æ”¾åˆ°whereæ¡ä»¶çš„æœ€åï¼Œé˜²æ­¢å¤±æ•ˆã€‚
 
-	±¾ÀıÖĞÍ¬Ê±³öÏÖÁËUsing where£¨ĞèÒª»ØÔ­±í£©; Using index£¨²»ĞèÒª»ØÔ­±í£©£ºÔ­Òò£¬where  authorid=1 and  typeid in(2,3)ÖĞauthoridÔÚË÷Òı(authorid,typeid,bid)ÖĞ£¬Òò´Ë²»ĞèÒª»ØÔ­±í£¨Ö±½ÓÔÚË÷Òı±íÖĞÄÜ²éµ½£©£»¶øtypeidËäÈ»Ò²ÔÚË÷Òı(authorid,typeid,bid)ÖĞ£¬µ«ÊÇº¬inµÄ·¶Î§²éÑ¯ÒÑ¾­Ê¹¸ÃtypeidË÷ÒıÊ§Ğ§£¬Òò´ËÏàµ±ÓÚÃ»ÓĞtypeidÕâ¸öË÷Òı£¬ËùÒÔĞèÒª»ØÔ­±í£¨using where£©£»
-	ÀıÈçÒÔÏÂÃ»ÓĞÁËIn£¬Ôò²»»á³öÏÖusing where
+	æœ¬ä¾‹ä¸­åŒæ—¶å‡ºç°äº†Using whereï¼ˆéœ€è¦å›åŸè¡¨ï¼‰; Using indexï¼ˆä¸éœ€è¦å›åŸè¡¨ï¼‰ï¼šåŸå› ï¼Œwhere  authorid=1 and  typeid in(2,3)ä¸­authoridåœ¨ç´¢å¼•(authorid,typeid,bid)ä¸­ï¼Œå› æ­¤ä¸éœ€è¦å›åŸè¡¨ï¼ˆç›´æ¥åœ¨ç´¢å¼•è¡¨ä¸­èƒ½æŸ¥åˆ°ï¼‰ï¼›è€Œtypeidè™½ç„¶ä¹Ÿåœ¨ç´¢å¼•(authorid,typeid,bid)ä¸­ï¼Œä½†æ˜¯å«inçš„èŒƒå›´æŸ¥è¯¢å·²ç»ä½¿è¯¥typeidç´¢å¼•å¤±æ•ˆï¼Œå› æ­¤ç›¸å½“äºæ²¡æœ‰typeidè¿™ä¸ªç´¢å¼•ï¼Œæ‰€ä»¥éœ€è¦å›åŸè¡¨ï¼ˆusing whereï¼‰ï¼›
+	ä¾‹å¦‚ä»¥ä¸‹æ²¡æœ‰äº†Inï¼Œåˆ™ä¸ä¼šå‡ºç°using where
 	explain select bid from book where  authorid=1 and  typeid =3 order by typeid desc ;
 
-	»¹¿ÉÒÔÍ¨¹ıkey_lenÖ¤Ã÷In¿ÉÒÔÊ¹Ë÷ÒıÊ§Ğ§¡£
+	è¿˜å¯ä»¥é€šè¿‡key_lenè¯æ˜Inå¯ä»¥ä½¿ç´¢å¼•å¤±æ•ˆã€‚
 
-	£¨2£©Á½±íÓÅ»¯
+	ï¼ˆ2ï¼‰ä¸¤è¡¨ä¼˜åŒ–
 
 
 create table teacher2
@@ -547,59 +547,59 @@ insert into course2 values(2,'python');
 insert into course2 values(3,'kotlin');
 commit;
 
-×óÁ¬½Ó£º
+å·¦è¿æ¥ï¼š
 	explain select *from teacher2 t left outer join course2 c
 	on t.cid=c.cid where c.cname='java';
 	  
 
-	Ë÷ÒıÍùÄÄÕÅ±í¼Ó£¿   -Ğ¡±íÇı¶¯´ó±í  
-		          -Ë÷Òı½¨Á¢¾­³£Ê¹ÓÃµÄ×Ö¶ÎÉÏ £¨±¾Ìâ t.cid=c.cid¿ÉÖª£¬t.cid×Ö¶ÎÊ¹ÓÃÆµ·±£¬Òò´Ë¸ø¸Ã×Ö¶Î¼ÓË÷Òı£© [Ò»°ãÇé¿ö¶ÔÓÚ×óÍâÁ¬½Ó£¬¸ø×ó±í¼ÓË÷Òı£»ÓÒÍâÁ¬½Ó£¬¸øÓÒ±í¼ÓË÷Òı]
-	Ğ¡±í£º10
-	´ó±í£º300
-	where   Ğ¡±í.x 10 = ´ó±í.y 300;  --Ñ­»·ÁË¼¸´Î£¿10
+	ç´¢å¼•å¾€å“ªå¼ è¡¨åŠ ï¼Ÿ   -å°è¡¨é©±åŠ¨å¤§è¡¨  
+		          -ç´¢å¼•å»ºç«‹ç»å¸¸ä½¿ç”¨çš„å­—æ®µä¸Š ï¼ˆæœ¬é¢˜ t.cid=c.cidå¯çŸ¥ï¼Œt.cidå­—æ®µä½¿ç”¨é¢‘ç¹ï¼Œå› æ­¤ç»™è¯¥å­—æ®µåŠ ç´¢å¼•ï¼‰ [ä¸€èˆ¬æƒ…å†µå¯¹äºå·¦å¤–è¿æ¥ï¼Œç»™å·¦è¡¨åŠ ç´¢å¼•ï¼›å³å¤–è¿æ¥ï¼Œç»™å³è¡¨åŠ ç´¢å¼•]
+	å°è¡¨ï¼š10
+	å¤§è¡¨ï¼š300
+	where   å°è¡¨.x 10 = å¤§è¡¨.y 300;  --å¾ªç¯äº†å‡ æ¬¡ï¼Ÿ10
 		
-		´ó±í.y 300=Ğ¡±í.x 10	--Ñ­»·ÁË300´Î
+		å¤§è¡¨.y 300=å°è¡¨.x 10	--å¾ªç¯äº†300æ¬¡
 
 
-	Ğ¡±í:10
-	´ó±í:300
+	å°è¡¨:10
+	å¤§è¡¨:300
 
-	select ...where Ğ¡±í.x10=´ó±í.x300 ;
-	for(int i=0;i<Ğ¡±í.length10;i++)
+	select ...where å°è¡¨.x10=å¤§è¡¨.x300 ;
+	for(int i=0;i<å°è¡¨.length10;i++)
 	{
-		for(int j=0;j<´ó±í.length300;j++)
+		for(int j=0;j<å¤§è¡¨.length300;j++)
 		{
 			...
 		}
 	}
 	
 
-	select ...where ´ó±í.x300=Ğ¡±í.x10 ;
-	for(int i=0;i<´ó±í.length300;i++)
+	select ...where å¤§è¡¨.x300=å°è¡¨.x10 ;
+	for(int i=0;i<å¤§è¡¨.length300;i++)
 	{
-		for(int j=0;j<Ğ¡±í.length10;j++)
+		for(int j=0;j<å°è¡¨.length10;j++)
 		{
 			...
 		}
 	}
 	
---ÒÔÉÏ2¸öFORÑ­»·£¬×îÖÕ¶¼»áÑ­»·3000´Î£»µ«ÊÇ ¶ÔÓÚË«²ãÑ­»·À´Ëµ£ºÒ»°ã½¨Òé ½«Êı¾İĞ¡µÄÑ­»· ·ÅÍâ²ã£»Êı¾İ´óµÄÑ­»··ÅÄÚ´æ¡£
+--ä»¥ä¸Š2ä¸ªFORå¾ªç¯ï¼Œæœ€ç»ˆéƒ½ä¼šå¾ªç¯3000æ¬¡ï¼›ä½†æ˜¯ å¯¹äºåŒå±‚å¾ªç¯æ¥è¯´ï¼šä¸€èˆ¬å»ºè®® å°†æ•°æ®å°çš„å¾ªç¯ æ”¾å¤–å±‚ï¼›æ•°æ®å¤§çš„å¾ªç¯æ”¾å†…å­˜ã€‚
 
 
 
-	--µ±±àĞ´ ..on t.cid=c.cid Ê±£¬½«Êı¾İÁ¿Ğ¡µÄ±í ·Å×ó±ß£¨¼ÙÉè´ËÊ±t±íÊı¾İÁ¿Ğ¡£©
+	--å½“ç¼–å†™ ..on t.cid=c.cid æ—¶ï¼Œå°†æ•°æ®é‡å°çš„è¡¨ æ”¾å·¦è¾¹ï¼ˆå‡è®¾æ­¤æ—¶tè¡¨æ•°æ®é‡å°ï¼‰
 	
 	alter table teacher2 add index index_teacher2_cid(cid) ;
 	alter table course2 add index index_course2_cname(cname);
 
 
-	Using join buffer:extraÖĞµÄÒ»¸öÑ¡Ïî£¬×÷ÓÃ£ºMysqlÒıÇæÊ¹ÓÃÁË Á¬½Ó»º´æ¡£
+	Using join buffer:extraä¸­çš„ä¸€ä¸ªé€‰é¡¹ï¼Œä½œç”¨ï¼šMysqlå¼•æ“ä½¿ç”¨äº† è¿æ¥ç¼“å­˜ã€‚
 
-£¨3£©ÈıÕÅ±íÓÅ»¯A B C
-	a.Ğ¡±íÇı¶¯´ó±í  b.Ë÷Òı½¨Á¢ÔÚ¾­³£²éÑ¯µÄ×Ö¶ÎÉÏ
+ï¼ˆ3ï¼‰ä¸‰å¼ è¡¨ä¼˜åŒ–A B C
+	a.å°è¡¨é©±åŠ¨å¤§è¡¨  b.ç´¢å¼•å»ºç«‹åœ¨ç»å¸¸æŸ¥è¯¢çš„å­—æ®µä¸Š
 
 
-Ê¾Àı£º
+ç¤ºä¾‹ï¼š
 create table test03
 (
   a1 int(4) not null,
@@ -610,112 +610,112 @@ create table test03
 alter table test03 add index idx_a1_a2_a3_4(a1,a2,a3,a4) ;
 
 	
-	explain select a1,a2,a3,a4 from test03 where a1=1 and a2=2 and a3=3 and a4 =4 ; --ÍÆ¼öĞ´·¨£¬ÒòÎª Ë÷ÒıµÄÊ¹ÓÃË³Ğò£¨whereºóÃæµÄË³Ğò£© ºÍ ¸´ºÏË÷ÒıµÄË³ĞòÒ»ÖÂ
+	explain select a1,a2,a3,a4 from test03 where a1=1 and a2=2 and a3=3 and a4 =4 ; --æ¨èå†™æ³•ï¼Œå› ä¸º ç´¢å¼•çš„ä½¿ç”¨é¡ºåºï¼ˆwhereåé¢çš„é¡ºåºï¼‰ å’Œ å¤åˆç´¢å¼•çš„é¡ºåºä¸€è‡´
 
-	explain select a1,a2,a3,a4 from test03 where a4=1 and a3=2 and a2=3 and a1 =4 ; --ËäÈ»±àĞ´µÄË³Ğò ºÍË÷ÒıË³Ğò²»Ò»ÖÂ£¬µ«ÊÇ sqlÔÚÕæÕıÖ´ĞĞÇ° ¾­¹ıÁËSQLÓÅ»¯Æ÷µÄµ÷Õû£¬½á¹ûÓëÉÏÌõSQLÊÇÒ»ÖÂµÄ¡£
-	--ÒÔÉÏ 2¸öSQL£¬Ê¹ÓÃÁË È«²¿µÄ¸´ºÏË÷Òı
+	explain select a1,a2,a3,a4 from test03 where a4=1 and a3=2 and a2=3 and a1 =4 ; --è™½ç„¶ç¼–å†™çš„é¡ºåº å’Œç´¢å¼•é¡ºåºä¸ä¸€è‡´ï¼Œä½†æ˜¯ sqlåœ¨çœŸæ­£æ‰§è¡Œå‰ ç»è¿‡äº†SQLä¼˜åŒ–å™¨çš„è°ƒæ•´ï¼Œç»“æœä¸ä¸Šæ¡SQLæ˜¯ä¸€è‡´çš„ã€‚
+	--ä»¥ä¸Š 2ä¸ªSQLï¼Œä½¿ç”¨äº† å…¨éƒ¨çš„å¤åˆç´¢å¼•
 
 	explain select a1,a2,a3,a4 from test03 where a1=1 and a2=2 and a4=4 order by a3; 
-	--ÒÔÉÏSQLÓÃµ½ÁËa1 a2Á½¸öË÷Òı£¬¸ÃÁ½¸ö×Ö¶Î ²»ĞèÒª»Ø±í²éÑ¯using index ;¶øa4ÒòÎª¿çÁĞÊ¹ÓÃ£¬Ôì³ÉÁË¸ÃË÷ÒıÊ§Ğ§£¬ĞèÒª»Ø±í²éÑ¯ Òò´ËÊÇusing where£»ÒÔÉÏ¿ÉÒÔÍ¨¹ı key_len½øĞĞÑéÖ¤
+	--ä»¥ä¸ŠSQLç”¨åˆ°äº†a1 a2ä¸¤ä¸ªç´¢å¼•ï¼Œè¯¥ä¸¤ä¸ªå­—æ®µ ä¸éœ€è¦å›è¡¨æŸ¥è¯¢using index ;è€Œa4å› ä¸ºè·¨åˆ—ä½¿ç”¨ï¼Œé€ æˆäº†è¯¥ç´¢å¼•å¤±æ•ˆï¼Œéœ€è¦å›è¡¨æŸ¥è¯¢ å› æ­¤æ˜¯using whereï¼›ä»¥ä¸Šå¯ä»¥é€šè¿‡ key_lenè¿›è¡ŒéªŒè¯
 
 	explain select a1,a2,a3,a4 from test03 where a1=1 and a4=4 order by a3; 
-	--ÒÔÉÏSQL³öÏÖÁË using filesort(ÎÄ¼şÄÚÅÅĞò£¬¡°¶àÁËÒ»´Î¶îÍâµÄ²éÕÒ/ÅÅĞò¡±) £º²»Òª¿çÁĞÊ¹ÓÃ( whereºÍorder by Æ´ÆğÀ´£¬²»Òª¿çÁĞÊ¹ÓÃ)
+	--ä»¥ä¸ŠSQLå‡ºç°äº† using filesort(æ–‡ä»¶å†…æ’åºï¼Œâ€œå¤šäº†ä¸€æ¬¡é¢å¤–çš„æŸ¥æ‰¾/æ’åºâ€) ï¼šä¸è¦è·¨åˆ—ä½¿ç”¨( whereå’Œorder by æ‹¼èµ·æ¥ï¼Œä¸è¦è·¨åˆ—ä½¿ç”¨)
 
 
-	explain select a1,a2,a3,a4 from test03 where a1=1 and a4=4 order by a2 , a3; --²»»áusing filesort
+	explain select a1,a2,a3,a4 from test03 where a1=1 and a4=4 order by a2 , a3; --ä¸ä¼šusing filesort
 
 	
-	--×Ü½á£ºi.Èç¹û (a,b,c,d)¸´ºÏË÷Òı  ºÍÊ¹ÓÃµÄË³ĞòÈ«²¿Ò»ÖÂ(ÇÒ²»¿çÁĞÊ¹ÓÃ)£¬Ôò¸´ºÏË÷ÒıÈ«²¿Ê¹ÓÃ¡£Èç¹û²¿·ÖÒ»ÖÂ(ÇÒ²»¿çÁĞÊ¹ÓÃ)£¬ÔòÊ¹ÓÃ²¿·ÖË÷Òı¡£
+	--æ€»ç»“ï¼ši.å¦‚æœ (a,b,c,d)å¤åˆç´¢å¼•  å’Œä½¿ç”¨çš„é¡ºåºå…¨éƒ¨ä¸€è‡´(ä¸”ä¸è·¨åˆ—ä½¿ç”¨)ï¼Œåˆ™å¤åˆç´¢å¼•å…¨éƒ¨ä½¿ç”¨ã€‚å¦‚æœéƒ¨åˆ†ä¸€è‡´(ä¸”ä¸è·¨åˆ—ä½¿ç”¨)ï¼Œåˆ™ä½¿ç”¨éƒ¨åˆ†ç´¢å¼•ã€‚
 	select a,c where  a = and b= and d= 
-		ii.whereºÍorder by Æ´ÆğÀ´£¬²»Òª¿çÁĞÊ¹ÓÃ 
+		ii.whereå’Œorder by æ‹¼èµ·æ¥ï¼Œä¸è¦è·¨åˆ—ä½¿ç”¨ 
 
 	
-	using temporary:ĞèÒª¶îÍâÔÙ¶àÊ¹ÓÃÒ»ÕÅ±í. Ò»°ã³öÏÖÔÚgroup byÓï¾äÖĞ£»ÒÑ¾­ÓĞ±íÁË£¬µ«²»ÊÊÓÃ£¬±ØĞëÔÙÀ´Ò»ÕÅ±í¡£
-½âÎö¹ı³Ì£º			
+	using temporary:éœ€è¦é¢å¤–å†å¤šä½¿ç”¨ä¸€å¼ è¡¨. ä¸€èˆ¬å‡ºç°åœ¨group byè¯­å¥ä¸­ï¼›å·²ç»æœ‰è¡¨äº†ï¼Œä½†ä¸é€‚ç”¨ï¼Œå¿…é¡»å†æ¥ä¸€å¼ è¡¨ã€‚
+è§£æè¿‡ç¨‹ï¼š			
 from .. on.. join ..where ..group by ....having ...select dinstinct ..order by limit ...
 	a.
-		explain select * from test03 where a2=2 and a4=4 group by a2,a4 ;--Ã»ÓĞusing temporary
+		explain select * from test03 where a2=2 and a4=4 group by a2,a4 ;--æ²¡æœ‰using temporary
 	b.
 		explain select * from test03 where a2=2 and a4=4 group by a3 ;
 
-7.±ÜÃâË÷ÒıÊ§Ğ§µÄÒ»Ğ©Ô­Ôò 
-	£¨1£©¸´ºÏË÷Òı
-	a.¸´ºÏË÷Òı£¬²»Òª¿çÁĞ»òÎŞĞòÊ¹ÓÃ£¨×î¼Ñ×óÇ°×º£©
+7.é¿å…ç´¢å¼•å¤±æ•ˆçš„ä¸€äº›åŸåˆ™ 
+	ï¼ˆ1ï¼‰å¤åˆç´¢å¼•
+	a.å¤åˆç´¢å¼•ï¼Œä¸è¦è·¨åˆ—æˆ–æ— åºä½¿ç”¨ï¼ˆæœ€ä½³å·¦å‰ç¼€ï¼‰
 	(a,b,c)  
-	b.¸´ºÏË÷Òı£¬¾¡Á¿Ê¹ÓÃÈ«Ë÷ÒıÆ¥Åä
+	b.å¤åˆç´¢å¼•ï¼Œå°½é‡ä½¿ç”¨å…¨ç´¢å¼•åŒ¹é…
 	(a,b,c)  
-	£¨2£©²»ÒªÔÚË÷ÒıÉÏ½øĞĞÈÎºÎ²Ù×÷£¨¼ÆËã¡¢º¯Êı¡¢ÀàĞÍ×ª»»£©£¬·ñÔòË÷ÒıÊ§Ğ§
-		select ..where A.x = .. ;  --¼ÙÉèA.xÊÇË÷Òı
-		²»Òª£ºselect ..where A.x*3 = .. ;
-		explain select * from book where authorid = 1 and typeid = 2 ;--ÓÃµ½ÁËat2¸öË÷Òı
-		explain select * from book where authorid = 1 and typeid*2 = 2 ;--ÓÃµ½ÁËa1¸öË÷Òı
-		explain select * from book where authorid*2 = 1 and typeid*2 = 2 ;----ÓÃµ½ÁË0¸öË÷Òı
-		explain select * from book where authorid*2 = 1 and typeid = 2 ;----ÓÃµ½ÁË0¸öË÷Òı,Ô­Òò£º¶ÔÓÚ¸´ºÏË÷Òı£¬Èç¹û×ó±ßÊ§Ğ§£¬ÓÒ²àÈ«²¿Ê§Ğ§¡£(a,b,c)£¬ÀıÈçÈç¹û bÊ§Ğ§£¬Ôòb cÍ¬Ê±Ê§Ğ§¡£
+	ï¼ˆ2ï¼‰ä¸è¦åœ¨ç´¢å¼•ä¸Šè¿›è¡Œä»»ä½•æ“ä½œï¼ˆè®¡ç®—ã€å‡½æ•°ã€ç±»å‹è½¬æ¢ï¼‰ï¼Œå¦åˆ™ç´¢å¼•å¤±æ•ˆ
+		select ..where A.x = .. ;  --å‡è®¾A.xæ˜¯ç´¢å¼•
+		ä¸è¦ï¼šselect ..where A.x*3 = .. ;
+		explain select * from book where authorid = 1 and typeid = 2 ;--ç”¨åˆ°äº†at2ä¸ªç´¢å¼•
+		explain select * from book where authorid = 1 and typeid*2 = 2 ;--ç”¨åˆ°äº†a1ä¸ªç´¢å¼•
+		explain select * from book where authorid*2 = 1 and typeid*2 = 2 ;----ç”¨åˆ°äº†0ä¸ªç´¢å¼•
+		explain select * from book where authorid*2 = 1 and typeid = 2 ;----ç”¨åˆ°äº†0ä¸ªç´¢å¼•,åŸå› ï¼šå¯¹äºå¤åˆç´¢å¼•ï¼Œå¦‚æœå·¦è¾¹å¤±æ•ˆï¼Œå³ä¾§å…¨éƒ¨å¤±æ•ˆã€‚(a,b,c)ï¼Œä¾‹å¦‚å¦‚æœ bå¤±æ•ˆï¼Œåˆ™b cåŒæ—¶å¤±æ•ˆã€‚
 	
  		drop index idx_atb on book ; 
 		alter table book add index idx_authroid (authorid) ;
 		alter table book add index idx_typeid (typeid) ;
 		explain select * from book where authorid*2 = 1 and typeid = 2 ;
-	£¨3£©¸´ºÏË÷Òı²»ÄÜÊ¹ÓÃ²»µÈÓÚ£¨!=  <>£©»òis null (is not null)£¬·ñÔò×ÔÉíÒÔ¼°ÓÒ²àËùÓĞÈ«²¿Ê§Ğ§¡£
-		¸´ºÏË÷ÒıÖĞÈç¹ûÓĞ>£¬Ôò×ÔÉíºÍÓÒ²àË÷ÒıÈ«²¿Ê§Ğ§¡£
+	ï¼ˆ3ï¼‰å¤åˆç´¢å¼•ä¸èƒ½ä½¿ç”¨ä¸ç­‰äºï¼ˆ!=  <>ï¼‰æˆ–is null (is not null)ï¼Œå¦åˆ™è‡ªèº«ä»¥åŠå³ä¾§æ‰€æœ‰å…¨éƒ¨å¤±æ•ˆã€‚
+		å¤åˆç´¢å¼•ä¸­å¦‚æœæœ‰>ï¼Œåˆ™è‡ªèº«å’Œå³ä¾§ç´¢å¼•å…¨éƒ¨å¤±æ•ˆã€‚
 
 	explain select * from book where authorid = 1 and typeid =2 ;
 
-	-- SQLÓÅ»¯£¬ÊÇÒ»ÖÖ¸ÅÂÊ²ãÃæµÄÓÅ»¯¡£ÖÁÓÚÊÇ·ñÊµ¼ÊÊ¹ÓÃÁËÎÒÃÇµÄÓÅ»¯£¬ĞèÒªÍ¨¹ıexplain½øĞĞÍÆ²â¡£
+	-- SQLä¼˜åŒ–ï¼Œæ˜¯ä¸€ç§æ¦‚ç‡å±‚é¢çš„ä¼˜åŒ–ã€‚è‡³äºæ˜¯å¦å®é™…ä½¿ç”¨äº†æˆ‘ä»¬çš„ä¼˜åŒ–ï¼Œéœ€è¦é€šè¿‡explainè¿›è¡Œæ¨æµ‹ã€‚
 
 	explain select * from book where authorid != 1 and typeid =2 ;
 	explain select * from book where authorid != 1 and typeid !=2 ;
 		
 	
-	ÌåÑé¸ÅÂÊÇé¿ö(< > =)£ºÔ­ÒòÊÇ·şÎñ²ãÖĞÓĞSQLÓÅ»¯Æ÷£¬¿ÉÄÜ»áÓ°ÏìÎÒÃÇµÄÓÅ»¯¡£
+	ä½“éªŒæ¦‚ç‡æƒ…å†µ(< > =)ï¼šåŸå› æ˜¯æœåŠ¡å±‚ä¸­æœ‰SQLä¼˜åŒ–å™¨ï¼Œå¯èƒ½ä¼šå½±å“æˆ‘ä»¬çš„ä¼˜åŒ–ã€‚
 	drop index idx_typeid on book;
 	drop index idx_authroid on book;
 	alter table book add index idx_book_at (authorid,typeid);
-	explain select * from book where authorid = 1 and typeid =2 ;--¸´ºÏË÷ÒıatÈ«²¿Ê¹ÓÃ
-	explain select * from book where authorid > 1 and typeid =2 ; --¸´ºÏË÷ÒıÖĞÈç¹ûÓĞ>£¬Ôò×ÔÉíºÍÓÒ²àË÷ÒıÈ«²¿Ê§Ğ§¡£
-	explain select * from book where authorid = 1 and typeid >2 ;--¸´ºÏË÷ÒıatÈ«²¿Ê¹ÓÃ
-	----Ã÷ÏÔµÄ¸ÅÂÊÎÊÌâ---
-	explain select * from book where authorid < 1 and typeid =2 ;--¸´ºÏË÷ÒıatÖ»ÓÃµ½ÁË1¸öË÷Òı
-	explain select * from book where authorid < 4 and typeid =2 ;--¸´ºÏË÷ÒıÈ«²¿Ê§Ğ§
+	explain select * from book where authorid = 1 and typeid =2 ;--å¤åˆç´¢å¼•atå…¨éƒ¨ä½¿ç”¨
+	explain select * from book where authorid > 1 and typeid =2 ; --å¤åˆç´¢å¼•ä¸­å¦‚æœæœ‰>ï¼Œåˆ™è‡ªèº«å’Œå³ä¾§ç´¢å¼•å…¨éƒ¨å¤±æ•ˆã€‚
+	explain select * from book where authorid = 1 and typeid >2 ;--å¤åˆç´¢å¼•atå…¨éƒ¨ä½¿ç”¨
+	----æ˜æ˜¾çš„æ¦‚ç‡é—®é¢˜---
+	explain select * from book where authorid < 1 and typeid =2 ;--å¤åˆç´¢å¼•atåªç”¨åˆ°äº†1ä¸ªç´¢å¼•
+	explain select * from book where authorid < 4 and typeid =2 ;--å¤åˆç´¢å¼•å…¨éƒ¨å¤±æ•ˆ
 
-	--ÎÒÃÇÑ§Ï°Ë÷ÒıÓÅ»¯ £¬ÊÇÒ»¸ö´ó²¿·ÖÇé¿öÊÊÓÃµÄ½áÂÛ£¬µ«ÓÉÓÚSQLÓÅ»¯Æ÷µÈÔ­Òò  ¸Ã½áÂÛ²»ÊÇ100%ÕıÈ·¡£
-	--Ò»°ã¶øÑÔ£¬ ·¶Î§²éÑ¯£¨> <  in£©£¬Ö®ºóµÄË÷ÒıÊ§Ğ§¡£
+	--æˆ‘ä»¬å­¦ä¹ ç´¢å¼•ä¼˜åŒ– ï¼Œæ˜¯ä¸€ä¸ªå¤§éƒ¨åˆ†æƒ…å†µé€‚ç”¨çš„ç»“è®ºï¼Œä½†ç”±äºSQLä¼˜åŒ–å™¨ç­‰åŸå›   è¯¥ç»“è®ºä¸æ˜¯100%æ­£ç¡®ã€‚
+	--ä¸€èˆ¬è€Œè¨€ï¼Œ èŒƒå›´æŸ¥è¯¢ï¼ˆ> <  inï¼‰ï¼Œä¹‹åçš„ç´¢å¼•å¤±æ•ˆã€‚
 
-	£¨4£©²¹¾È¡£¾¡Á¿Ê¹ÓÃË÷Òı¸²¸Ç£¨using index£©
-			£¨a,b,c£©
+	ï¼ˆ4ï¼‰è¡¥æ•‘ã€‚å°½é‡ä½¿ç”¨ç´¢å¼•è¦†ç›–ï¼ˆusing indexï¼‰
+			ï¼ˆa,b,cï¼‰
 	select a,b,c from xx..where a=  .. and b =.. ;
 
-	(5) like¾¡Á¿ÒÔ¡°³£Á¿¡±¿ªÍ·£¬²»ÒªÒÔ'%'¿ªÍ·£¬·ñÔòË÷ÒıÊ§Ğ§
-	select * from xx where name like '%x%' ; --nameË÷ÒıÊ§Ğ§
+	(5) likeå°½é‡ä»¥â€œå¸¸é‡â€å¼€å¤´ï¼Œä¸è¦ä»¥'%'å¼€å¤´ï¼Œå¦åˆ™ç´¢å¼•å¤±æ•ˆ
+	select * from xx where name like '%x%' ; --nameç´¢å¼•å¤±æ•ˆ
 	
-	explain select * from teacher  where tname like '%x%'; --tnameË÷ÒıÊ§Ğ§
+	explain select * from teacher  where tname like '%x%'; --tnameç´¢å¼•å¤±æ•ˆ
 
 	explain select * from teacher  where tname like 'x%';
  
-	explain select tname from teacher  where tname like '%x%'; --Èç¹û±ØĞëÊ¹ÓÃlike '%x%'½øĞĞÄ£ºı²éÑ¯£¬¿ÉÒÔÊ¹ÓÃË÷Òı¸²¸Ç Íì¾ÈÒ»²¿·Ö¡£
+	explain select tname from teacher  where tname like '%x%'; --å¦‚æœå¿…é¡»ä½¿ç”¨like '%x%'è¿›è¡Œæ¨¡ç³ŠæŸ¥è¯¢ï¼Œå¯ä»¥ä½¿ç”¨ç´¢å¼•è¦†ç›– æŒ½æ•‘ä¸€éƒ¨åˆ†ã€‚
 
 
-	£¨6£©¾¡Á¿²»ÒªÊ¹ÓÃÀàĞÍ×ª»»£¨ÏÔÊ¾¡¢ÒşÊ½£©£¬·ñÔòË÷ÒıÊ§Ğ§
+	ï¼ˆ6ï¼‰å°½é‡ä¸è¦ä½¿ç”¨ç±»å‹è½¬æ¢ï¼ˆæ˜¾ç¤ºã€éšå¼ï¼‰ï¼Œå¦åˆ™ç´¢å¼•å¤±æ•ˆ
 	explain select * from teacher where tname = 'abc' ;
-	explain select * from teacher where tname = 123 ;//³ÌĞòµ×²ã½« 123 -> '123'£¬¼´½øĞĞÁËÀàĞÍ×ª»»£¬Òò´ËË÷ÒıÊ§Ğ§
+	explain select * from teacher where tname = 123 ;//ç¨‹åºåº•å±‚å°† 123 -> '123'ï¼Œå³è¿›è¡Œäº†ç±»å‹è½¬æ¢ï¼Œå› æ­¤ç´¢å¼•å¤±æ•ˆ
 
-	£¨7£©¾¡Á¿²»ÒªÊ¹ÓÃor£¬·ñÔòË÷ÒıÊ§Ğ§
-	explain select * from teacher where tname ='' or tcid >1 ; --½«or×ó²àµÄtname Ê§Ğ§¡£
+	ï¼ˆ7ï¼‰å°½é‡ä¸è¦ä½¿ç”¨orï¼Œå¦åˆ™ç´¢å¼•å¤±æ•ˆ
+	explain select * from teacher where tname ='' or tcid >1 ; --å°†orå·¦ä¾§çš„tname å¤±æ•ˆã€‚
 
-8.Ò»Ğ©ÆäËûµÄÓÅ»¯·½·¨
-	£¨1£©
-	existºÍin
-	select ..from table where exist (×Ó²éÑ¯) ;
-	select ..from table where ×Ö¶Î in  (×Ó²éÑ¯) ;
+8.ä¸€äº›å…¶ä»–çš„ä¼˜åŒ–æ–¹æ³•
+	ï¼ˆ1ï¼‰
+	existå’Œin
+	select ..from table where exist (å­æŸ¥è¯¢) ;
+	select ..from table where å­—æ®µ in  (å­æŸ¥è¯¢) ;
 
-	Èç¹ûÖ÷²éÑ¯µÄÊı¾İ¼¯´ó£¬ÔòÊ¹ÓÃIn   ,Ğ§ÂÊ¸ß¡£
-	Èç¹û×Ó²éÑ¯µÄÊı¾İ¼¯´ó£¬ÔòÊ¹ÓÃexist,Ğ§ÂÊ¸ß¡£	
+	å¦‚æœä¸»æŸ¥è¯¢çš„æ•°æ®é›†å¤§ï¼Œåˆ™ä½¿ç”¨In   ,æ•ˆç‡é«˜ã€‚
+	å¦‚æœå­æŸ¥è¯¢çš„æ•°æ®é›†å¤§ï¼Œåˆ™ä½¿ç”¨exist,æ•ˆç‡é«˜ã€‚	
 
-	existÓï·¨£º ½«Ö÷²éÑ¯µÄ½á¹û£¬·Åµ½×Ó²éĞè½á¹ûÖĞ½øĞĞÌõ¼şĞ£Ñé£¨¿´×Ó²éÑ¯ÊÇ·ñÓĞÊı¾İ£¬Èç¹ûÓĞÊı¾İ ÔòĞ£Ñé³É¹¦£©  £¬
-		    Èç¹û ¸´ºÏĞ£Ñé£¬Ôò±£ÁôÊı¾İ£»
+	existè¯­æ³•ï¼š å°†ä¸»æŸ¥è¯¢çš„ç»“æœï¼Œæ”¾åˆ°å­æŸ¥éœ€ç»“æœä¸­è¿›è¡Œæ¡ä»¶æ ¡éªŒï¼ˆçœ‹å­æŸ¥è¯¢æ˜¯å¦æœ‰æ•°æ®ï¼Œå¦‚æœæœ‰æ•°æ® åˆ™æ ¡éªŒæˆåŠŸï¼‰  ï¼Œ
+		    å¦‚æœ å¤åˆæ ¡éªŒï¼Œåˆ™ä¿ç•™æ•°æ®ï¼›
 
 	select tname from teacher where exists (select * from teacher) ; 
-	--µÈ¼ÛÓÚselect tname from teacher
+	--ç­‰ä»·äºselect tname from teacher
 
 	
 	select tname from teacher where exists (select * from teacher where tid =9999) ;
@@ -724,50 +724,50 @@ from .. on.. join ..where ..group by ....having ...select dinstinct ..order by l
 	select ..from table where tid in  (1,3,5) ;
 	
 
-	£¨2£©order by ÓÅ»¯
-	using filesort ÓĞÁ½ÖÖËã·¨£ºË«Â·ÅÅĞò¡¢µ¥Â·ÅÅĞò £¨¸ù¾İIOµÄ´ÎÊı£©
-	MySQL4.1Ö®Ç° Ä¬ÈÏÊ¹ÓÃ Ë«Â·ÅÅĞò£»Ë«Â·£ºÉ¨Ãè2´Î´ÅÅÌ£¨1£º´Ó´ÅÅÌ¶ÁÈ¡ÅÅĞò×Ö¶Î ,¶ÔÅÅĞò×Ö¶Î½øĞĞÅÅĞò£¨ÔÚbufferÖĞ½øĞĞµÄÅÅĞò£©   2£ºÉ¨ÃèÆäËû×Ö¶Î £©
-		--IO½ÏÏûºÄĞÔÄÜ
-	MySQL4.1Ö®ºó Ä¬ÈÏÊ¹ÓÃ µ¥Â·ÅÅĞò  £º Ö»¶ÁÈ¡Ò»´Î£¨È«²¿×Ö¶Î£©£¬ÔÚbufferÖĞ½øĞĞÅÅĞò¡£µ«ÖÖµ¥Â·ÅÅĞò »áÓĞÒ»¶¨µÄÒş»¼ £¨²»Ò»¶¨ÕæµÄÊÇ¡°µ¥Â·|1´ÎIO¡±£¬ÓĞ¿ÉÄÜ¶à´ÎIO£©¡£Ô­Òò£ºÈç¹ûÊı¾İÁ¿ÌØ±ğ´ó£¬ÔòÎŞ·¨ ½«ËùÓĞ×Ö¶ÎµÄÊı¾İ Ò»´ÎĞÔ¶ÁÈ¡Íê±Ï£¬Òò´Ë »á½øĞĞ¡°·ÖÆ¬¶ÁÈ¡¡¢¶à´Î¶ÁÈ¡¡±¡£
-		×¢Òâ£ºµ¥Â·ÅÅĞò ±ÈË«Â·ÅÅĞò »áÕ¼ÓÃ¸ü¶àµÄbuffer¡£
-			µ¥Â·ÅÅĞòÔÚÊ¹ÓÃÊ±£¬Èç¹ûÊı¾İ´ó£¬¿ÉÒÔ¿¼ÂÇµ÷´óbufferµÄÈİÁ¿´óĞ¡£º  set max_length_for_sort_data = 1024  µ¥Î»byte
+	ï¼ˆ2ï¼‰order by ä¼˜åŒ–
+	using filesort æœ‰ä¸¤ç§ç®—æ³•ï¼šåŒè·¯æ’åºã€å•è·¯æ’åº ï¼ˆæ ¹æ®IOçš„æ¬¡æ•°ï¼‰
+	MySQL4.1ä¹‹å‰ é»˜è®¤ä½¿ç”¨ åŒè·¯æ’åºï¼›åŒè·¯ï¼šæ‰«æ2æ¬¡ç£ç›˜ï¼ˆ1ï¼šä»ç£ç›˜è¯»å–æ’åºå­—æ®µ ,å¯¹æ’åºå­—æ®µè¿›è¡Œæ’åºï¼ˆåœ¨bufferä¸­è¿›è¡Œçš„æ’åºï¼‰   2ï¼šæ‰«æå…¶ä»–å­—æ®µ ï¼‰
+		--IOè¾ƒæ¶ˆè€—æ€§èƒ½
+	MySQL4.1ä¹‹å é»˜è®¤ä½¿ç”¨ å•è·¯æ’åº  ï¼š åªè¯»å–ä¸€æ¬¡ï¼ˆå…¨éƒ¨å­—æ®µï¼‰ï¼Œåœ¨bufferä¸­è¿›è¡Œæ’åºã€‚ä½†ç§å•è·¯æ’åº ä¼šæœ‰ä¸€å®šçš„éšæ‚£ ï¼ˆä¸ä¸€å®šçœŸçš„æ˜¯â€œå•è·¯|1æ¬¡IOâ€ï¼Œæœ‰å¯èƒ½å¤šæ¬¡IOï¼‰ã€‚åŸå› ï¼šå¦‚æœæ•°æ®é‡ç‰¹åˆ«å¤§ï¼Œåˆ™æ— æ³• å°†æ‰€æœ‰å­—æ®µçš„æ•°æ® ä¸€æ¬¡æ€§è¯»å–å®Œæ¯•ï¼Œå› æ­¤ ä¼šè¿›è¡Œâ€œåˆ†ç‰‡è¯»å–ã€å¤šæ¬¡è¯»å–â€ã€‚
+		æ³¨æ„ï¼šå•è·¯æ’åº æ¯”åŒè·¯æ’åº ä¼šå ç”¨æ›´å¤šçš„bufferã€‚
+			å•è·¯æ’åºåœ¨ä½¿ç”¨æ—¶ï¼Œå¦‚æœæ•°æ®å¤§ï¼Œå¯ä»¥è€ƒè™‘è°ƒå¤§bufferçš„å®¹é‡å¤§å°ï¼š  set max_length_for_sort_data = 1024  å•ä½byte
 
-	Èç¹ûmax_length_for_sort_dataÖµÌ«µÍ£¬Ôòmysql»á×Ô¶¯´Ó µ¥Â·->Ë«Â·   £¨Ì«µÍ£ºĞèÒªÅÅĞòµÄÁĞµÄ×Ü´óĞ¡³¬¹ıÁËmax_length_for_sort_data¶¨ÒåµÄ×Ö½ÚÊı£©
+	å¦‚æœmax_length_for_sort_dataå€¼å¤ªä½ï¼Œåˆ™mysqlä¼šè‡ªåŠ¨ä» å•è·¯->åŒè·¯   ï¼ˆå¤ªä½ï¼šéœ€è¦æ’åºçš„åˆ—çš„æ€»å¤§å°è¶…è¿‡äº†max_length_for_sort_dataå®šä¹‰çš„å­—èŠ‚æ•°ï¼‰
 
-	Ìá¸ßorder by²éÑ¯µÄ²ßÂÔ£º
-	a.Ñ¡ÔñÊ¹ÓÃµ¥Â·¡¢Ë«Â· £»µ÷ÕûbufferµÄÈİÁ¿´óĞ¡£»
-	b.±ÜÃâselect * ...  
-	c.¸´ºÏË÷Òı ²»Òª¿çÁĞÊ¹ÓÃ £¬±ÜÃâusing filesort
-	d.±£Ö¤È«²¿µÄÅÅĞò×Ö¶Î ÅÅĞòµÄÒ»ÖÂĞÔ£¨¶¼ÊÇÉıĞò »ò ½µĞò£©
+	æé«˜order byæŸ¥è¯¢çš„ç­–ç•¥ï¼š
+	a.é€‰æ‹©ä½¿ç”¨å•è·¯ã€åŒè·¯ ï¼›è°ƒæ•´bufferçš„å®¹é‡å¤§å°ï¼›
+	b.é¿å…select * ...  
+	c.å¤åˆç´¢å¼• ä¸è¦è·¨åˆ—ä½¿ç”¨ ï¼Œé¿å…using filesort
+	d.ä¿è¯å…¨éƒ¨çš„æ’åºå­—æ®µ æ’åºçš„ä¸€è‡´æ€§ï¼ˆéƒ½æ˜¯å‡åº æˆ– é™åºï¼‰
 		
 	
-9.SQLÅÅ²é - Âı²éÑ¯ÈÕÖ¾:MySQLÌá¹©µÄÒ»ÖÖÈÕÖ¾¼ÇÂ¼£¬ÓÃÓÚ¼ÇÂ¼MySQLÖÖÏìÓ¦Ê±¼ä³¬¹ı·§ÖµµÄSQLÓï¾ä £¨long_query_time£¬Ä¬ÈÏ10Ãë£©
-		Âı²éÑ¯ÈÕÖ¾Ä¬ÈÏÊÇ¹Ø±ÕµÄ£»½¨Òé£º¿ª·¢µ÷ÓÅÊÇ ´ò¿ª£¬¶ø ×îÖÕ²¿ÊğÊ±¹Ø±Õ¡£
+9.SQLæ’æŸ¥ - æ…¢æŸ¥è¯¢æ—¥å¿—:MySQLæä¾›çš„ä¸€ç§æ—¥å¿—è®°å½•ï¼Œç”¨äºè®°å½•MySQLç§å“åº”æ—¶é—´è¶…è¿‡é˜€å€¼çš„SQLè¯­å¥ ï¼ˆlong_query_timeï¼Œé»˜è®¤10ç§’ï¼‰
+		æ…¢æŸ¥è¯¢æ—¥å¿—é»˜è®¤æ˜¯å…³é—­çš„ï¼›å»ºè®®ï¼šå¼€å‘è°ƒä¼˜æ˜¯ æ‰“å¼€ï¼Œè€Œ æœ€ç»ˆéƒ¨ç½²æ—¶å…³é—­ã€‚
 	
-	¼ì²éÊÇ·ñ¿ªÆôÁË Âı²éÑ¯ÈÕÖ¾ £º   show variables like '%slow_query_log%' ;
+	æ£€æŸ¥æ˜¯å¦å¼€å¯äº† æ…¢æŸ¥è¯¢æ—¥å¿— ï¼š   show variables like '%slow_query_log%' ;
 
-	ÁÙÊ±¿ªÆô£º
-		set global slow_query_log = 1 ;  --ÔÚÄÚ´æÖÖ¿ªÆô
+	ä¸´æ—¶å¼€å¯ï¼š
+		set global slow_query_log = 1 ;  --åœ¨å†…å­˜ç§å¼€å¯
 		exit
 		service mysql restart
 
-	ÓÀ¾Ã¿ªÆô£º
-		/etc/my.cnf ÖĞ×·¼ÓÅäÖÃ£º
+	æ°¸ä¹…å¼€å¯ï¼š
+		/etc/my.cnf ä¸­è¿½åŠ é…ç½®ï¼š
 		vi /etc/my.cnf 
 		[mysqld]
 		slow_query_log=1
 		slow_query_log_file=/var/lib/mysql/localhost-slow.log
 
 	
-	Âı²éÑ¯·§Öµ£º
+	æ…¢æŸ¥è¯¢é˜€å€¼ï¼š
 		show variables like '%long_query_time%' ;
 
-	ÁÙÊ±ÉèÖÃ·§Öµ£º
-		set global long_query_time = 5 ; --ÉèÖÃÍê±Ïºó£¬ÖØĞÂµÇÂ½ºóÆğĞ§ £¨²»ĞèÒªÖØÆô·şÎñ£©
+	ä¸´æ—¶è®¾ç½®é˜€å€¼ï¼š
+		set global long_query_time = 5 ; --è®¾ç½®å®Œæ¯•åï¼Œé‡æ–°ç™»é™†åèµ·æ•ˆ ï¼ˆä¸éœ€è¦é‡å¯æœåŠ¡ï¼‰
 
-	ÓÀ¾ÃÉèÖÃ·§Öµ£º
+	æ°¸ä¹…è®¾ç½®é˜€å€¼ï¼š
 			
-		/etc/my.cnf ÖĞ×·¼ÓÅäÖÃ£º
+		/etc/my.cnf ä¸­è¿½åŠ é…ç½®ï¼š
 		vi /etc/my.cnf 
 		[mysqld]
 		long_query_time=3
@@ -777,35 +777,35 @@ from .. on.. join ..where ..group by ....having ...select dinstinct ..order by l
 	select sleep(5);
 	select sleep(3);
 	select sleep(3);
-	--²éÑ¯³¬¹ı·§ÖµµÄSQL£º  show global status like '%slow_queries%' ;
+	--æŸ¥è¯¢è¶…è¿‡é˜€å€¼çš„SQLï¼š  show global status like '%slow_queries%' ;
 	
-	(1)Âı²éÑ¯µÄsql±»¼ÇÂ¼ÔÚÁËÈÕÖ¾ÖĞ£¬Òò´Ë¿ÉÒÔÍ¨¹ıÈÕÖ¾ ²é¿´¾ßÌåµÄÂıSQL¡£
+	(1)æ…¢æŸ¥è¯¢çš„sqlè¢«è®°å½•åœ¨äº†æ—¥å¿—ä¸­ï¼Œå› æ­¤å¯ä»¥é€šè¿‡æ—¥å¿— æŸ¥çœ‹å…·ä½“çš„æ…¢SQLã€‚
 	cat /var/lib/mysql/localhost-slow.log
 
-	(2)Í¨¹ımysqldumpslow¹¤¾ß²é¿´ÂıSQL,¿ÉÒÔÍ¨¹ıÒ»Ğ©¹ıÂËÌõ¼ş ¿ìËÙ²éÕÒ³öĞèÒª¶¨Î»µÄÂıSQL
+	(2)é€šè¿‡mysqldumpslowå·¥å…·æŸ¥çœ‹æ…¢SQL,å¯ä»¥é€šè¿‡ä¸€äº›è¿‡æ»¤æ¡ä»¶ å¿«é€ŸæŸ¥æ‰¾å‡ºéœ€è¦å®šä½çš„æ…¢SQL
 	mysqldumpslow --help
-	s£ºÅÅĞò·½Ê½
-	r:ÄæĞò
-	l:Ëø¶¨Ê±¼ä
-	g:ÕıÔòÆ¥ÅäÄ£Ê½		
+	sï¼šæ’åºæ–¹å¼
+	r:é€†åº
+	l:é”å®šæ—¶é—´
+	g:æ­£åˆ™åŒ¹é…æ¨¡å¼		
 
 
-	--»ñÈ¡·µ»Ø¼ÇÂ¼×î¶àµÄ3¸öSQL
+	--è·å–è¿”å›è®°å½•æœ€å¤šçš„3ä¸ªSQL
 		mysqldumpslow -s r -t 3  /var/lib/mysql/localhost-slow.log
 
-	--»ñÈ¡·ÃÎÊ´ÎÊı×î¶àµÄ3¸öSQL
+	--è·å–è®¿é—®æ¬¡æ•°æœ€å¤šçš„3ä¸ªSQL
 		mysqldumpslow -s c -t 3 /var/lib/mysql/localhost-slow.log
 
-	--°´ÕÕÊ±¼äÅÅĞò£¬Ç°10Ìõ°üº¬left join²éÑ¯Óï¾äµÄSQL
+	--æŒ‰ç…§æ—¶é—´æ’åºï¼Œå‰10æ¡åŒ…å«left joinæŸ¥è¯¢è¯­å¥çš„SQL
 		mysqldumpslow -s t -t 10 -g "left join" /var/lib/mysql/localhost-slow.log
 	
-	Óï·¨£º
-		mysqldumpslow ¸÷ÖÖ²ÎÊı  Âı²éÑ¯ÈÕÖ¾µÄÎÄ¼ş
+	è¯­æ³•ï¼š
+		mysqldumpslow å„ç§å‚æ•°  æ…¢æŸ¥è¯¢æ—¥å¿—çš„æ–‡ä»¶
 
 
-10.·ÖÎöº£Á¿Êı¾İ
+10.åˆ†ææµ·é‡æ•°æ®
    
-	a.Ä£Äâº£Á¿Êı¾İ  ´æ´¢¹ı³Ì£¨ÎŞreturn£©/´æ´¢º¯Êı£¨ÓĞreturn£©
+	a.æ¨¡æ‹Ÿæµ·é‡æ•°æ®  å­˜å‚¨è¿‡ç¨‹ï¼ˆæ— returnï¼‰/å­˜å‚¨å‡½æ•°ï¼ˆæœ‰returnï¼‰
 	create database testdata ;
 	use testdata
 create table dept
@@ -822,9 +822,9 @@ ename varchar(20) not null default '',
 job varchar(20) not null default '',
 deptno int(5) not null default 0
 )engine=innodb default charset=utf8;
-	Í¨¹ı´æ´¢º¯Êı ²åÈëº£Á¿Êı¾İ£º
-	´´½¨´æ´¢º¯Êı£º
-		randstring(6)  ->aXiayx  ÓÃÓÚÄ£ÄâÔ±¹¤Ãû³Æ
+	é€šè¿‡å­˜å‚¨å‡½æ•° æ’å…¥æµ·é‡æ•°æ®ï¼š
+	åˆ›å»ºå­˜å‚¨å‡½æ•°ï¼š
+		randstring(6)  ->aXiayx  ç”¨äºæ¨¡æ‹Ÿå‘˜å·¥åç§°
 
 
 	delimiter $ 
@@ -843,21 +843,21 @@ deptno int(5) not null default 0
 	end $ 
 	
 
---Èç¹û±¨´í£ºYou have an error in your SQL syntax£¬ËµÃ÷SQLÓï¾äÓï·¨ÓĞ´í£¬ĞèÒªĞŞ¸ÄSQLÓï¾ä£»
+--å¦‚æœæŠ¥é”™ï¼šYou have an error in your SQL syntaxï¼Œè¯´æ˜SQLè¯­å¥è¯­æ³•æœ‰é”™ï¼Œéœ€è¦ä¿®æ”¹SQLè¯­å¥ï¼›
 
- Èç¹û±¨´íThis function has none of DETERMINISTIC, NO SQL, or READS SQL DATA in its declaration and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)
-	ÊÇÒòÎª ´æ´¢¹ı³Ì/´æ´¢º¯ÊıÔÚ´´½¨Ê± ÓëÖ®Ç°µÄ ¿ªÆôÂı²éÑ¯ÈÕÖ¾³åÍ»ÁË 
-	½â¾ö³åÍ»£º
-	ÁÙÊ±½â¾ö( ¿ªÆôlog_bin_trust_function_creators )
+ å¦‚æœæŠ¥é”™This function has none of DETERMINISTIC, NO SQL, or READS SQL DATA in its declaration and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)
+	æ˜¯å› ä¸º å­˜å‚¨è¿‡ç¨‹/å­˜å‚¨å‡½æ•°åœ¨åˆ›å»ºæ—¶ ä¸ä¹‹å‰çš„ å¼€å¯æ…¢æŸ¥è¯¢æ—¥å¿—å†²çªäº† 
+	è§£å†³å†²çªï¼š
+	ä¸´æ—¶è§£å†³( å¼€å¯log_bin_trust_function_creators )
 		show variables like '%log_bin_trust_function_creators%';
 		set global log_bin_trust_function_creators = 1;
-	ÓÀ¾Ã½â¾ö£º
+	æ°¸ä¹…è§£å†³ï¼š
 	/etc/my.cnf 
 	[mysqld]
 	log_bin_trust_function_creators = 1
 
 
-	--²úÉúËæ»úÕûÊı
+	--äº§ç”Ÿéšæœºæ•´æ•°
 	create function ran_num() returns int(5)
 	begin
 		declare i int default 0;
@@ -868,7 +868,7 @@ deptno int(5) not null default 0
 	
 
 
-	--Í¨¹ı´æ´¢¹ı³Ì²åÈëº£Á¿Êı¾İ£ºemp±íÖĞ  £¬  10000,   100000
+	--é€šè¿‡å­˜å‚¨è¿‡ç¨‹æ’å…¥æµ·é‡æ•°æ®ï¼šempè¡¨ä¸­  ï¼Œ  10000,   100000
 	create procedure insert_emp( in eid_start int(10),in data_times int(10))
 	begin 
 		declare i int default 0;
@@ -884,7 +884,7 @@ deptno int(5) not null default 0
 	end $
 
 
-	--Í¨¹ı´æ´¢¹ı³Ì²åÈëº£Á¿Êı¾İ£ºdept±íÖĞ  
+	--é€šè¿‡å­˜å‚¨è¿‡ç¨‹æ’å…¥æµ·é‡æ•°æ®ï¼šdeptè¡¨ä¸­  
 		create procedure insert_dept(in dno_start int(10) ,in data_times int(10))
 		begin
 			declare i int default 0;
@@ -901,57 +901,57 @@ deptno int(5) not null default 0
 		end$
 
 
-	--²åÈëÊı¾İ
+	--æ’å…¥æ•°æ®
 		delimiter ; 
 		call insert_emp(1000,800000) ;
 		call insert_dept(10,30) ;
 
 	
-	b.·ÖÎöº£Á¿Êı¾İ:
-	£¨1£©profiles
-	show profiles ; --Ä¬ÈÏ¹Ø±Õ
+	b.åˆ†ææµ·é‡æ•°æ®:
+	ï¼ˆ1ï¼‰profiles
+	show profiles ; --é»˜è®¤å…³é—­
 	show variables like '%profiling%';
 	set profiling = on ; 
-	show profiles  £º»á¼ÇÂ¼ËùÓĞprofiling´ò¿ªÖ®ºóµÄ  È«²¿SQL²éÑ¯Óï¾äËù»¨·ÑµÄÊ±¼ä¡£È±µã£º²»¹»¾«È·£¬Ö»ÄÜ¿´µ½ ×Ü¹²Ïû·ÑµÄÊ±¼ä£¬²»ÄÜ¿´µ½¸÷¸öÓ²¼şÏû·ÑµÄÊ±¼ä£¨cpu  io £©
+	show profiles  ï¼šä¼šè®°å½•æ‰€æœ‰profilingæ‰“å¼€ä¹‹åçš„  å…¨éƒ¨SQLæŸ¥è¯¢è¯­å¥æ‰€èŠ±è´¹çš„æ—¶é—´ã€‚ç¼ºç‚¹ï¼šä¸å¤Ÿç²¾ç¡®ï¼Œåªèƒ½çœ‹åˆ° æ€»å…±æ¶ˆè´¹çš„æ—¶é—´ï¼Œä¸èƒ½çœ‹åˆ°å„ä¸ªç¡¬ä»¶æ¶ˆè´¹çš„æ—¶é—´ï¼ˆcpu  io ï¼‰
 
-	(2)--¾«È··ÖÎö:sqlÕï¶Ï
-	 show profile all for query ÉÏÒ»²½²éÑ¯µÄµÄQuery_Id
-	 show profile cpu,block io for query ÉÏÒ»²½²éÑ¯µÄµÄQuery_Id
+	(2)--ç²¾ç¡®åˆ†æ:sqlè¯Šæ–­
+	 show profile all for query ä¸Šä¸€æ­¥æŸ¥è¯¢çš„çš„Query_Id
+	 show profile cpu,block io for query ä¸Šä¸€æ­¥æŸ¥è¯¢çš„çš„Query_Id
 
-	(3)È«¾Ö²éÑ¯ÈÕÖ¾ £º¼ÇÂ¼¿ªÆôÖ®ºóµÄ È«²¿SQLÓï¾ä¡£ £¨Õâ´ÎÈ«¾ÖµÄ¼ÇÂ¼²Ù×÷ ½ö½öÔÚµ÷ÓÅ¡¢¿ª·¢¹ı³ÌÖĞ´ò¿ª¼´¿É£¬ÔÚ×îÖÕµÄ²¿ÊğÊµÊ©Ê± Ò»¶¨¹Ø±Õ£©
+	(3)å…¨å±€æŸ¥è¯¢æ—¥å¿— ï¼šè®°å½•å¼€å¯ä¹‹åçš„ å…¨éƒ¨SQLè¯­å¥ã€‚ ï¼ˆè¿™æ¬¡å…¨å±€çš„è®°å½•æ“ä½œ ä»…ä»…åœ¨è°ƒä¼˜ã€å¼€å‘è¿‡ç¨‹ä¸­æ‰“å¼€å³å¯ï¼Œåœ¨æœ€ç»ˆçš„éƒ¨ç½²å®æ–½æ—¶ ä¸€å®šå…³é—­ï¼‰
 		show variables like '%general_log%';
 		
-		--Ö´ĞĞµÄËùÓĞSQL¼ÇÂ¼ÔÚ±íÖĞ
-		set global general_log = 1 ;--¿ªÆôÈ«¾ÖÈÕÖ¾
-		set global log_output='table' ; --ÉèÖÃ ½«È«²¿µÄSQL ¼ÇÂ¼ÔÚ±íÖĞ
+		--æ‰§è¡Œçš„æ‰€æœ‰SQLè®°å½•åœ¨è¡¨ä¸­
+		set global general_log = 1 ;--å¼€å¯å…¨å±€æ—¥å¿—
+		set global log_output='table' ; --è®¾ç½® å°†å…¨éƒ¨çš„SQL è®°å½•åœ¨è¡¨ä¸­
 
-		--Ö´ĞĞµÄËùÓĞSQL¼ÇÂ¼ÔÚÎÄ¼şÖĞ
+		--æ‰§è¡Œçš„æ‰€æœ‰SQLè®°å½•åœ¨æ–‡ä»¶ä¸­
 		set global log_output='file' ;
 		set global general_log = on ;
 		set global general_log_file='/tmp/general.log' ;
 		
 
-		¿ªÆôºó£¬»á¼ÇÂ¼ËùÓĞSQL £º »á±»¼ÇÂ¼ mysql.general_log±íÖĞ¡£
+		å¼€å¯åï¼Œä¼šè®°å½•æ‰€æœ‰SQL ï¼š ä¼šè¢«è®°å½• mysql.general_logè¡¨ä¸­ã€‚
 			select * from  mysql.general_log ;
 
-11.Ëø»úÖÆ £º½â¾öÒò×ÊÔ´¹²Ïí ¶øÔì³ÉµÄ²¢·¢ÎÊÌâ¡£
-	Ê¾Àı£ºÂò×îºóÒ»¼şÒÂ·şX
-	A:  	X	Âò £º  X¼ÓËø ->ÊÔÒÂ·ş...ÏÂµ¥..¸¶¿î..´ò°ü ->X½âËø
-	B:	X       Âò£º·¢ÏÖXÒÑ±»¼ÓËø£¬µÈ´ıX½âËø£¬   XÒÑÊÛ¿Õ
+11.é”æœºåˆ¶ ï¼šè§£å†³å› èµ„æºå…±äº« è€Œé€ æˆçš„å¹¶å‘é—®é¢˜ã€‚
+	ç¤ºä¾‹ï¼šä¹°æœ€åä¸€ä»¶è¡£æœX
+	A:  	X	ä¹° ï¼š  XåŠ é” ->è¯•è¡£æœ...ä¸‹å•..ä»˜æ¬¾..æ‰“åŒ… ->Xè§£é”
+	B:	X       ä¹°ï¼šå‘ç°Xå·²è¢«åŠ é”ï¼Œç­‰å¾…Xè§£é”ï¼Œ   Xå·²å”®ç©º
 
-	·ÖÀà£º
-	²Ù×÷ÀàĞÍ£º
-		a.¶ÁËø£¨¹²ÏíËø£©£º ¶ÔÍ¬Ò»¸öÊı¾İ£¨ÒÂ·ş£©£¬¶à¸ö¶Á²Ù×÷¿ÉÒÔÍ¬Ê±½øĞĞ£¬»¥²»¸ÉÈÅ¡£
-		b.Ğ´Ëø£¨»¥³âËø£©£º Èç¹ûµ±Ç°Ğ´²Ù×÷Ã»ÓĞÍê±Ï£¨ÂòÒÂ·şµÄÒ»ÏµÁĞ²Ù×÷£©£¬ÔòÎŞ·¨½øĞĞÆäËûµÄ¶Á²Ù×÷¡¢Ğ´²Ù×÷
+	åˆ†ç±»ï¼š
+	æ“ä½œç±»å‹ï¼š
+		a.è¯»é”ï¼ˆå…±äº«é”ï¼‰ï¼š å¯¹åŒä¸€ä¸ªæ•°æ®ï¼ˆè¡£æœï¼‰ï¼Œå¤šä¸ªè¯»æ“ä½œå¯ä»¥åŒæ—¶è¿›è¡Œï¼Œäº’ä¸å¹²æ‰°ã€‚
+		b.å†™é”ï¼ˆäº’æ–¥é”ï¼‰ï¼š å¦‚æœå½“å‰å†™æ“ä½œæ²¡æœ‰å®Œæ¯•ï¼ˆä¹°è¡£æœçš„ä¸€ç³»åˆ—æ“ä½œï¼‰ï¼Œåˆ™æ— æ³•è¿›è¡Œå…¶ä»–çš„è¯»æ“ä½œã€å†™æ“ä½œ
 
-	²Ù×÷·¶Î§£º
-		a.±íËø £ºÒ»´ÎĞÔ¶ÔÒ»ÕÅ±íÕûÌå¼ÓËø¡£ÈçMyISAM´æ´¢ÒıÇæÊ¹ÓÃ±íËø£¬¿ªÏúĞ¡¡¢¼ÓËø¿ì£»ÎŞËÀËø£»µ«ËøµÄ·¶Î§´ó£¬ÈİÒ×·¢ÉúËø³åÍ»¡¢²¢·¢¶ÈµÍ¡£
-		b.ĞĞËø £ºÒ»´ÎĞÔ¶ÔÒ»ÌõÊı¾İ¼ÓËø¡£ÈçInnoDB´æ´¢ÒıÇæÊ¹ÓÃĞĞËø£¬¿ªÏú´ó£¬¼ÓËøÂı£»ÈİÒ×³öÏÖËÀËø£»ËøµÄ·¶Î§½ÏĞ¡£¬²»Ò×·¢ÉúËø³åÍ»£¬²¢·¢¶È¸ß£¨ºÜĞ¡¸ÅÂÊ ·¢Éú¸ß²¢·¢ÎÊÌâ£ºÔà¶Á¡¢»Ã¶Á¡¢²»¿ÉÖØ¸´¶È¡¢¶ªÊ§¸üĞÂµÈÎÊÌâ£©¡£
-		c.Ò³Ëø		
+	æ“ä½œèŒƒå›´ï¼š
+		a.è¡¨é” ï¼šä¸€æ¬¡æ€§å¯¹ä¸€å¼ è¡¨æ•´ä½“åŠ é”ã€‚å¦‚MyISAMå­˜å‚¨å¼•æ“ä½¿ç”¨è¡¨é”ï¼Œå¼€é”€å°ã€åŠ é”å¿«ï¼›æ— æ­»é”ï¼›ä½†é”çš„èŒƒå›´å¤§ï¼Œå®¹æ˜“å‘ç”Ÿé”å†²çªã€å¹¶å‘åº¦ä½ã€‚
+		b.è¡Œé” ï¼šä¸€æ¬¡æ€§å¯¹ä¸€æ¡æ•°æ®åŠ é”ã€‚å¦‚InnoDBå­˜å‚¨å¼•æ“ä½¿ç”¨è¡Œé”ï¼Œå¼€é”€å¤§ï¼ŒåŠ é”æ…¢ï¼›å®¹æ˜“å‡ºç°æ­»é”ï¼›é”çš„èŒƒå›´è¾ƒå°ï¼Œä¸æ˜“å‘ç”Ÿé”å†²çªï¼Œå¹¶å‘åº¦é«˜ï¼ˆå¾ˆå°æ¦‚ç‡ å‘ç”Ÿé«˜å¹¶å‘é—®é¢˜ï¼šè„è¯»ã€å¹»è¯»ã€ä¸å¯é‡å¤åº¦ã€ä¸¢å¤±æ›´æ–°ç­‰é—®é¢˜ï¼‰ã€‚
+		c.é¡µé”		
 	
-Ê¾Àı£º
+ç¤ºä¾‹ï¼š
 
-	£¨1£©±íËø £º  --×ÔÔö²Ù×÷ MYSQL/SQLSERVER Ö§³Ö£»oracleĞèÒª½èÖúÓÚĞòÁĞÀ´ÊµÏÖ×ÔÔö
+	ï¼ˆ1ï¼‰è¡¨é” ï¼š  --è‡ªå¢æ“ä½œ MYSQL/SQLSERVER æ”¯æŒï¼›oracleéœ€è¦å€ŸåŠ©äºåºåˆ—æ¥å®ç°è‡ªå¢
 create table tablelock
 (
 id int primary key auto_increment , 
@@ -966,72 +966,72 @@ insert into tablelock(name) values('a4');
 insert into tablelock(name) values('a5');
 commit;
 
-	Ôö¼ÓËø£º
-	locak table ±í1  read/write  ,±í2  read/write   ,...
+	å¢åŠ é”ï¼š
+	locak table è¡¨1  read/write  ,è¡¨2  read/write   ,...
 
-	²é¿´¼ÓËøµÄ±í£º
+	æŸ¥çœ‹åŠ é”çš„è¡¨ï¼š
 	show open tables ;
 
-	»á»°£ºsession :Ã¿Ò»¸ö·ÃÎÊÊı¾İµÄdosÃüÁîĞĞ¡¢Êı¾İ¿â¿Í»§¶Ë¹¤¾ß  ¶¼ÊÇÒ»¸ö»á»°
+	ä¼šè¯ï¼šsession :æ¯ä¸€ä¸ªè®¿é—®æ•°æ®çš„doså‘½ä»¤è¡Œã€æ•°æ®åº“å®¢æˆ·ç«¯å·¥å…·  éƒ½æ˜¯ä¸€ä¸ªä¼šè¯
 
-	===¼Ó¶ÁËø£º
-		»á»°0£º
+	===åŠ è¯»é”ï¼š
+		ä¼šè¯0ï¼š
 			lock table  tablelock read ;
-			select * from tablelock; --¶Á£¨²é£©£¬¿ÉÒÔ
-			delete from tablelock where id =1 ; --Ğ´£¨ÔöÉ¾¸Ä£©£¬²»¿ÉÒÔ
+			select * from tablelock; --è¯»ï¼ˆæŸ¥ï¼‰ï¼Œå¯ä»¥
+			delete from tablelock where id =1 ; --å†™ï¼ˆå¢åˆ æ”¹ï¼‰ï¼Œä¸å¯ä»¥
 
-			select * from emp ; --¶Á£¬²»¿ÉÒÔ
-			delete from emp where eid = 1; --Ğ´£¬²»¿ÉÒÔ
-			½áÂÛ1£º
-			--Èç¹ûÄ³Ò»¸ö»á»° ¶ÔA±í¼ÓÁËreadËø£¬Ôò ¸Ã»á»° ¿ÉÒÔ¶ÔA±í½øĞĞ¶Á²Ù×÷¡¢²»ÄÜ½øĞĞĞ´²Ù×÷£» ÇÒ ¸Ã»á»°²»ÄÜ¶ÔÆäËû±í½øĞĞ¶Á¡¢Ğ´²Ù×÷¡£
-			--¼´Èç¹û¸øA±í¼ÓÁË¶ÁËø£¬Ôòµ±Ç°»á»°Ö»ÄÜ¶ÔA±í½øĞĞ¶Á²Ù×÷¡£
+			select * from emp ; --è¯»ï¼Œä¸å¯ä»¥
+			delete from emp where eid = 1; --å†™ï¼Œä¸å¯ä»¥
+			ç»“è®º1ï¼š
+			--å¦‚æœæŸä¸€ä¸ªä¼šè¯ å¯¹Aè¡¨åŠ äº†readé”ï¼Œåˆ™ è¯¥ä¼šè¯ å¯ä»¥å¯¹Aè¡¨è¿›è¡Œè¯»æ“ä½œã€ä¸èƒ½è¿›è¡Œå†™æ“ä½œï¼› ä¸” è¯¥ä¼šè¯ä¸èƒ½å¯¹å…¶ä»–è¡¨è¿›è¡Œè¯»ã€å†™æ“ä½œã€‚
+			--å³å¦‚æœç»™Aè¡¨åŠ äº†è¯»é”ï¼Œåˆ™å½“å‰ä¼šè¯åªèƒ½å¯¹Aè¡¨è¿›è¡Œè¯»æ“ä½œã€‚
 
-		»á»°1£¨ÆäËû»á»°£©£º
-			select * from tablelock;   --¶Á£¨²é£©£¬¿ÉÒÔ
-			delete from tablelock where id =1 ; --Ğ´£¬»á¡°µÈ´ı¡±»á»°0½«ËøÊÍ·Å
-
-
-		»á»°1£¨ÆäËû»á»°£©£º
-			select * from emp ;  --¶Á£¨²é£©£¬¿ÉÒÔ
-			delete from emp where eno = 1; --Ğ´£¬¿ÉÒÔ
-			½áÂÛ2£º
-			--×Ü½á£º
-				»á»°0¸øA±í¼ÓÁËËø£»ÆäËû»á»°µÄ²Ù×÷£ºa.¿ÉÒÔ¶ÔÆäËû±í£¨A±íÒÔÍâµÄ±í£©½øĞĞ¶Á¡¢Ğ´²Ù×÷
-								b.¶ÔA±í£º¶Á-¿ÉÒÔ£»  Ğ´-ĞèÒªµÈ´ıÊÍ·ÅËø¡£
-		ÊÍ·ÅËø: unlock tables ;
+		ä¼šè¯1ï¼ˆå…¶ä»–ä¼šè¯ï¼‰ï¼š
+			select * from tablelock;   --è¯»ï¼ˆæŸ¥ï¼‰ï¼Œå¯ä»¥
+			delete from tablelock where id =1 ; --å†™ï¼Œä¼šâ€œç­‰å¾…â€ä¼šè¯0å°†é”é‡Šæ”¾
 
 
+		ä¼šè¯1ï¼ˆå…¶ä»–ä¼šè¯ï¼‰ï¼š
+			select * from emp ;  --è¯»ï¼ˆæŸ¥ï¼‰ï¼Œå¯ä»¥
+			delete from emp where eno = 1; --å†™ï¼Œå¯ä»¥
+			ç»“è®º2ï¼š
+			--æ€»ç»“ï¼š
+				ä¼šè¯0ç»™Aè¡¨åŠ äº†é”ï¼›å…¶ä»–ä¼šè¯çš„æ“ä½œï¼ša.å¯ä»¥å¯¹å…¶ä»–è¡¨ï¼ˆAè¡¨ä»¥å¤–çš„è¡¨ï¼‰è¿›è¡Œè¯»ã€å†™æ“ä½œ
+								b.å¯¹Aè¡¨ï¼šè¯»-å¯ä»¥ï¼›  å†™-éœ€è¦ç­‰å¾…é‡Šæ”¾é”ã€‚
+		é‡Šæ”¾é”: unlock tables ;
 
-	===¼ÓĞ´Ëø£º
-		»á»°0£º
+
+
+	===åŠ å†™é”ï¼š
+		ä¼šè¯0ï¼š
 			lock table tablelock write ;
 	
-			µ±Ç°»á»°£¨»á»°0£© ¿ÉÒÔ¶Ô¼ÓÁËĞ´ËøµÄ±í  ½øĞĞÈÎºÎ²Ù×÷£¨ÔöÉ¾¸Ä²é£©£»µ«ÊÇ²»ÄÜ ²Ù×÷£¨ÔöÉ¾¸Ä²é£©ÆäËû±í
-		ÆäËû»á»°£º
-			¶Ô»á»°0ÖĞ¼ÓĞ´ËøµÄ±í ¿ÉÒÔ½øĞĞÔöÉ¾¸Ä²éµÄÇ°ÌáÊÇ£ºµÈ´ı»á»°0ÊÍ·ÅĞ´Ëø
+			å½“å‰ä¼šè¯ï¼ˆä¼šè¯0ï¼‰ å¯ä»¥å¯¹åŠ äº†å†™é”çš„è¡¨  è¿›è¡Œä»»ä½•æ“ä½œï¼ˆå¢åˆ æ”¹æŸ¥ï¼‰ï¼›ä½†æ˜¯ä¸èƒ½ æ“ä½œï¼ˆå¢åˆ æ”¹æŸ¥ï¼‰å…¶ä»–è¡¨
+		å…¶ä»–ä¼šè¯ï¼š
+			å¯¹ä¼šè¯0ä¸­åŠ å†™é”çš„è¡¨ å¯ä»¥è¿›è¡Œå¢åˆ æ”¹æŸ¥çš„å‰ææ˜¯ï¼šç­‰å¾…ä¼šè¯0é‡Šæ”¾å†™é”
 
-MySQL±í¼¶ËøµÄËøÄ£Ê½
-MyISAMÔÚÖ´ĞĞ²éÑ¯Óï¾ä£¨SELECT£©Ç°£¬»á×Ô¶¯¸øÉæ¼°µÄËùÓĞ±í¼Ó¶ÁËø£¬
-ÔÚÖ´ĞĞ¸üĞÂ²Ù×÷£¨DML£©Ç°£¬»á×Ô¶¯¸øÉæ¼°µÄ±í¼ÓĞ´Ëø¡£
-ËùÒÔ¶ÔMyISAM±í½øĞĞ²Ù×÷£¬»áÓĞÒÔÏÂÇé¿ö£º
-a¡¢¶ÔMyISAM±íµÄ¶Á²Ù×÷£¨¼Ó¶ÁËø£©£¬²»»á×èÈûÆäËû½ø³Ì£¨»á»°£©¶ÔÍ¬Ò»±íµÄ¶ÁÇëÇó£¬
-µ«»á×èÈû¶ÔÍ¬Ò»±íµÄĞ´ÇëÇó¡£Ö»ÓĞµ±¶ÁËøÊÍ·Åºó£¬²Å»áÖ´ĞĞÆäËü½ø³ÌµÄĞ´²Ù×÷¡£
-b¡¢¶ÔMyISAM±íµÄĞ´²Ù×÷£¨¼ÓĞ´Ëø£©£¬»á×èÈûÆäËû½ø³Ì£¨»á»°£©¶ÔÍ¬Ò»±íµÄ¶ÁºÍĞ´²Ù×÷£¬
-Ö»ÓĞµ±Ğ´ËøÊÍ·Åºó£¬²Å»áÖ´ĞĞÆäËü½ø³ÌµÄ¶ÁĞ´²Ù×÷¡£
+MySQLè¡¨çº§é”çš„é”æ¨¡å¼
+MyISAMåœ¨æ‰§è¡ŒæŸ¥è¯¢è¯­å¥ï¼ˆSELECTï¼‰å‰ï¼Œä¼šè‡ªåŠ¨ç»™æ¶‰åŠçš„æ‰€æœ‰è¡¨åŠ è¯»é”ï¼Œ
+åœ¨æ‰§è¡Œæ›´æ–°æ“ä½œï¼ˆDMLï¼‰å‰ï¼Œä¼šè‡ªåŠ¨ç»™æ¶‰åŠçš„è¡¨åŠ å†™é”ã€‚
+æ‰€ä»¥å¯¹MyISAMè¡¨è¿›è¡Œæ“ä½œï¼Œä¼šæœ‰ä»¥ä¸‹æƒ…å†µï¼š
+aã€å¯¹MyISAMè¡¨çš„è¯»æ“ä½œï¼ˆåŠ è¯»é”ï¼‰ï¼Œä¸ä¼šé˜»å¡å…¶ä»–è¿›ç¨‹ï¼ˆä¼šè¯ï¼‰å¯¹åŒä¸€è¡¨çš„è¯»è¯·æ±‚ï¼Œ
+ä½†ä¼šé˜»å¡å¯¹åŒä¸€è¡¨çš„å†™è¯·æ±‚ã€‚åªæœ‰å½“è¯»é”é‡Šæ”¾åï¼Œæ‰ä¼šæ‰§è¡Œå…¶å®ƒè¿›ç¨‹çš„å†™æ“ä½œã€‚
+bã€å¯¹MyISAMè¡¨çš„å†™æ“ä½œï¼ˆåŠ å†™é”ï¼‰ï¼Œä¼šé˜»å¡å…¶ä»–è¿›ç¨‹ï¼ˆä¼šè¯ï¼‰å¯¹åŒä¸€è¡¨çš„è¯»å’Œå†™æ“ä½œï¼Œ
+åªæœ‰å½“å†™é”é‡Šæ”¾åï¼Œæ‰ä¼šæ‰§è¡Œå…¶å®ƒè¿›ç¨‹çš„è¯»å†™æ“ä½œã€‚
 
 
 
-·ÖÎö±íËø¶¨£º
-	²é¿´ÄÄĞ©±í¼ÓÁËËø£º   show open tables ;  1´ú±í±»¼ÓÁËËø
-	·ÖÎö±íËø¶¨µÄÑÏÖØ³Ì¶È£º show status like 'table%' ;
-			Table_locks_immediate :¼´¿ÉÄÜ»ñÈ¡µ½µÄËøÊı
-			Table_locks_waited£ºĞèÒªµÈ´ıµÄ±íËøÊı(Èç¹û¸ÃÖµÔ½´ó£¬ËµÃ÷´æÔÚÔ½´óµÄËø¾ºÕù)
-	Ò»°ã½¨Òé£º
-		Table_locks_immediate/Table_locks_waited > 5000£¬ ½¨Òé²ÉÓÃInnoDBÒıÇæ£¬·ñÔòMyISAMÒıÇæ
+åˆ†æè¡¨é”å®šï¼š
+	æŸ¥çœ‹å“ªäº›è¡¨åŠ äº†é”ï¼š   show open tables ;  1ä»£è¡¨è¢«åŠ äº†é”
+	åˆ†æè¡¨é”å®šçš„ä¸¥é‡ç¨‹åº¦ï¼š show status like 'table%' ;
+			Table_locks_immediate :ç«‹å³èƒ½è·å–åˆ°çš„é”æ•°
+			Table_locks_waitedï¼šéœ€è¦ç­‰å¾…çš„è¡¨é”æ•°(å¦‚æœè¯¥å€¼è¶Šå¤§ï¼Œè¯´æ˜å­˜åœ¨è¶Šå¤§çš„é”ç«äº‰)
+	ä¸€èˆ¬å»ºè®®ï¼š
+		Table_locks_immediate/Table_locks_waited > 5000ï¼Œ å»ºè®®é‡‡ç”¨InnoDBå¼•æ“ï¼Œå¦åˆ™MyISAMå¼•æ“
 
 	
 
-£¨2£©ĞĞ±í£¨InnoDB£©
+ï¼ˆ2ï¼‰è¡Œè¡¨ï¼ˆInnoDBï¼‰
 create table linelock(
 id int(5) primary key auto_increment,
 name varchar(20)
@@ -1043,153 +1043,153 @@ insert into linelock(name) values('4')  ;
 insert into linelock(name) values('5')  ;
 
 
---mysqlÄ¬ÈÏ×Ô¶¯commit;	oracleÄ¬ÈÏ²»»á×Ô¶¯commit ;
+--mysqlé»˜è®¤è‡ªåŠ¨commit;	oracleé»˜è®¤ä¸ä¼šè‡ªåŠ¨commit ;
 
-ÎªÁËÑĞ¾¿ĞĞËø£¬ÔİÊ±½«×Ô¶¯commit¹Ø±Õ;  set autocommit =0 ; ÒÔºóĞèÒªÍ¨¹ıcommit
+ä¸ºäº†ç ”ç©¶è¡Œé”ï¼Œæš‚æ—¶å°†è‡ªåŠ¨commitå…³é—­;  set autocommit =0 ; ä»¥åéœ€è¦é€šè¿‡commit
 
 
-	»á»°0£º Ğ´²Ù×÷
+	ä¼šè¯0ï¼š å†™æ“ä½œ
 		insert into linelock values(	'a6') ;
 	   
-	»á»°1£º Ğ´²Ù×÷ Í¬ÑùµÄÊı¾İ
+	ä¼šè¯1ï¼š å†™æ“ä½œ åŒæ ·çš„æ•°æ®
 		update linelock set name='ax' where id = 6;
 
-	¶ÔĞĞËøÇé¿ö£º
-		1.Èç¹û»á»°x¶ÔÄ³ÌõÊı¾İa½øĞĞ DML²Ù×÷£¨ÑĞ¾¿Ê±£º¹Ø±ÕÁË×Ô¶¯commitµÄÇé¿öÏÂ£©£¬ÔòÆäËû»á»°±ØĞëµÈ´ı»á»°x½áÊøÊÂÎñ(commit/rollback)ºó  ²ÅÄÜ¶ÔÊı¾İa½øĞĞ²Ù×÷¡£
-		2.±íËø ÊÇÍ¨¹ıunlock tables£¬Ò²¿ÉÒÔÍ¨¹ıÊÂÎñ½âËø ; ĞĞËø ÊÇÍ¨¹ıÊÂÎñ½âËø¡£
+	å¯¹è¡Œé”æƒ…å†µï¼š
+		1.å¦‚æœä¼šè¯xå¯¹æŸæ¡æ•°æ®aè¿›è¡Œ DMLæ“ä½œï¼ˆç ”ç©¶æ—¶ï¼šå…³é—­äº†è‡ªåŠ¨commitçš„æƒ…å†µä¸‹ï¼‰ï¼Œåˆ™å…¶ä»–ä¼šè¯å¿…é¡»ç­‰å¾…ä¼šè¯xç»“æŸäº‹åŠ¡(commit/rollback)å  æ‰èƒ½å¯¹æ•°æ®aè¿›è¡Œæ“ä½œã€‚
+		2.è¡¨é” æ˜¯é€šè¿‡unlock tablesï¼Œä¹Ÿå¯ä»¥é€šè¿‡äº‹åŠ¡è§£é” ; è¡Œé” æ˜¯é€šè¿‡äº‹åŠ¡è§£é”ã€‚
 
 		
 
-	ĞĞËø£¬²Ù×÷²»Í¬Êı¾İ£º
+	è¡Œé”ï¼Œæ“ä½œä¸åŒæ•°æ®ï¼š
 	
-	»á»°0£º Ğ´²Ù×÷
+	ä¼šè¯0ï¼š å†™æ“ä½œ
 	
 		insert into linelock values(8,'a8') ;
-	»á»°1£º Ğ´²Ù×÷£¬ ²»Í¬µÄÊı¾İ
+	ä¼šè¯1ï¼š å†™æ“ä½œï¼Œ ä¸åŒçš„æ•°æ®
 		update linelock set name='ax' where id = 5;
-		ĞĞËø£¬Ò»´ÎËøÒ»ĞĞÊı¾İ£»Òò´Ë Èç¹û²Ù×÷µÄÊÇ²»Í¬Êı¾İ£¬Ôò²»¸ÉÈÅ¡£
+		è¡Œé”ï¼Œä¸€æ¬¡é”ä¸€è¡Œæ•°æ®ï¼›å› æ­¤ å¦‚æœæ“ä½œçš„æ˜¯ä¸åŒæ•°æ®ï¼Œåˆ™ä¸å¹²æ‰°ã€‚
 
 
-	ĞĞËøµÄ×¢ÒâÊÂÏî£º
-	a.Èç¹ûÃ»ÓĞË÷Òı£¬ÔòĞĞËø»á×ªÎª±íËø
+	è¡Œé”çš„æ³¨æ„äº‹é¡¹ï¼š
+	a.å¦‚æœæ²¡æœ‰ç´¢å¼•ï¼Œåˆ™è¡Œé”ä¼šè½¬ä¸ºè¡¨é”
 	show index from linelock ;
 	alter table linelock add index idx_linelock_name(name);
 
 	
-	»á»°0£º Ğ´²Ù×÷
+	ä¼šè¯0ï¼š å†™æ“ä½œ
 		update linelock set name = 'ai' where name = '3' ;
 		
-	»á»°1£º Ğ´²Ù×÷£¬ ²»Í¬µÄÊı¾İ
+	ä¼šè¯1ï¼š å†™æ“ä½œï¼Œ ä¸åŒçš„æ•°æ®
 		update linelock set name = 'aiX' where name = '4' ;
 	
 
 	
-	»á»°0£º Ğ´²Ù×÷
+	ä¼šè¯0ï¼š å†™æ“ä½œ
 		update linelock set name = 'ai' where name = 3 ;
 		
-	»á»°1£º Ğ´²Ù×÷£¬ ²»Í¬µÄÊı¾İ
+	ä¼šè¯1ï¼š å†™æ“ä½œï¼Œ ä¸åŒçš„æ•°æ®
 		update linelock set name = 'aiX' where name = 4 ;
 		
-	--¿ÉÒÔ·¢ÏÖ£¬Êı¾İ±»×èÈûÁË£¨¼ÓËø£©
-	-- Ô­Òò£ºÈç¹ûË÷ÒıÀà ·¢ÉúÁËÀàĞÍ×ª»»£¬ÔòË÷ÒıÊ§Ğ§¡£ Òò´Ë ´Ë´Î²Ù×÷£¬»á´ÓĞĞËø ×ªÎª±íËø¡£
+	--å¯ä»¥å‘ç°ï¼Œæ•°æ®è¢«é˜»å¡äº†ï¼ˆåŠ é”ï¼‰
+	-- åŸå› ï¼šå¦‚æœç´¢å¼•ç±» å‘ç”Ÿäº†ç±»å‹è½¬æ¢ï¼Œåˆ™ç´¢å¼•å¤±æ•ˆã€‚ å› æ­¤ æ­¤æ¬¡æ“ä½œï¼Œä¼šä»è¡Œé” è½¬ä¸ºè¡¨é”ã€‚
 
-	b.ĞĞËøµÄÒ»ÖÖÌØÊâÇé¿ö£º¼äÏ¶Ëø£ºÖµÔÚ·¶Î§ÄÚ£¬µ«È´²»´æÔÚ
-	 --´ËÊ±linelock±íÖĞ Ã»ÓĞid=7µÄÊı¾İ
-	 update linelock set name ='x' where id >1 and id<9 ;   --¼´ÔÚ´Ëwhere·¶Î§ÖĞ£¬Ã»ÓĞid=7µÄÊı¾İ£¬Ôòid=7µÄÊı¾İ³ÉÎª¼äÏ¶¡£
-	¼äÏ¶£ºMysql»á×Ô¶¯¸ø ¼äÏ¶ ¼ÓË÷ ->¼äÏ¶Ëø¡£¼´ ±¾Ìâ »á×Ô¶¯¸øid=7µÄÊı¾İ¼Ó ¼äÏ¶Ëø£¨ĞĞËø£©¡£
-	ĞĞËø£ºÈç¹ûÓĞwhere£¬ÔòÊµ¼Ê¼ÓË÷µÄ·¶Î§ ¾ÍÊÇwhereºóÃæµÄ·¶Î§£¨²»ÊÇÊµ¼ÊµÄÖµ£©
+	b.è¡Œé”çš„ä¸€ç§ç‰¹æ®Šæƒ…å†µï¼šé—´éš™é”ï¼šå€¼åœ¨èŒƒå›´å†…ï¼Œä½†å´ä¸å­˜åœ¨
+	 --æ­¤æ—¶linelockè¡¨ä¸­ æ²¡æœ‰id=7çš„æ•°æ®
+	 update linelock set name ='x' where id >1 and id<9 ;   --å³åœ¨æ­¤whereèŒƒå›´ä¸­ï¼Œæ²¡æœ‰id=7çš„æ•°æ®ï¼Œåˆ™id=7çš„æ•°æ®æˆä¸ºé—´éš™ã€‚
+	é—´éš™ï¼šMysqlä¼šè‡ªåŠ¨ç»™ é—´éš™ åŠ ç´¢ ->é—´éš™é”ã€‚å³ æœ¬é¢˜ ä¼šè‡ªåŠ¨ç»™id=7çš„æ•°æ®åŠ  é—´éš™é”ï¼ˆè¡Œé”ï¼‰ã€‚
+	è¡Œé”ï¼šå¦‚æœæœ‰whereï¼Œåˆ™å®é™…åŠ ç´¢çš„èŒƒå›´ å°±æ˜¯whereåé¢çš„èŒƒå›´ï¼ˆä¸æ˜¯å®é™…çš„å€¼ï¼‰
 
 	
-	ÈçºÎ½ö½öÊÇ²éÑ¯Êı¾İ£¬ÄÜ·ñ¼ÓËø£¿ ¿ÉÒÔ   for update 
-	ÑĞ¾¿Ñ§Ï°Ê±£¬½«×Ô¶¯Ìá½»¹Ø±Õ£º
+	å¦‚ä½•ä»…ä»…æ˜¯æŸ¥è¯¢æ•°æ®ï¼Œèƒ½å¦åŠ é”ï¼Ÿ å¯ä»¥   for update 
+	ç ”ç©¶å­¦ä¹ æ—¶ï¼Œå°†è‡ªåŠ¨æäº¤å…³é—­ï¼š
 		set autocommit =0 ;
 		start transaction ;
 		begin ;
 	 select * from linelock where id =2 for update ;
 
-	Í¨¹ıfor update¶ÔqueryÓï¾ä½øĞĞ¼ÓËø¡£
+	é€šè¿‡for updateå¯¹queryè¯­å¥è¿›è¡ŒåŠ é”ã€‚
 
-	ĞĞËø£º
-	InnoDBÄ¬ÈÏ²ÉÓÃĞĞËø£»
-	È±µã£º ±È±íËøĞÔÄÜËğºÄ´ó¡£
-	ÓÅµã£º²¢·¢ÄÜÁ¦Ç¿£¬Ğ§ÂÊ¸ß¡£
-	Òò´Ë½¨Òé£¬¸ß²¢·¢ÓÃInnoDB£¬·ñÔòÓÃMyISAM¡£
+	è¡Œé”ï¼š
+	InnoDBé»˜è®¤é‡‡ç”¨è¡Œé”ï¼›
+	ç¼ºç‚¹ï¼š æ¯”è¡¨é”æ€§èƒ½æŸè€—å¤§ã€‚
+	ä¼˜ç‚¹ï¼šå¹¶å‘èƒ½åŠ›å¼ºï¼Œæ•ˆç‡é«˜ã€‚
+	å› æ­¤å»ºè®®ï¼Œé«˜å¹¶å‘ç”¨InnoDBï¼Œå¦åˆ™ç”¨MyISAMã€‚
 
-	ĞĞËø·ÖÎö£º
+	è¡Œé”åˆ†æï¼š
 	  show status like '%innodb_row_lock%' ;
-		 Innodb_row_lock_current_waits :µ±Ç°ÕıÔÚµÈ´ıËøµÄÊıÁ¿  
-		  Innodb_row_lock_time£ºµÈ´ı×ÜÊ±³¤¡£´ÓÏµÍ³Æôµ½ÏÖÔÚ Ò»¹²µÈ´ıµÄÊ±¼ä
-		 Innodb_row_lock_time_avg  £ºÆ½¾ùµÈ´ıÊ±³¤¡£´ÓÏµÍ³Æôµ½ÏÖÔÚÆ½¾ùµÈ´ıµÄÊ±¼ä
-		 Innodb_row_lock_time_max  £º×î´óµÈ´ıÊ±³¤¡£´ÓÏµÍ³Æôµ½ÏÖÔÚ×î´óÒ»´ÎµÈ´ıµÄÊ±¼ä
-		 Innodb_row_lock_waits £º	µÈ´ı´ÎÊı¡£´ÓÏµÍ³Æôµ½ÏÖÔÚÒ»¹²µÈ´ıµÄ´ÎÊı
-12.Ö÷´Ó¸´ÖÆ  £¨¼¯ÈºÔÚÊı¾İ¿âµÄÒ»ÖÖÊµÏÖ£©
-	windows:mysql Ö÷
-	linux:mysql´Ó
+		 Innodb_row_lock_current_waits :å½“å‰æ­£åœ¨ç­‰å¾…é”çš„æ•°é‡  
+		  Innodb_row_lock_timeï¼šç­‰å¾…æ€»æ—¶é•¿ã€‚ä»ç³»ç»Ÿå¯åˆ°ç°åœ¨ ä¸€å…±ç­‰å¾…çš„æ—¶é—´
+		 Innodb_row_lock_time_avg  ï¼šå¹³å‡ç­‰å¾…æ—¶é•¿ã€‚ä»ç³»ç»Ÿå¯åˆ°ç°åœ¨å¹³å‡ç­‰å¾…çš„æ—¶é—´
+		 Innodb_row_lock_time_max  ï¼šæœ€å¤§ç­‰å¾…æ—¶é•¿ã€‚ä»ç³»ç»Ÿå¯åˆ°ç°åœ¨æœ€å¤§ä¸€æ¬¡ç­‰å¾…çš„æ—¶é—´
+		 Innodb_row_lock_waits ï¼š	ç­‰å¾…æ¬¡æ•°ã€‚ä»ç³»ç»Ÿå¯åˆ°ç°åœ¨ä¸€å…±ç­‰å¾…çš„æ¬¡æ•°
+12.ä¸»ä»å¤åˆ¶  ï¼ˆé›†ç¾¤åœ¨æ•°æ®åº“çš„ä¸€ç§å®ç°ï¼‰
+	windows:mysql ä¸»
+	linux:mysqlä»
 
-	°²×°windows°æmysql:
-		Èç¹ûÖ®Ç°¼ÆËã»úÖĞ°²×°¹ıMysql£¬ÒªÖØĞÂÔÙ°²×°  ÔòĞèÒª£ºÏÈĞ¶ÔØ ÔÙ°²×°
-		ÏÈĞ¶ÔØ£º
-			Í¨¹ıµçÄÔ×Ô´øĞ¶ÔØ¹¤¾ßĞ¶ÔØMysql (µçÄÔ¹Ü¼ÒÒ²¿ÉÒÔ)
-			É¾³ıÒ»¸ömysql»º´æÎÄ¼şC:\ProgramData\MySQL
-			É¾³ı×¢²á±íregeditÖĞËùÓĞmysqlÏà¹ØÅäÖÃ
-			--ÖØÆô¼ÆËã»ú
+	å®‰è£…windowsç‰ˆmysql:
+		å¦‚æœä¹‹å‰è®¡ç®—æœºä¸­å®‰è£…è¿‡Mysqlï¼Œè¦é‡æ–°å†å®‰è£…  åˆ™éœ€è¦ï¼šå…ˆå¸è½½ å†å®‰è£…
+		å…ˆå¸è½½ï¼š
+			é€šè¿‡ç”µè„‘è‡ªå¸¦å¸è½½å·¥å…·å¸è½½Mysql (ç”µè„‘ç®¡å®¶ä¹Ÿå¯ä»¥)
+			åˆ é™¤ä¸€ä¸ªmysqlç¼“å­˜æ–‡ä»¶C:\ProgramData\MySQL
+			åˆ é™¤æ³¨å†Œè¡¨regeditä¸­æ‰€æœ‰mysqlç›¸å…³é…ç½®
+			--é‡å¯è®¡ç®—æœº
 			
-		°²×°MYSQL£º
-			°²×°Ê±£¬Èç¹û³öÏÖÎ´ÏìÓ¦£º  ÔòÖØĞÂ´ò¿ªD:\MySQL\MySQL Server 5.5\bin\MySQLInstanceConfig.exe
+		å®‰è£…MYSQLï¼š
+			å®‰è£…æ—¶ï¼Œå¦‚æœå‡ºç°æœªå“åº”ï¼š  åˆ™é‡æ–°æ‰“å¼€D:\MySQL\MySQL Server 5.5\bin\MySQLInstanceConfig.exe
 
-		Í¼ĞÎ»¯¿Í»§¶Ë£º SQLyog, Navicat
+		å›¾å½¢åŒ–å®¢æˆ·ç«¯ï¼š SQLyog, Navicat
 
 
-		Èç¹ûÒªÔ¶³ÌÁ¬½ÓÊı¾İ¿â£¬ÔòĞèÒªÊÚÈ¨Ô¶³Ì·ÃÎÊ¡£ 
-		ÊÚÈ¨Ô¶³Ì·ÃÎÊ :(A->B,ÔòÔÙB¼ÆËã»úµÄMysqlÖĞÖ´ĞĞÒÔÏÂÃüÁî)
+		å¦‚æœè¦è¿œç¨‹è¿æ¥æ•°æ®åº“ï¼Œåˆ™éœ€è¦æˆæƒè¿œç¨‹è®¿é—®ã€‚ 
+		æˆæƒè¿œç¨‹è®¿é—® :(A->B,åˆ™å†Bè®¡ç®—æœºçš„Mysqlä¸­æ‰§è¡Œä»¥ä¸‹å‘½ä»¤)
 		GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
 		FLUSH PRIVILEGES;
 	
-		Èç¹ûÈÔÈ»±¨´í£º¿ÉÄÜÊÇ·À»ğÇ½Ã»¹Ø±Õ £º  ÔÚB¹Ø±Õ·À»ğÇ½  service iptables stop 
+		å¦‚æœä»ç„¶æŠ¥é”™ï¼šå¯èƒ½æ˜¯é˜²ç«å¢™æ²¡å…³é—­ ï¼š  åœ¨Bå…³é—­é˜²ç«å¢™  service iptables stop 
 
 
 
-	ÊµÏÖÖ÷´ÓÍ¬²½£¨Ö÷´Ó¸´ÖÆ£©£ºÍ¼
-		1.master½«¸Ä±äµÄÊı ¼ÇÂ¼ÔÚ±¾µØµÄ ¶ş½øÖÆÈÕÖ¾ÖĞ£¨binary log£© £»¸Ã¹ı³Ì ³ÆÖ®Îª£º¶ş½øÖÆÈÕÖ¾¼şÊÂ
-		2.slave½«masterµÄbinary log¿½±´µ½×Ô¼ºµÄ relay log£¨ÖĞ¼ÌÈÕÖ¾ÎÄ¼ş£©ÖĞ
-		3.ÖĞ¼ÌÈÕÖ¾ÊÂ¼ş£¬½«Êı¾İ¶ÁÈ¡µ½×Ô¼ºµÄÊı¾İ¿âÖ®ÖĞ
-	MYSQLÖ÷´Ó¸´ÖÆ ÊÇÒì²½µÄ£¬´®ĞĞ»¯µÄ£¬ ÓĞÑÓ³Ù
+	å®ç°ä¸»ä»åŒæ­¥ï¼ˆä¸»ä»å¤åˆ¶ï¼‰ï¼šå›¾
+		1.masterå°†æ”¹å˜çš„æ•° è®°å½•åœ¨æœ¬åœ°çš„ äºŒè¿›åˆ¶æ—¥å¿—ä¸­ï¼ˆbinary logï¼‰ ï¼›è¯¥è¿‡ç¨‹ ç§°ä¹‹ä¸ºï¼šäºŒè¿›åˆ¶æ—¥å¿—ä»¶äº‹
+		2.slaveå°†masterçš„binary logæ‹·è´åˆ°è‡ªå·±çš„ relay logï¼ˆä¸­ç»§æ—¥å¿—æ–‡ä»¶ï¼‰ä¸­
+		3.ä¸­ç»§æ—¥å¿—äº‹ä»¶ï¼Œå°†æ•°æ®è¯»å–åˆ°è‡ªå·±çš„æ•°æ®åº“ä¹‹ä¸­
+	MYSQLä¸»ä»å¤åˆ¶ æ˜¯å¼‚æ­¥çš„ï¼Œä¸²è¡ŒåŒ–çš„ï¼Œ æœ‰å»¶è¿Ÿ
 	
 	master:slave = 1:n
 
-	ÅäÖÃ£º 
+	é…ç½®ï¼š 
 	windows(mysql: my.ini)
 	  linux(mysql: my.cnf)
 
-	ÅäÖÃÇ°£¬ÎªÁËÎŞÎó£¬ÏÈ½«È¨ÏŞ(Ô¶³Ì·ÃÎÊ)¡¢·À»ğÇ½µÈ´¦Àí£º
-		¹Ø±Õwindows/linux·À»ğÇ½£º windows£ºÓÒ¼ü¡°ÍøÂç¡±   ,linux: service iptables stop
-		MysqlÔÊĞíÔ¶³ÌÁ¬½Ó(windowos/linux)£º
+	é…ç½®å‰ï¼Œä¸ºäº†æ— è¯¯ï¼Œå…ˆå°†æƒé™(è¿œç¨‹è®¿é—®)ã€é˜²ç«å¢™ç­‰å¤„ç†ï¼š
+		å…³é—­windows/linuxé˜²ç«å¢™ï¼š windowsï¼šå³é”®â€œç½‘ç»œâ€   ,linux: service iptables stop
+		Mysqlå…è®¸è¿œç¨‹è¿æ¥(windowos/linux)ï¼š
 			GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION;
 			FLUSH PRIVILEGES;
 	
 
-Ö÷»ú£¨ÒÔÏÂ´úÂëºÍ²Ù×÷ È«²¿ÔÚÖ÷»úwindowsÖĞ²Ù×÷£©£º
+ä¸»æœºï¼ˆä»¥ä¸‹ä»£ç å’Œæ“ä½œ å…¨éƒ¨åœ¨ä¸»æœºwindowsä¸­æ“ä½œï¼‰ï¼š
 my.ini
 [mysqld]
 #id
 server-id=1
-#¶ş½øÖÆÈÕÖ¾ÎÄ¼ş£¨×¢ÒâÊÇ/  ²»ÊÇ\£©
+#äºŒè¿›åˆ¶æ—¥å¿—æ–‡ä»¶ï¼ˆæ³¨æ„æ˜¯/  ä¸æ˜¯\ï¼‰
 log-bin="D:/MySQL/MySQL Server 5.5/data/mysql-bin"
-#´íÎó¼ÇÂ¼ÎÄ¼ş
+#é”™è¯¯è®°å½•æ–‡ä»¶
 log-error="D:/MySQL/MySQL Server 5.5/data/mysql-error"
-#Ö÷´ÓÍ¬²½Ê± ºöÂÔµÄÊı¾İ¿â
+#ä¸»ä»åŒæ­¥æ—¶ å¿½ç•¥çš„æ•°æ®åº“
 binlog-ignore-db=mysql
-#(¿ÉÑ¡)Ö¸¶¨Ö÷´ÓÍ¬²½Ê±£¬Í¬²½ÄÄĞ©Êı¾İ¿â
+#(å¯é€‰)æŒ‡å®šä¸»ä»åŒæ­¥æ—¶ï¼ŒåŒæ­¥å“ªäº›æ•°æ®åº“
 binlog-do-db=test	
 
-windowsÖĞµÄÊı¾İ¿â ÊÚÈ¨ÄÄÌ¨¼ÆËã»úÖĞµÄÊı¾İ¿â ÊÇ×Ô¼ºµÄ´ÓÊı¾İ¿â£º	
+windowsä¸­çš„æ•°æ®åº“ æˆæƒå“ªå°è®¡ç®—æœºä¸­çš„æ•°æ®åº“ æ˜¯è‡ªå·±çš„ä»æ•°æ®åº“ï¼š	
  GRANT REPLICATION slave,reload,super ON *.* TO 'root'@'192.168.2.%' IDENTIFIED BY 'root';
  flush privileges ; 
 
-	²é¿´Ö÷Êı¾İ¿âµÄ×´Ì¬£¨Ã¿´ÎÔÚ×óÖ÷´ÓÍ¬²½Ç°£¬ĞèÒª¹Û²ì Ö÷»ú×´Ì¬µÄ×îĞÂÖµ£©
-		show master status;  £¨mysql-bin.000001¡¢ 107£©
+	æŸ¥çœ‹ä¸»æ•°æ®åº“çš„çŠ¶æ€ï¼ˆæ¯æ¬¡åœ¨å·¦ä¸»ä»åŒæ­¥å‰ï¼Œéœ€è¦è§‚å¯Ÿ ä¸»æœºçŠ¶æ€çš„æœ€æ–°å€¼ï¼‰
+		show master status;  ï¼ˆmysql-bin.000001ã€ 107ï¼‰
 
-´Ó»ú£¨ÒÔÏÂ´úÂëºÍ²Ù×÷ È«²¿ÔÚ´Ó»úlinuxÖĞ²Ù×÷£©£º
+ä»æœºï¼ˆä»¥ä¸‹ä»£ç å’Œæ“ä½œ å…¨éƒ¨åœ¨ä»æœºlinuxä¸­æ“ä½œï¼‰ï¼š
 
 
 my.cnf
@@ -1198,7 +1198,7 @@ server-id=2
 log-bin=mysql-bin
 replicate-do-db=test
 
-linuxÖĞµÄÊı¾İ ÊÚÈ¨ÄÄÌ¨¼ÆËã»úÖĞµÄÊı¿Ø ÊÇ×Ô¼ºµÄÖ÷¼ÆËã»ú
+linuxä¸­çš„æ•°æ® æˆæƒå“ªå°è®¡ç®—æœºä¸­çš„æ•°æ§ æ˜¯è‡ªå·±çš„ä¸»è®¡ç®—æœº
 CHANGE MASTER TO 
 MASTER_HOST = '192.168.2.2', 
 MASTER_USER = 'root', 
@@ -1206,34 +1206,34 @@ MASTER_PASSWORD = 'root',
 MASTER_PORT = 3306,
 master_log_file='mysql-bin.000001',
 master_log_pos=107;
-	Èç¹û±¨´í£ºThis operation cannot be performed with a running slave; run STOP SLAVE first
-	½â¾ö£ºSTOP SLAVE ;ÔÙ´ÎÖ´ĞĞÉÏÌõÊÚÈ¨Óï¾ä
+	å¦‚æœæŠ¥é”™ï¼šThis operation cannot be performed with a running slave; run STOP SLAVE first
+	è§£å†³ï¼šSTOP SLAVE ;å†æ¬¡æ‰§è¡Œä¸Šæ¡æˆæƒè¯­å¥
 
 
-¿ªÆôÖ÷´ÓÍ¬²½£º
-	´Ó»úlinux:
+å¼€å¯ä¸»ä»åŒæ­¥ï¼š
+	ä»æœºlinux:
 	start slave ;
-	¼ìÑé  show slave status \G	Ö÷Òª¹Û²ì£º Slave_IO_RunningºÍ Slave_SQL_Running£¬È·±£¶şÕß¶¼ÊÇyes£»Èç¹û²»¶¼ÊÇyes£¬Ôò¿´ÏÂ·½µÄ Last_IO_Error¡£
-±¾´Î Í¨¹ı Last_IO_Error·¢ÏÖ´íÎóµÄÔ­ÒòÊÇ Ö÷´ÓÊ¹ÓÃÁËÏàÍ¬µÄserver-id£¬ ¼ì²é:ÔÚÖ÷´ÓÖĞ·Ö±ğ²é¿´serverid:  show variables like 'server_id' ;
-	¿ÉÒÔ·¢ÏÖ£¬ÔÚLinuxÖĞµÄmy.cnfÖĞÉèÖÃÁËserver-id=2£¬µ«Êµ¼ÊÖ´ĞĞÊ± È·Êµserver-id=1£¬Ô­Òò£º¿ÉÄÜÊÇ linux°æMysqlµÄÒ»¸öbug£¬Ò²¿ÉÄÜÊÇ windowsºÍLinux°æ±¾²»Ò»ÖÂÔì³ÉµÄ¼æÈİĞÔÎÊÌâ¡£
-	½â¾ö¸Äbug£º set global server_id =2 ;
+	æ£€éªŒ  show slave status \G	ä¸»è¦è§‚å¯Ÿï¼š Slave_IO_Runningå’Œ Slave_SQL_Runningï¼Œç¡®ä¿äºŒè€…éƒ½æ˜¯yesï¼›å¦‚æœä¸éƒ½æ˜¯yesï¼Œåˆ™çœ‹ä¸‹æ–¹çš„ Last_IO_Errorã€‚
+æœ¬æ¬¡ é€šè¿‡ Last_IO_Errorå‘ç°é”™è¯¯çš„åŸå› æ˜¯ ä¸»ä»ä½¿ç”¨äº†ç›¸åŒçš„server-idï¼Œ æ£€æŸ¥:åœ¨ä¸»ä»ä¸­åˆ†åˆ«æŸ¥çœ‹serverid:  show variables like 'server_id' ;
+	å¯ä»¥å‘ç°ï¼Œåœ¨Linuxä¸­çš„my.cnfä¸­è®¾ç½®äº†server-id=2ï¼Œä½†å®é™…æ‰§è¡Œæ—¶ ç¡®å®server-id=1ï¼ŒåŸå› ï¼šå¯èƒ½æ˜¯ linuxç‰ˆMysqlçš„ä¸€ä¸ªbugï¼Œä¹Ÿå¯èƒ½æ˜¯ windowså’ŒLinuxç‰ˆæœ¬ä¸ä¸€è‡´é€ æˆçš„å…¼å®¹æ€§é—®é¢˜ã€‚
+	è§£å†³æ”¹bugï¼š set global server_id =2 ;
 
 	stop slave ;
 	 set global server_id =2 ;
 	start slave ;
 	 show slave status \G
 
-	ÑİÊ¾£º
-	Ö÷windows =>´Ó
+	æ¼”ç¤ºï¼š
+	ä¸»windows =>ä»
 
 	windows:
-	½«±í£¬²åÈëÊı¾İ  
-	¹Û²ì´ÓÊı¾İ¿âÖĞ¸Ã±íµÄÊı¾İ
+	å°†è¡¨ï¼Œæ’å…¥æ•°æ®  
+	è§‚å¯Ÿä»æ•°æ®åº“ä¸­è¯¥è¡¨çš„æ•°æ®
 
 
-Êı¾İ¿â+ºó¶Ë
+æ•°æ®åº“+åç«¯
 
-	spring boot£¨ÆóÒµ¼¶¿ò¼Ü,Ä¿Ç°Ê¹ÓÃ½Ï¶à£©  
+	spring bootï¼ˆä¼ä¸šçº§æ¡†æ¶,ç›®å‰ä½¿ç”¨è¾ƒå¤šï¼‰  
 		
 	
 

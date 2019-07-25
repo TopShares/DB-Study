@@ -1,0 +1,94 @@
+
+一：索引
+
+1. 索引的功效是什么？？？
+
+   加速查找。
+
+2. 索引的本质，底层的构建方式？？？
+
+   BTree，详情见【freehand图】
+
+
+二：创建索引
+
+ensureIndex
+
+1.  函数原型：function( keys , options )
+
+    最执行一条runcommand，然后会添加到system.indexes
+
+2.  不使用索引来看索引的效率
+
+> db.person.find({"age":999999}).explain()
+{
+	"cursor" : "BasicCursor",
+	"isMultiKey" : false,
+	"n" : 1,
+	"nscannedObjects" : 1000000,
+	"nscanned" : 1000000,
+	"nscannedObjectsAllPlans" : 1000000,
+	"nscannedAllPlans" : 1000000,
+	"scanAndOrder" : false,
+	"indexOnly" : false,
+	"nYields" : 0,
+	"nChunkSkips" : 0,
+	"millis" : 327,
+	"indexBounds" : {
+		
+	},
+	"server" : "localhost.localdomain:27017"
+}
+
+
+从上面我们看到三点信息：
+
+     《1》 cursor： “BasicCursor"  表扫描
+     《2》 n：			   返回的文档数量
+     《3》 nscannedObjects：       浏览的文档数量 【顺序扫描】
+     《4》 millis：                耗费的毫秒数 【327毫秒】
+   
+
+    
+ 3. 通过ensureIndex建立 
+    
+     db.person.ensureIndex({"age":1})   1:代表升序， -1：代表降序
+
+> db.person.ensureIndex({"age":1})
+> db.person.find({"age":999999}).explain()
+{
+	"cursor" : "BtreeCursor age_1",
+	"isMultiKey" : false,
+	"n" : 1,
+	"nscannedObjects" : 1,
+	"nscanned" : 1,
+	"nscannedObjectsAllPlans" : 1,
+	"nscannedAllPlans" : 1,
+	"scanAndOrder" : false,
+	"indexOnly" : false,
+	"nYields" : 0,
+	"nChunkSkips" : 0,
+	"millis" : 0,
+	"indexBounds" : {
+		"age" : [
+			[
+				999999,
+				999999
+			]
+		]
+	},
+	"server" : "localhost.localdomain:27017"
+}
+
+建立索引之后，我们看到的最关键的一个属性：”millis“ 0毫秒。。。
+
+
+ db.system.indexes.find()
+{ "v" : 1, "key" : { "_id" : 1 }, "ns" : "test.person", "name" : "_id_" }
+{ "v" : 1, "key" : { "_id" : 1 }, "ns" : "test.mytest", "name" : "_id_" }
+{ "v" : 1, "key" : { "age" : 1 }, "ns" : "test.person", "name" : "age_1" }
+
+ns：   就是索引的命令空间，test.person。
+name:  索引的名字。
+
+

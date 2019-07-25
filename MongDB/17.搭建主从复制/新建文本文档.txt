@@ -1,0 +1,91 @@
+
+一：mongodb的多机操作。
+
+《1》 主从复制。
+
+      主从复制不限于mongodb，同样的道理，在sqlserver或者说是mysql，都是有这么一个概念。。。
+
+《2》 主从复制解决了哪些问题？？？
+
+      1. 读写压力。。 【以前是一个mongodb去承载海量的读和写。。。这样的话终有瓶颈的】
+
+         一主多从。。。  从服务器有效的缓解了读的压力。。。
+			 
+			 我们使用的web服务器，大多都是读大于写。。。。  8:1  8个读，1个写。。。
+
+      2. 数据的热备份
+          
+	 我们做备份一般有两种策略
+	 
+	 【热备份】 主从复制，那么从就是一套活生生的数据。如果主挂掉了，从的数据还是比较完善的。
+
+	 【冷备份】 定时的copy从服务器的db。。。
+
+	            为什么要做冷备份？？？  害怕用户的误操作。比如说用户执行了一个delete，那么
+
+					     主从都会没有数据。。。
+	
+《3》 我们画一下图：
+
+      详见【freehand】
+
+ 
+二：搭建主从备份的步骤
+
+1. 开启master服务器： [administrator@localhost ~]$ cluster/master/mongod --dbpath=cluster/master/db --master -port 27017
+
+   --master  标记自己是master服务器。
+
+   --port    指定自己的端口，默认是27017
+
+
+2. 开启slave服务器： [administrator@localhost ~]$ cluster/slave/mongod --dbpath=cluster/slave/db --slave --source=127.0.0.1:27017 --port 27018
+
+
+   --slave：   标记自己是slave服务器。。
+
+   --source：  标记我需要同步的服务器是谁？？？ 指定的ip。
+
+   --port：    开启自己的端口，千万不能和master重复。
+
+
+3. 观察一下日志：
+
+   《1》 master服务器吐出来的日志：
+   
+          Sun Dec 20 08:05:06.210 [slaveTracking] build index local.slaves { _id: 1 }
+
+	  也就是说在local这个数据库下面生成了一个slave表【集合】。
+
+   《2》 slave数据库吐出来的日志：
+   
+          Sun Dec 20 08:05:05.196 [replslave] build index local.sources { _id: 1 }
+          Sun Dec 20 08:05:05.201 [replslave] build index local.me { _id: 1 }
+
+	  说明在local数据下有两个表：【sources，me】 
+         
+总得来说，master通过slaves表记录这从属服务器的信息。
+
+             slave 通过 sources表记录主服务器的信息。
+	  
+4. mongo 操作数据，进行验证
+
+[administrator@localhost ~]$ mongodb/mongo
+MongoDB shell version: 2.4.9
+connecting to: test
+> db.person.find()
+> db.person.insert({"name":"jack"})
+> db.person.insert({"name":"jack"})^C
+bye
+[administrator@localhost ~]$ mongodb/mongo 127.0.0.1:27018/test
+MongoDB shell version: 2.4.9
+connecting to: 127.0.0.1:27018/test
+> db.person.find()
+{ "_id" : ObjectId("5676aa561f07098c883c700a"), "name" : "jack" }
+> 
+
+
+5. 常用的选项
+
+    --only
+    --slavedelay [单位是s]

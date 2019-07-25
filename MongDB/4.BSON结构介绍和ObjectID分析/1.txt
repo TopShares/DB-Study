@@ -1,0 +1,131 @@
+
+一：mongodb的数据类型
+
+1. mongodb的文档类型与json。
+
+
+{
+  "_id" : ObjectId("5674efd4f278c8fea0e4fcd1"),
+  "bookname" : "mongodb",
+  "date" : "2015-12-19"
+}
+
+2. 不是json，而是在json上进行了扩展，叫做BSON。比如说：_id键。
+   
+   BSON比Json更强大，强大在哪里？？？ 数据类型上。
+
+
+3. Bson结构表示出来的多余类型
+
+   《1》函数：
+
+connecting to: 127.0.0.1:27017/test
+> db.person.find()
+{ "_id" : ObjectId("5674efd4f278c8fea0e4fcd1"), "bookname" : "mongodb", "date" : "2015-12-19" }
+> db.person.insert({"name":"jack",callback:function(){alert("1")}})
+> db.person.find()
+{ "_id" : ObjectId("5674efd4f278c8fea0e4fcd1"), "bookname" : "mongodb", "date" : "2015-12-19" }
+{ "_id" : ObjectId("567550243a7088702dbcd08e"), "name" : "jack", "callback" : function (){alert("1")} }
+
+
+/* 0 */
+{
+  "_id" : ObjectId("5674efd4f278c8fea0e4fcd1"),
+  "bookname" : "mongodb",
+  "date" : "2015-12-19"
+}
+
+/* 1 */
+{
+  "_id" : ObjectId("567550243a7088702dbcd08e"),
+  "name" : "jack",
+  "callback" : {
+    "$code" : "function (){alert(\"1\")}"
+  }
+}
+
+ 《2》Date类型
+
+     我们的shell是预加载了js环境，所以说支持js中的大部分操作（99%操作）。 new date()
+
+> var d=new Date()
+> d
+ISODate("2015-12-19T12:43:26.403Z")
+> db.person.insert({"name":"mary","date":d})
+> db.person.find()
+{ "_id" : ObjectId("5674efd4f278c8fea0e4fcd1"), "bookname" : "mongodb", "date" : "2015-12-19" }
+{ "_id" : ObjectId("567550243a7088702dbcd08e"), "name" : "jack", "callback" : function (){alert("1")} }
+{ "_id" : ObjectId("5675510f3a7088702dbcd08f"), "name" : "mary", "date" : ISODate("2015-12-19T12:43:26.403Z") }
+
+
+/* 2 */
+{
+  "_id" : ObjectId("5675510f3a7088702dbcd08f"),
+  "name" : "mary",
+  "date" : new Date("19/12/2015 20:43:26")
+}
+
+《3》正则
+
+
+> db.person.insert({"name":"hxc",regex:/^a/})
+> db.person.find()
+{ "_id" : ObjectId("5674efd4f278c8fea0e4fcd1"), "bookname" : "mongodb", "date" : "2015-12-19" }
+{ "_id" : ObjectId("567550243a7088702dbcd08e"), "name" : "jack", "callback" : function (){alert("1")} }
+{ "_id" : ObjectId("5675510f3a7088702dbcd08f"), "name" : "mary", "date" : ISODate("2015-12-19T12:43:26.403Z") }
+{ "_id" : ObjectId("567551ad3a7088702dbcd090"), "name" : "hxc", "regex" : /^a/ }
+
+/* 3 */
+{
+  "_id" : ObjectId("567551ad3a7088702dbcd090"),
+  "name" : "hxc",
+  "regex" : /^a/
+}
+
+《4》 二进制数据
+
+    不限于mongodb，sqlserver或者mysql都是支持“二进制数据”的。
+
+《5》 最大值，最小值
+
+      int.MaxValue, int.MinValue
+
+《6》 数组，内嵌文档 【json和Bson都能够支持】，更加对象化的表示信息。
+
+      { "_id" : ObjectId("5675539d3a7088702dbcd091"), "name" : "hxc", "address" : { "city" : "shanghai", "country" : "318" }, "email" : "38032222@qq.com" }
+      
+/* 4 */   很像Java或者C#中的类
+{
+  "_id" : ObjectId("5675539d3a7088702dbcd091"),
+  "name" : "hxc",
+  "address" : {
+    "city" : "shanghai",
+    "country" : "318"
+  },
+  "email" : "38032222@qq.com"
+}
+
+
+《7》 "_id" 就是Object函数生成。 
+
+       简单解读一下：  ObjectId("5675539d 3a7088 702d  bcd091"),  更好的唯一性。
+
+       前四个字节：表示时间： 5675539d （十六进制）
+
+			      1450529693 （十进制）【时间戳】
+
+                              2015/12/19 20:54:53   插入时间
+      
+      携程：orderID 生成于一个sqlserver的自定义函数。 
+
+
+       3a7088： 机器的散列值 
+
+       702d：   进程的标识
+
+       bcd091： 计数器
+
+       时间戳+机器散列值+进程ID+计数器 =   全局唯一
+
+
+      

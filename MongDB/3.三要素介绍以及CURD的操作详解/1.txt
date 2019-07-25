@@ -1,0 +1,79 @@
+
+一：简介
+
+1. 丰富的数据模型
+
+    《1》 扩展了关系型数据库的众多有用功能。【对sqlserver进行了一种补充】
+
+    《2》 mongodb是文档形数据库。
+ 
+    《3》 mongodb的三要素： 【数据库】=>   【集合】    => 【文档】
+                                local      start_log        json对象
+
+    《4》                     【数据库】=>   【表】     =>  【行】
+                                 local        start_log      记录
+
+    《5》 【文档】 和 【行】到底有什么区别。
+
+           文档：无模式的，就是一个集合中的多个文档的结构可以是任意的。
+	                   collection： 
+				       => document:   
+						    =>  {name:"jack",age:20}
+						        {bookname:"mongodb",date:"2015-12-19"}
+
+						         第一个文档和第二个文档毫无关系，【无模式的概念】
+
+2. 容易扩展
+
+    《1》 sharing的功能，集合分片
+
+3. 丰富的功能
+
+     《2》索引 =>	【sqlserver，mysql中的索引】  都是建立BTree
+
+4. 不牺牲速度
+
+     《3》 mongodb的追求的目标： 高性能，高扩展，高可用。
+      
+
+5. 简便的管理
+
+      主从，副本集，sharing 配置相比sqlserver，mysql都是很简单的。
+
+二：入门
+
+1. 文档本质上来说是一个类似Json的Bson。
+
+2. db的命令，db_xxx ，这样就可以逃避“命名冲突”。
+
+   table的命令， table_xxx ,避免"命名冲突“。
+
+3. 系统启动之后的数据库：
+
+   admin数据库： 放一些用户信息，性能管理信息。
+   local数据库： 存放一些操作日志【系统日志】。
+   config数据库：如果做sharing的时候，用得到。
+
+4. mongo连接数据库，指定ip和不指定的区别， 【指定的话，可以方便初始化连接db】
+
+		     mongodb/bin/mongo 127.0.0.1:27017/admin
+
+5. update方法的使用
+
+> var single=db.person.findOne()
+> single
+{
+	"_id" : ObjectId("5674efc4f278c8fea0e4fcd0"),
+	"name" : "jack",
+	"age" : 20
+}
+> single.age=22
+22
+> db.person.update({age:20},single)
+> db.person.findOne()
+{
+	"_id" : ObjectId("5674efc4f278c8fea0e4fcd0"),
+	"name" : "jack",
+	"age" : 22
+}
+

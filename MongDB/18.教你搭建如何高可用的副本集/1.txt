@@ -1,0 +1,180 @@
+
+一： 多机操作的另一种模式 【副本集】
+
+     【副本集】 => 【 双机热备 】
+
+     当一台主服务器挂掉了，那么从属服务器会顶上主服务器。。。。
+
+二： 主从的缺点。
+
+
+     虽然说可以做到 “分散压力”，那么说如果主的挂掉了，从的也就复制不掉了，相当于出入半瘫痪的状态。。。
+
+三：双机热备：
+
+    达到的效果是：“可高用”的目的。
+
+四：实践一下 “副本集” 的搭建
+
+   1. 写配置文件
+
+port=27017
+dbpath=cluster/master/db
+replSet=shopex/127.0.0.1:27018
+
+   2. 配置一下集群
+
+     从这条语句看出来的 replSet can't get local.system.replset config from self or any seed (EMPTYCONFIG)
+
+
+> db.runCommand({"replSetInitiate":{ "_id":"shopex", "members":[             {"_id":1,"host":"127.0.0.1:27017"},             {"_id":2,"host":"127.0.0.1:27018"} ]}})
+{
+	"info" : "Config now saved locally.  Should come online in about a minute.",
+	"ok" : 1
+}
+
+shopex:PRIMARY> rs.status()
+{
+	"set" : "shopex",
+	"date" : ISODate("2015-12-20T14:59:11Z"),
+	"myState" : 1,
+	"members" : [
+		{
+			"_id" : 1,
+			"name" : "127.0.0.1:27017",
+			"health" : 1,
+			"state" : 1,
+			"stateStr" : "PRIMARY",
+			"uptime" : 986,
+			"optime" : Timestamp(1450623497, 1),
+			"optimeDate" : ISODate("2015-12-20T14:58:17Z"),
+			"self" : true
+		},
+		{
+			"_id" : 2,
+			"name" : "127.0.0.1:27018",
+			"health" : 1,
+			"state" : 2,
+			"stateStr" : "SECONDARY",
+			"uptime" : 46,
+			"optime" : Timestamp(1450623497, 1),
+			"optimeDate" : ISODate("2015-12-20T14:58:17Z"),
+			"lastHeartbeat" : ISODate("2015-12-20T14:59:09Z"),
+			"lastHeartbeatRecv" : ISODate("2015-12-20T14:59:10Z"),
+			"pingMs" : 0,
+			"syncingTo" : "127.0.0.1:27017"
+		}
+	],
+	"ok" : 1
+}
+
+
+我们可以看到： 127.0.0.1:27017  为主服务器
+
+	       127.0.0.1:27018  为备份服务器
+
+
+最后，我们开一个仲裁服务器
+
+shopex:PRIMARY> rs.status()
+{
+	"set" : "shopex",
+	"date" : ISODate("2015-12-20T15:03:57Z"),
+	"myState" : 1,
+	"members" : [
+		{
+			"_id" : 1,
+			"name" : "127.0.0.1:27017",
+			"health" : 1,
+			"state" : 1,
+			"stateStr" : "PRIMARY",
+			"uptime" : 1272,
+			"optime" : Timestamp(1450623782, 1),
+			"optimeDate" : ISODate("2015-12-20T15:03:02Z"),
+			"self" : true
+		},
+		{
+			"_id" : 2,
+			"name" : "127.0.0.1:27018",
+			"health" : 1,
+			"state" : 2,
+			"stateStr" : "SECONDARY",
+			"uptime" : 332,
+			"optime" : Timestamp(1450623782, 1),
+			"optimeDate" : ISODate("2015-12-20T15:03:02Z"),
+			"lastHeartbeat" : ISODate("2015-12-20T15:03:56Z"),
+			"lastHeartbeatRecv" : ISODate("2015-12-20T15:03:56Z"),
+			"pingMs" : 0,
+			"syncingTo" : "127.0.0.1:27017"
+		},
+		{
+			"_id" : 3,
+			"name" : "127.0.0.1:27019",
+			"health" : 1,
+			"state" : 7,
+			"stateStr" : "ARBITER",
+			"uptime" : 55,
+			"lastHeartbeat" : ISODate("2015-12-20T15:03:56Z"),
+			"lastHeartbeatRecv" : ISODate("2015-12-20T15:03:55Z"),
+			"pingMs" : 0
+		}
+	],
+	"ok" : 1
+}
+
+
+可以看到 127.0.0.1:27019 变成了 重载服务器。 就和redis中的sentine1一个道理。
+
+那么 127.0.0.1:27018 是采用slave的原理复制数据的。
+
+
+MongoDB shell version: 2.4.9
+connecting to: 127.0.0.1:27018/admin
+shopex:PRIMARY> rs.status()
+{
+	"set" : "shopex",
+	"date" : ISODate("2015-12-20T15:06:22Z"),
+	"myState" : 1,
+	"members" : [
+		{
+			"_id" : 1,
+			"name" : "127.0.0.1:27017",
+			"health" : 0,
+			"state" : 8,
+			"stateStr" : "(not reachable/healthy)",
+			"uptime" : 0,
+			"optime" : Timestamp(1450623782, 1),
+			"optimeDate" : ISODate("2015-12-20T15:03:02Z"),
+			"lastHeartbeat" : ISODate("2015-12-20T15:06:21Z"),
+			"lastHeartbeatRecv" : ISODate("2015-12-20T15:05:52Z"),
+			"pingMs" : 0
+		},
+		{
+			"_id" : 2,
+			"name" : "127.0.0.1:27018",
+			"health" : 1,
+			"state" : 1,
+			"stateStr" : "PRIMARY",
+			"uptime" : 1308,
+			"optime" : Timestamp(1450623782, 1),
+			"optimeDate" : ISODate("2015-12-20T15:03:02Z"),
+			"self" : true
+		},
+		{
+			"_id" : 3,
+			"name" : "127.0.0.1:27019",
+			"health" : 1,
+			"state" : 7,
+			"stateStr" : "ARBITER",
+			"uptime" : 200,
+			"lastHeartbeat" : ISODate("2015-12-20T15:06:21Z"),
+			"lastHeartbeatRecv" : ISODate("2015-12-20T15:06:21Z"),
+			"pingMs" : 1
+		}
+	],
+	"ok" : 1
+}
+shopex:PRIMARY> 
+
+
+表达了，主挂掉后，备份服务器顶上去了。。。

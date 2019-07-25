@@ -1,0 +1,29 @@
+
+一： 我们的参考书 【mongodb权威指南】
+
+     国内最早对mongodb的介绍书籍。
+
+
+二： 需要下载的软件：CentOS + VMware...  
+
+
+     VMware:  【百度：vmware workstation 】
+
+     Centos：  http://www.centoscn.com/CentosSoft/iso/2013/1205/2195.html
+
+三：mongodb的可视化工具 【MongoUVE】
+
+     => mongo控制台:  连接Server的，因为加载了js环境，所以我们可以使用js语法。
+ 
+     => mongoUVE:     下载连接：http://www.cr173.com/soft/53326.html
+
+
+四：下载mongodb服务器
+     
+     1.下载地址：     http://mongodb.com/
+ 
+     2. 运行mongod   默认端口：27017 
+
+                     默认的web控制台： 27017 + 1000 = 28017 
+
+

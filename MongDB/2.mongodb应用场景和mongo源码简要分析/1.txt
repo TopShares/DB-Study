@@ -1,0 +1,58 @@
+
+一：我们项目中使用mongodb的场景
+
+
+1. 我们会把wcf的地址放在mongodb中。
+
+     我们项目中目前有8个wcf，那么就有8个wcf的地址【url】 我们会把这个8个地址放到mongodb中。
+
+   Java中EJB 
+
+   WebService 
+
+   这时候，我们会在client中做一个DataAccess，那么这个层里面会随机的挑选一个url。
+
+
+目标： 分流，易于扩展
+
+
+2. 固定集合 对table设定一个大小，遵从Queue的模式，比方说你的table大小只能是10M，后入的数据会提到Queue
+	    中最早的数据。
+
+   场景：疲劳度过滤。 100M
+
+3. 主从复制： 不限于mongodb范畴。 mysql，sqlserver都是有主从复制的概念。
+
+4. 副本集：   双机热备。n机热备。		【高可用】  99。90001   
+
+5. sharing：  分片，【分而治之】的思想， 一个大的table，拆分成很多的小table。
+
+              拆分的依据： 【地区拆分】
+
+6. 华东机房： 针对用户是： 江浙沪。	 10%-30%
+
+
+7. mongodb的官方公司： 10gen
+
+
+二： 下载mongodb的源代码
+
+1.  地址： https://github.com/mongodb/mongo
+
+
+2.  内容包括： mongod【服务器】
+               mongo 【客户端【js环境】】
+
+3.  mongod 源码： mongo/src/mongo/db/
+
+4.  mongo 源码：  mongo/src/mongo/shell/ 【加载了js环境】 方便我们用js去构建BSON的结构去连接mongod服务器。
+
+
+
+
+
+
+
+
+
+

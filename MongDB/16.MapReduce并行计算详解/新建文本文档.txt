@@ -1,0 +1,238 @@
+
+一：mapReduce 并行处理框架
+
+db.runCommand(
+               {
+                 mapReduce: <collection>,
+                 map: <function>,
+                 reduce: <function>,
+                 finalize: <function>,
+                 out: <output>,
+                 query: <document>,
+                 sort: <document>,
+                 limit: <number>,
+                 scope: <document>,
+                 jsMode: <boolean>,
+                 verbose: <boolean>,
+                 bypassDocumentValidation: <boolean>
+               }
+             )
+
+
+1. mapReduce  你要做并行处理的集合名字
+
+2. map：      分组依据， emit(key,value)   => key    =>   group的key
+		                              value  =>   是你key的数组 key=25, values=【“jack","mary"]
+
+3. reduce: function(key,values)   里面有两个参数， 第一个参数是key：    group操作的key。。。
+					           第二个参数是values： 我们刚才说到的 【数组】
+									类似group中的finalize函数。
+				
+4. finalize： 这个呢，还是和group中的 finalize 一样，会对每组的结构进行一个最后修改。也可以不修改。
+
+5. out：      就是我们进行mapreduce之后，将结果存放的位置，一般是“集合类型“。
+
+6. query:      这个很简单，和group的query一样。。。
+
+7. sort：      一样的到底，对map操作之前的文档进行排序。
+
+8. limit：     在map之前限制文档的个数。。。
+
+9. scope：     给reduce。。。query之类的函数提供变量访问。
+
+10. 。。。。
+
+
+我们常用到的是： mapReduce。。。
+		 map。。。
+		 reduce。。
+		 out。。。
+		 query。。。
+
+二：我们看一下注意事项
+
+
+我们还是用一个person集合，其中有name和age。
+
+上一节课程我们将group的时候，做了一个对age进行分组的一个例子。。。
+
+｛age:26,count:2｝
+｛age:29,count:2｝
+｛age:31,count:2｝
+
+1. 第一步：插入数据源
+
+> db.person.find()
+{ "_id" : ObjectId("5678a3fc763ea69ae9780c62"), "name" : "mary", "age" : 26 }
+{ "_id" : ObjectId("5678a403763ea69ae9780c63"), "name" : "jackson", "age" : 26 }
+{ "_id" : ObjectId("5678a40a763ea69ae9780c64"), "name" : "john", "age" : 29 }
+{ "_id" : ObjectId("5678a410763ea69ae9780c65"), "name" : "hxc", "age" : 31 }
+{ "_id" : ObjectId("5678a416763ea69ae9780c66"), "name" : "mongodb", "age" : 31 }
+{ "_id" : ObjectId("5678a41d763ea69ae9780c67"), "name" : "redis", "age" : 29 }
+> 
+
+2. 
+
+
+ db.runCommand({
+  mapreduce:"person",
+  map:function(){
+      emit(this.age,this.name);		 //相当于group的key
+   },
+   reduce:function(key,values){	      //{key:26,values:["mary","jackson"]}
+      return {"key":key,"values":values};
+   },
+   finalize:function(key,values){
+      return {"age":key,"count":values.length};
+   },
+   out:"t"    //最终的存放结果
+ })
+
+
+
+
+
+
+
+db.runCommand({
+  mapreduce:"person",
+  map:function(){
+      emit(this.age,this.name);		
+   },
+   reduce:function(key,values){	     
+      return {"key":key,"values":values};
+   },
+  out:"t"
+ })
+
+
+db.runCommand({
+     mapreduce:"person",
+     map:function(){
+        emit(this.age,this.name)  
+     },
+     reduce:function(key,values){
+        return values.length;
+      },
+      out:"t",
+     finalize:function(key,values){
+       return values;
+     },
+     query:{"$where":function(){return this.age>28}}
+})
+
+
+
+> db.person.find()
+{ "_id" : ObjectId("5678a3fc763ea69ae9780c62"), "name" : "mary", "age" : 26 }
+{ "_id" : ObjectId("5678a403763ea69ae9780c63"), "name" : "jackson", "age" : 26 }
+{ "_id" : ObjectId("5678a40a763ea69ae9780c64"), "name" : "john", "age" : 29 }
+{ "_id" : ObjectId("5678a410763ea69ae9780c65"), "name" : "hxc", "age" : 31 }
+{ "_id" : ObjectId("5678a416763ea69ae9780c66"), "name" : "mongodb", "age" : 31 }
+{ "_id" : ObjectId("5678a41d763ea69ae9780c67"), "name" : "redis", "age" : 29 }
+> db.runCommand({
+...      mapreduce:"person",
+...      map:function(){
+...         emit(this.age,this.name)  
+...      },
+...      reduce:function(key,values){
+...         return {"key":key,"values":values}
+...       },
+...       out:"t"
+... })
+{
+	"result" : "t",
+	"timeMillis" : 20,
+	"counts" : {
+		"input" : 6,
+		"emit" : 6,
+		"reduce" : 3,
+		"output" : 3
+	},
+	"ok" : 1
+}
+> db.t.find()
+{ "_id" : 26, "value" : { "key" : 26, "values" : [  "mary",  "jackson" ] } }
+{ "_id" : 29, "value" : { "key" : 29, "values" : [  "john",  "redis" ] } }
+{ "_id" : 31, "value" : { "key" : 31, "values" : [  "hxc",  "mongodb" ] } }
+
+
+把 { "key" : 26, "values" : [  "mary",  "jackson" ] }   整体的返回成一个 count就好了 。。。
+
+{ "_id" : 26, "value" : 2 }
+{ "_id" : 29, "value" : 2 }
+{ "_id" : 31, "value" : 2 }
+
+
+——————————————————————————————
+
+> db.t.find()
+{ "_id" : 26, "value" : { "key" : 26, "values" : [  "mary",  "jackson" ] } }
+{ "_id" : 29, "value" : { "key" : 29, "values" : [  "john",  "redis" ] } }
+{ "_id" : 31, "value" : { "key" : 31, "values" : [  "hxc",  "mongodb" ] } }
+> db.runCommand({
+...      mapreduce:"person",
+...      map:function(){
+...         emit(this.age,this.name)  
+...      },
+...      reduce:function(key,values){
+...         return values.length;
+...       },
+...       out:"t"
+... })
+{
+	"result" : "t",
+	"timeMillis" : 14,
+	"counts" : {
+		"input" : 6,
+		"emit" : 6,
+		"reduce" : 3,
+		"output" : 3
+	},
+	"ok" : 1
+}
+> db.t.find()
+{ "_id" : 26, "value" : 2 }    //这个结果就是我们需要的。。。
+{ "_id" : 29, "value" : 2 }
+{ "_id" : 31, "value" : 2 }
+
+
+我想把"_id" 替换成 "age", 
+
+      "value" 替换成 “count"
+
+
+query条件的使用：
+
+> db.t.find()
+{ "_id" : 26, "value" : 2 }
+{ "_id" : 29, "value" : 2 }
+{ "_id" : 31, "value" : 2 }
+> db.runCommand({
+...      mapreduce:"person",
+...      map:function(){
+...         emit(this.age,this.name)  
+...      },
+...      reduce:function(key,values){
+...         return values.length;
+...       },
+...       out:"t",
+...      finalize:function(key,values){
+...        return values;
+...      },
+...      query:{"$where":function(){return this.age>28}}
+... })
+{
+	"result" : "t",
+	"timeMillis" : 69,
+	"counts" : {
+		"input" : 4,
+		"emit" : 4,
+		"reduce" : 2,
+		"output" : 2
+	},
+	"ok" : 1
+}
+> db.t.find()
+{ "_id" : 29, "value" : 2 }
+{ "_id" : 31, "value" : 2 }

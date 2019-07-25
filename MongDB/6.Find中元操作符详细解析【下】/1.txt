@@ -1,0 +1,85 @@
+
+一：特定于类型的查询
+
+1. null
+
+2. undefind
+
+
+二：正则表达式
+
+1. 和sql中的like操作一个样	 O(N) Table Scan
+
+> var cond={"name":/18$/}
+> db.person.find(cond)
+{ "_id" : ObjectId("56760f3c5001a3b4af601566"), "name" : "hxc18", "age" : 0.9473684210526315 }
+
+2. 查询数组
+  > var single={"name":"jack",address:["anhui","shanghai","beijing"]}
+> db.mytest.insert(single)
+> db.mytest.find()
+{ "_id" : ObjectId("567632624163f2ea4dd06e96"), "name" : "jack", "address" : [  "anhui",  "shanghai",  "beijing" ] }
+> db.mytest.find({"address":"anhui"})
+{ "_id" : ObjectId("567632624163f2ea4dd06e96"), "name" : "jack", "address" : [  "anhui",  "shanghai",  "beijing" ] }
+
+  C#: XXX.Contains("xxx")
+
+3. $all操作
+
+> db.mytest.find({"address":{"$all":["anhui","shanghai"]}})
+{ "_id" : ObjectId("567632624163f2ea4dd06e96"), "name" : "jack", "address" : [  "anhui",  "shanghai",  "beijing" ] }
+> db.mytest.find({"address":{"$all":["anhui","s"]}})
+
+
+4. $size操作
+
+> db.mytest.find({"address":{"$size":2}})
+> db.mytest.find({"address":{"$size":3}})
+{ "_id" : ObjectId("567632624163f2ea4dd06e96"), "name" : "jack", "address" : [  "anhui",  "shanghai",  "beijing" ] }
+
+
+5. $slice操作
+
+> db.mytest.find({"name":"jack"},{"address":{"$slice":1}})
+{ "_id" : ObjectId("567632624163f2ea4dd06e96"), "name" : "jack", "address" : [  "anhui" ] }
+> db.mytest.find({"name":"jack"},{"address":{"$slice":2}})
+{ "_id" : ObjectId("567632624163f2ea4dd06e96"), "name" : "jack", "address" : [  "anhui",  "shanghai" ] }
+
+6.$where 【更灵活更强大】 
+
+可以灌输js代码，所以会有最大的灵活性。
+
+> db.person.find({"$where":function(){return this.name=="hxc19" && this.age==1}})
+{ "_id" : ObjectId("56760f3c5001a3b4af601567"), "name" : "hxc19", "age" : 1 }
+> db.person.find({"$where":function(){ var i=1; return (this.age/1)==1 }})
+{ "_id" : ObjectId("56760f3c5001a3b4af601567"), "name" : "hxc19", "age" : 1 }
+
+> db.person.find({"$where":function(){return ( this.age>1&& this.age<2); }})
+{ "_id" : ObjectId("56760f3c5001a3b4af601568"), "name" : "hxc20", "age" : 1.0526315789473684 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601569"), "name" : "hxc21", "age" : 1.105263157894737 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60156a"), "name" : "hxc22", "age" : 1.1578947368421053 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60156b"), "name" : "hxc23", "age" : 1.2105263157894737 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60156c"), "name" : "hxc24", "age" : 1.263157894736842 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60156d"), "name" : "hxc25", "age" : 1.3157894736842106 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60156e"), "name" : "hxc26", "age" : 1.368421052631579 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60156f"), "name" : "hxc27", "age" : 1.4210526315789473 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601570"), "name" : "hxc28", "age" : 1.4736842105263157 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601571"), "name" : "hxc29", "age" : 1.5263157894736843 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601572"), "name" : "hxc30", "age" : 1.5789473684210527 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601573"), "name" : "hxc31", "age" : 1.631578947368421 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601574"), "name" : "hxc32", "age" : 1.6842105263157894 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601575"), "name" : "hxc33", "age" : 1.736842105263158 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601576"), "name" : "hxc34", "age" : 1.7894736842105263 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601577"), "name" : "hxc35", "age" : 1.8421052631578947 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601578"), "name" : "hxc36", "age" : 1.894736842105263 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601579"), "name" : "hxc37", "age" : 1.9473684210526316 }
+
+
+
+
+
+
+
+
+
+

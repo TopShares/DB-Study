@@ -1,0 +1,54 @@
+
+
+一：update操作
+
+   1. 查看shell中update的源码   function( query , obj , upsert , multi )
+
+       upset => [update => insert]
+
+       multi => 批量更新
+
+   2.  
+        var bulk = this.initializeOrderedBulkOp();
+      
+        =>
+
+        DBCollection.prototype.initializeOrderedBulkOp = _bulk_api_module.initializeOrderedBulkOp;
+        
+        =>
+ 
+   3. update的一些原子操作
+
+1. $set 
+
+> db.mytest.update({"age":20},{"$set":{"age":25}})
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "name" : "jack", "age" : 25 }
+
+
+2. $inc        => Interlocked.Add
+
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "name" : "jack", "age" : 26 }
+> db.mytest.update({"age":25},{"$inc":{"age":10}})
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "name" : "jack", "age" : 26 }
+> db.mytest.update({"age":26},{"$inc":{"age":10}})
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "name" : "jack", "age" : 36 }
+
+3. $push     => push array
+
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai" ], "age" : 36, "name" : "jack" }
+> db.mytest.update({"name":"jack"},{"$push":{"address":"beijing"}})
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "beijing" ], "age" : 36, "name" : "jack" }
+
+4. $pop   => pop array
+> db.mytest.update({"name":"jack"},{"$pop":{"address":"beijing"}})
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai" ], "age" : 36, "name" : "jack" }
+
+
+

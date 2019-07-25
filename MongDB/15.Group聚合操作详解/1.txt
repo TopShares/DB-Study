@@ -1,0 +1,157 @@
+
+一：聚合运算
+
+1. mongodb本质就是要做一个高性能，能简单则简单，不要把mongodb中的运算做的太复杂。。。
+
+2. count 最简单的一个聚合方法
+
+3. distinct 选择结果中剔除重复的一个键值，，， 跟sql语句的效果是一样的。。
+
+   db.person.distinct("age")
+
+4. group  【能不用则不用】  sql的group by
+
+  《1》简单查看一下源码
+
+DBCollection.prototype.group = function( params ){
+    params.ns = this._shortName;
+    return this._db.group( params );
+}
+
+=>
+
+ *  <code>
+    db.group(
+        {
+            ns: "coll",
+            key: { a:true, b:true },
+            // keyf: ...,
+            cond: { active:1 },
+            reduce: function(obj,prev) { prev.csum += obj.c; },
+            initial: { csum: 0 }
+            finalizer:function(current){ current.num=0; return current; }
+        });
+    </code>
+
+ns: 你要进行聚合操作的“集合” => “表”
+
+db.person.group({})   => 这时候我们是不需要写ns，因为我已经写了person，它是知道的，
+
+
+key：这个就是group的key，，大家熟悉sqlserver的话，应该就明白了。
+
+keyf：=> (keyfunction), 有时候key不好选，或者说key是动态的，那么我们就需要用到函数。。。
+			
+			eg：如果说我们按照“商品类目”来排序，有可能类目有大写和小写，这时候
+			
+			    呢，我们可以用keyf来将分组key全部转化为【小写】或者【大写】的方
+			    
+			    式进行排序。
+
+cond：=> (condition)   在执行reduce的过程中，进行的一个条件查询，cond对文档进行了筛选。
+
+initial：=>            最后返回的聚合文档的一个初始化定义。。。
+
+finalizer: =>          你没有一个key聚合完了之后执行了这个方法。。。
+
+		       比如说下面的五个文档，最终会执行三次finalizer。
+
+reduce=>   有两个参数，第一个参数是当前的文档，后面的一个参数是”聚合文档“。
+	   
+aggr= {age:26} + {count:0}  => {age:26,count:0} 
+
+current=[{ "_id" : ObjectId("5678a3fc763ea69ae9780c62"), "name" : "mary", "age" : 26 },
+         { "_id" : ObjectId("5678a403763ea69ae9780c63"), "name" : "jackson", "age" : 26 }]
+
+
+{age:29,count:0}  =>   [{ "_id" : ObjectId("5678a40a763ea69ae9780c64"), "name" : "john", "age" : 29 },
+		        { "_id" : ObjectId("5678a41d763ea69ae9780c67"), "name" : "redis", "age" : 29 }]
+
+...
+
+
+{ "_id" : ObjectId("5678a3fc763ea69ae9780c62"), "name" : "mary", "age" : 26 }
+{ "_id" : ObjectId("5678a403763ea69ae9780c63"), "name" : "jackson", "age" : 26 }    =>{age:26,count:2}   finalizer
+{ "_id" : ObjectId("5678a40a763ea69ae9780c64"), "name" : "john", "age" : 29 }
+{ "_id" : ObjectId("5678a410763ea69ae9780c65"), "name" : "hxc", "age" : 31 }        =>{age:31:count:2}   finalizer
+{ "_id" : ObjectId("5678a416763ea69ae9780c66"), "name" : "mongodb", "age" : 31 }
+{ "_id" : ObjectId("5678a41d763ea69ae9780c67"), "name" : "redis", "age" : 29 }      => {age:31:count:2}  finalizer  => {age:31:count:2,num:0}
+
+
+有点像 “AOP“ 编程
+
+
+db.person.group({ 
+"key":{age:1}, 
+initial:{count:0}, 
+reduce:function(current,aggr){aggr.count++} 
+})
+
+> db.person.group({ 
+... "key":{age:1}, 
+... initial:{count:0}, 
+... reduce:function(current,aggr){aggr.count++} 
+... })
+[
+	{
+		"age" : 26,
+		"count" : 2
+	},
+	{
+		"age" : 29,
+		"count" : 2
+	},
+	{
+		"age" : 31,
+		"count" : 2
+	}
+]
+
+
+{age:26,count:2}
+{age:29,count:2}
+{age:31,count:2}
+
+
+在复杂一点：
+
+cond：我们踢掉小于28的数据，那么这时候就只有两个结果了。。。
+
+db.person.group({ 
+"key":{age:1}, 
+initial:{count:0}, 
+reduce:function(current,aggr){aggr.count++},
+cond:{"$where":function(){return this.age>28}}
+})
+
+> db.person.group({ 
+... "key":{age:1}, 
+... initial:{count:0}, 
+... reduce:function(current,aggr){aggr.count++},
+... cond:{"$where":function(){return this.age>28}}
+... })
+[ { "age" : 29, "count" : 2 }, { "age" : 31, "count" : 2 } ]
+
+
+再复杂一点：
+
+finalizer:
+
+db.person.group({ 
+"key":{age:1}, 
+initial:{count:0}, 
+reduce:function(current,aggr){aggr.count++},
+cond:{"$where":function(){return this.age>28}},
+finalize:function(current){ return {"age":current.age,"count":current.count,"xxxx":20}}
+})
+
+db.person.group({ 
+"key":{age:1}, 
+initial:{count:0}, 
+reduce:function(current,aggr){aggr.count++},
+cond:{"$where":function(){return this.age>28}},
+finalize:function(current){ current.xxxx=22;  return current;}
+})
+
+[ { "age" : 29, "count" : 2,"xxxx":20 }, { "age" : 31, "count" : 2,"xxxx":20  } ]
+

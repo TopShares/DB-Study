@@ -1,0 +1,59 @@
+
+一：Sentinel 【哨兵】
+
+1. Sentinel是干嘛的呢？？
+ 
+     用于监视master是否正常在线，如果说master挂掉了，sentinel会让slave顶上去。
+
+2. 开多少Sentinel适合？
+
+     开3个Sentinel，或者说开奇数个，Sentinel的原理就是一直监视着master是否在线，
+
+     如果挂掉，sentinel的集群会选举中一个零头的sentinel，然后由领头的sentinel
+     
+     执行slaveof命令，让slave作为master，然后sentinel集群继续监视着新的master，
+
+     老的master还是会一直监控着，如果启动了，那么老的master会作为新master的slave。
+
+3.  sentinel判断master下线的两种标准。
+    
+     《1》 主观下线。   sentinel发现master没有在指定时间返回信息，这种情况被认为
+                        主线下线。 【指定时间：这个时间是我们设置的】
+
+     《2》 客观下线。  sentinel询问sentinel的集群，看一下其他的sentinel是否也标记
+                       这master是否下线，如果标记sentinel下线的个数达到一个阀值，
+		       sentinel会将master标记为主线下线，这个时候能会选取领头的
+		       sentinel。由领头的sentinel选取master下面的一个slave1去作为
+		       新的master。
+
+4. 做一个实践：
+
+
+    1主2从， 3个Sentinel。
+
+
+5. 画图描叙
+
+
+6. 设置sentinel的四个条件：
+
+   《1》你要监视的主服务器的ip地址，以及sentinel标记客观下线的阀值。 
+     
+        sentinel monitor a1b96c0346a2e15af8e52754ba76034e2bbdaabf 127.0.0.1 6379 2
+    
+   《2》sentinel认为“主线下线”的一个阀值。
+
+        sentinel down-after-milliseconds <master-name> <milliseconds>
+
+  《3》 故障恢复期间可以同时slave的个数。
+
+        sentinel parallel-syncs a1b96c0346a2e15af8e52754ba76034e2bbdaabf 1
+   
+  《4》 故障恢复允许的最大时长
+
+        sentinel failover-timeout mymaster 180000
+         
+	
+
+
+

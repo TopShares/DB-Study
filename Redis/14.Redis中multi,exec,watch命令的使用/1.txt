@@ -1,0 +1,82 @@
+
+一：事务
+
+1. redis的目标的是： 简洁，高效，由于事务本身就是一个很复杂的东西，所有我们不能把事务做的太复杂。。。
+
+2. multi 事务开始  begin
+   exec  事务执行  commit
+   
+二：命令的使用
+
+1. multi，exec
+
+127.0.0.1:6379> multi 
+OK
+127.0.0.1:6379> lpush fruits orange
+QUEUED
+127.0.0.1:6379> lpush fruits nut
+QUEUED
+127.0.0.1:6379> lpush fruits apple
+QUEUED
+127.0.0.1:6379> exec
+1) (integer) 1
+2) (integer) 2
+3) (integer) 3
+
+2. 上面这段代码有几个坑。。
+
+   坑一：我们发现命令是一起执行的，如果说我的某一条命令执行失败，会回滚吗?
+
+   要求：需要回滚。
+
+127.0.0.1:6379> multi 
+OK
+127.0.0.1:6379> lpush fruits orange
+QUEUED
+127.0.0.1:6379> set fruits 20
+QUEUED
+127.0.0.1:6379> lpush fruits apple
+QUEUED
+127.0.0.1:6379> exec
+1) (integer) 1
+2) OK
+3) (error) WRONGTYPE Operation against a key holding the wrong kind of value
+127.0.0.1:6379> lrange fruits 0 -1
+(error) WRONGTYPE Operation against a key holding the wrong kind of value
+127.0.0.1:6379> get fruits 
+"20"
+127.0.0.1:6379> object fruits
+(error) ERR wrong number of arguments for 'object' command
+127.0.0.1:6379> type fruits
+string
+127.0.0.1:6379> 
+
+
+
+   坑二：我在执行lpush的时候，lpush被其他人改变了。
+
+   要求： 在写multi的时候，不可以有其他的命令更改 “队列”中的集合。
+
+   答复： 使用watch 
+
+
+127.0.0.1:6379> watch msg
+OK
+127.0.0.1:6379> multi
+OK
+127.0.0.1:6379> set msg "2008 hello wolrd"
+QUEUED
+127.0.0.1:6379> exec
+(nil)
+127.0.0.1:6379> get msg
+"12345"
+127.0.0.1:6379> 
+
+
+   
+
+
+
+
+
+

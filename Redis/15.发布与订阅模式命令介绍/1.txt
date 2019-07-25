@@ -1,0 +1,16 @@
+
+一：发布、订阅 模式
+
+1. 应用场景
+
+   邮件订阅功能，粉丝关注，【一对多】的关系。
+
+二：命令的使用
+
+1. SUBSCRIBE channel [channel ...]
+
+2. PUBLISH  channel message 
+
+3. PSUBSCRIBE pattern [pattern ...]  pattern就是模式匹配，而从达到订阅多个频道。
+
+

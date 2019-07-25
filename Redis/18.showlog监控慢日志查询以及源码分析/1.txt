@@ -1,0 +1,80 @@
+
+一：redis中的慢日志
+
+1. 我们要去找那些阻塞redis查询的命令。
+
+2. 为什么这么说呢？？？ 因为redis是单线程的服务器。
+
+
+二：如何去查看慢命令
+
+如何去设置conf，来获取我们要查询的慢日志。
+
+1. slowlog-log-slower-than 10000   如果你的命令时间默认超过10ms，那么就会被记录。
+
+
+2. slowlog-max-len 128  【list类型存放】，如果你设置的过大，内存就会被大量消耗。
+
+
+3.为了演示呢，我们设置 slowlog-log-slower-than=0；  
+                       slowlog-max-len 5
+
+127.0.0.1:6379> slowlog get
+1) 1) (integer) 7
+   2) (integer) 1450060686
+   3) (integer) 11
+   4) 1) "set"
+      2) "ip"
+      3) "127.0.0.1"
+2) 1) (integer) 6
+   2) (integer) 1450060666
+   3) (integer) 42
+   4) 1) "slowlog"
+      2) "get"
+3) 1) (integer) 5
+   2) (integer) 1450060657
+   3) (integer) 10
+   4) 1) "set"
+      2) "email"
+      3) "38034382@qq.com"
+4) 1) (integer) 4
+   2) (integer) 1450060642
+   3) (integer) 10
+   4) 1) "set"
+      2) "sex"
+      3) "female"
+5) 1) (integer) 3
+   2) (integer) 1450060635
+   3) (integer) 11
+   4) 1) "set"
+      2) "age"
+
+
+三：查看一下slowlog 的源码实现
+
+1. 当前有四个命令用于慢日志查询
+
+    list *slowlog;                  /* SLOWLOG list of commands */
+    long long slowlog_entry_id;     /* SLOWLOG current entry ID */
+    long long slowlog_log_slower_than; /* SLOWLOG time limit (to get logged) */
+    unsigned long slowlog_max_len;     /* SLOWLOG max number of items logged */
+
+
+2. list中的结构体
+
+/* This structure defines an entry inside the slow log list */
+typedef struct slowlogEntry {
+    robj **argv;
+    int argc;
+    long long id;       /* Unique entry identifier. */
+    long long duration; /* Time spent by the query, in nanoseconds. */
+    time_t time;        /* Unix time at which the query was executed. */
+} slowlogEntry;
+
+
+3.步骤
+
+《1》 slowlogPushEntryIfNeeded   =>
+
+      listAddNodeHead(server.slowlog,slowlogCreateEntry(argv,argc,duration));
+

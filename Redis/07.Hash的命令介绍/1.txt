@@ -1,0 +1,134 @@
+
+一：散列类型
+
+   1. 对应编程语言： C#   => Dictionary
+		     Java => Map
+
+
+
+二：哈希在dictionary中的存储
+
+ dictionary key：string类型 value=> dictionary
+
+ 1. hset key field value
+
+
+	127.0.0.1:6379> hset person name jack
+	(integer) 1
+	127.0.0.1:6379> hset person age  20
+	(integer) 1
+	127.0.0.1:6379> hset person sex male
+	(integer) 1
+
+
+ 2. hget key field
+
+	127.0.0.1:6379> hget person name
+	"jack"
+	127.0.0.1:6379> hget person age
+	"20"
+	127.0.0.1:6379> hget person sex
+	"male"
+	127.0.0.1:6379> 
+
+
+ 3. hmset key field value field value   => 减轻网络带宽 【高性能】
+
+127.0.0.1:6379> hmset  person name jack age 20 sex male
+OK
+
+
+ 4. hmget key field....field...
+
+127.0.0.1:6379> hmget person name age
+1) "jack"
+2) "20"
+
+
+5. hgetall  遍历字典中的所有key/value。
+
+127.0.0.1:6379> hgetall person
+1) "name"
+2) "jack"
+3) "age"
+4) "20"
+5) "sex"
+6) "male"
+
+
+6.HExists  判断字典中的key是否存在
+
+127.0.0.1:6379> hexists person name
+(integer) 1
+127.0.0.1:6379> hexists person email
+(integer) 0
+127.0.0.1:6379> hexists person age
+(integer) 1
+127.0.0.1:6379> 
+
+7. HSetNX  (NX=>Not Exists) 原子性
+
+127.0.0.1:6379> hsetnx person email 380343382@qq.com
+(integer) 1
+127.0.0.1:6379> hgetaqll
+(error) ERR unknown command 'hgetaqll'
+127.0.0.1:6379> hgetall person
+1) "name"
+2) "jack"
+3) "age"
+4) "20"
+5) "sex"
+6) "male"
+7) "email"
+8) "380343382@qq.com"
+
+
+8. Hincreby key field increment
+
+   对应着string中的incrby
+
+127.0.0.1:6379> hget person age
+"20"
+127.0.0.1:6379> hincrby person age 40
+(integer) 60
+127.0.0.1:6379> hget person age
+"60"
+
+9. Hdel key field ...
+
+127.0.0.1:6379> hdel person email
+(integer) 1
+127.0.0.1:6379> hgetall person 
+1) "name"
+2) "jack"
+3) "age"
+4) "60"
+5) "sex"
+6) "male"
+127.0.0.1:6379> hget person email
+(nil)
+
+10. Hkeys key
+    Hvals key
+
+127.0.0.1:6379> hgetall person
+1) "name"
+2) "jack"
+3) "age"
+4) "60"
+5) "sex"
+6) "male"
+127.0.0.1:6379> hkeys person
+1) "name"
+2) "age"
+3) "sex"
+127.0.0.1:6379> hvals person
+1) "jack"
+2) "60"
+3) "male"
+
+11. Hlen key  获取hash的key的长度。
+
+
+Hash的优点： 查找 O(1) 非常适合于（定值查找）
+

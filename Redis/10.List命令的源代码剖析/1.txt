@@ -1,0 +1,52 @@
+
+一：List的应用场景
+
+    redis可以用来做 “队列”
+
+二：List的源码实现
+
+<1> list
+    typedef struct list {
+    listNode *head;
+    listNode *tail;
+    void *(*dup)(void *ptr);
+    void (*free)(void *ptr);
+    int (*match)(void *ptr, void *key);
+    unsigned long len;
+} list;
+
+<2> listNode
+
+typedef struct listNode {
+    struct listNode *prev;
+    struct listNode *next;
+    void *value;
+} listNode;
+
+<3> listIter
+
+typedef struct listIter {
+    listNode *next;
+    int direction;
+} listIter;
+
+
+三： List的常用方法
+
+1. LLen 【看一下是否是获取list这个结构体中的len属性】 O(1)
+
+   《1》  void llenCommand(redisClient *c)
+   《2》  listTypeLength(o)
+   《3》  listLength((list*)subject->ptr);
+   《4》  #define listLength(l) ((l)->len)
+
+2. LPush/RPush 【查看一下时间复杂度是否为O(1)】
+
+   《1》 void lpushCommand(redisClient *c) 
+   《2》 listTypePush(lobj,c->argv[j],where);
+   《3》 listAddNodeHead(subject->ptr,value); 
+
+
+3.  list的源码在 adlist.c，t_list.c 这两个文件中。
+    
+

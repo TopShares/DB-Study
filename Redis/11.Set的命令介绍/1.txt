@@ -1,0 +1,125 @@
+
+一：集合类型 
+
+1. 应用场景： 交叉并。 O（M+N）
+
+2. 集合类型本质上来说是只有key的hash。
+
+3. 比hash更节省内存，它的代价就是应用场景比Hash少。
+
+二：命令介绍
+
+   所有集合的命令都是‘S'打头的。
+
+1. SAdd key member  添加数据到集合中 O(1)
+
+ 127.0.0.1:6379> sadd fruits orange
+(integer) 1
+127.0.0.1:6379> sadd fruits apple
+(integer) 1
+127.0.0.1:6379> smember fruits
+(error) ERR unknown command 'smember'
+127.0.0.1:6379> smembers fruits
+1) "orange"
+2) "apple"
+127.0.0.1:6379> 
+
+     
+
+2. SRem key member    删除集合中的指定数据 O(1)
+
+127.0.0.1:6379> srem fruits apple
+(integer) 1
+127.0.0.1:6379> smembers fruits
+1) "orange"
+
+
+3.  Smembers key      获取集合中的所有元素 O(N)
+
+4.  Sismeber key member  判断member是否在集合中
+  
+127.0.0.1:6379> sismember fruits orange
+(integer) 1
+127.0.0.1:6379> sismember fruits apple
+(integer) 0
+127.0.0.1:6379> 
+
+
+5. SDiff， Sinner，SUnion
+
+1》SDiff  集合A和集合B的差集 【A-B】
+
+127.0.0.1:6379> sadd collection1 1 2 3
+(integer) 3
+127.0.0.1:6379> sadd collection2 2 3 4
+(integer) 3
+127.0.0.1:6379> sdiff collection1 collection2
+1) "1"
+
+《2》Sinner  集合A和集合B的交集
+
+127.0.0.1:6379> sinter  collection1 collection2
+1) "2"
+2) "3"
+
+3》SUnion 集合A和集合B的并集
+
+127.0.0.1:6379> sunion collection1 collection2
+1) "1"
+2) "2"
+3) "3"
+4) "4"
+127.0.0.1:6379> 
+
+
+
+6. SCARD key
+
+127.0.0.1:6379> smembers frutis
+1) "orange"
+2) "nut"
+3) "apple"
+127.0.0.1:6379> scard frutis
+(integer) 3
+127.0.0.1:6379> 
+
+
+7. SRandMember  我从集合中随机的获取一个元素
+
+127.0.0.1:6379> scard frutis
+(integer) 3
+127.0.0.1:6379> srandmember frutis
+"nut"
+127.0.0.1:6379> srandmember frutis
+"orange"
+127.0.0.1:6379> srandmember frutis
+"orange"
+127.0.0.1:6379> srandmember frutis
+"orange"
+127.0.0.1:6379> srandmember frutis
+"apple"
+127.0.0.1:6379> srandmember frutis
+"orange"
+127.0.0.1:6379> srandmember frutis
+"nut"
+127.0.0.1:6379> srandmember frutis
+
+
+8. SPOP key 【有一点像List集合】
+
+127.0.0.1:6379> spop frutis
+"orange"
+127.0.0.1:6379> smembers frutis
+1) "nut"
+2) "apple"
+127.0.0.1:6379> spop frutis
+"apple"
+127.0.0.1:6379> smembers frutis
+1) "nut"
+127.0.0.1:6379> spop frutis
+"nut"
+127.0.0.1:6379> smembers frutis
+(empty list or set)
+
+        
+

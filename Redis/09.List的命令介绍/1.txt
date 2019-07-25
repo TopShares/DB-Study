@@ -1,0 +1,68 @@
+
+一：列表类型
+
+1. 大家一定要知道列表的数据存储是什么？？？ “双向链表”
+
+二：命令介绍
+
+1. LPush key value
+  
+2. RPush key value
+
+3. LPop key
+
+4. RPop key
+
+5. LLen   O(1)
+
+6. Lrange key start stop  O(N)
+   
+7. LRem key count value   O(N)
+
+8. LIndex   O(N)
+
+9. LSet key index value
+
+10. LTrim key start end 
+     《1》 复杂度： O(N),
+     《2》 是lrange的破坏版
+127.0.0.1:6379> lrange nums 0 -1
+1) "40"
+2) "300"
+3) "20"
+
+
+11. Linert key BeFore|After  pivot value
+
+127.0.0.1:6379> linsert nums before 300 35
+(integer) 4
+127.0.0.1:6379> lrange nums
+(error) ERR wrong number of arguments for 'lrange' command
+127.0.0.1:6379> lrange nums 0 -1
+1) "40"
+2) "35"
+3) "300"
+4) "20"
+127.0.0.1:6379> 
+
+12. RPOPLPush source dest 【原子性】  
+
+127.0.0.1:6379> lpushrpop nums nums2
+(error) ERR unknown command 'lpushrpop'
+127.0.0.1:6379> rpoplpush nums nums2
+"20"
+127.0.0.1:6379> lrange nums2 0 -1
+1) "20"
+127.0.0.1:6379> rpoplpush nums nums2
+"300"
+127.0.0.1:6379> rpoplpush nums nums2
+"35"
+127.0.0.1:6379> rpoplpush nums nums2
+"40"
+127.0.0.1:6379> rpoplpush nums nums2
+(nil)
+127.0.0.1:6379> lrange nums2 0 -1
+1) "40"
+2) "35"
+3) "300"
+4) "20"

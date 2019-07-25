@@ -1,0 +1,120 @@
+
+
+一： 多机方式中的另一种方式【分片 => sharding】
+
+1. 分片的对象的谁？？？
+
+     对一个【集合 => 表】进行拆分。。。把一个大数据拆分成多个小数据。。。
+
+2. 分片的依据。。。
+
+     就是对 表 中的某一个key进行分片。。。 比方说？？？
+
+     我们有一个age【int】，如果说你有2个片，那么int类型可能会被同等拆分。。。。一个片占用一半。
+
+     当然，所有的操作都是由mongodb自己去完成的。
+
+
+二：画一个图，看看mongodb中如果采用分片架构。
+
+    
+    所有的client请求我们都是由 mongos去转向的。
+
+127.0.0.1:27017  作为 mongos服务器。。。
+
+127.0.0.1:27018  作为 config 服务器
+
+127.0.0.1:28000  作为一个sharing1服务器
+127.0.0.1:28001  作为一个sharing2服务器
+
+
+第一步：开启config服务器。 其实就是一个普通的mongod服务。
+
+第二步：开启mongos服务，，，
+
+第三步：开启两个片键。
+
+
+第四步： 初始化配置
+
+《1》将要作为“片”的机器放到mongos的config配置中。
+
+connecting to: 127.0.0.1:27017/test
+mongos> use admin
+switched to db admin
+mongos> db.runCommand({"addshard":"127.0.0.1:28000","allowLocal":true})
+{ "shardAdded" : "shard0000", "ok" : 1 }
+mongos> db.runCommand({"addshard":"127.0.0.1:28001","allowLocal":true})
+{ "shardAdded" : "shard0001", "ok" : 1 }
+
+《2》 你要划分的集合和键值
+
+     在没有分片的时候，插入数据，这个时候数据去哪了？？？
+
+
+	=> 数据是在其中的某一个分片中。。。
+
+
+
+connecting to: 127.0.0.1:27017/test
+mongos> use admin
+switched to db admin
+mongos> db.runCommand({"addshard":"127.0.0.1:28000","allowLocal":true})
+{ "shardAdded" : "shard0000", "ok" : 1 }
+mongos> db.runCommand({"addshard":"127.0.0.1:28001","allowLocal":true})
+{ "shardAdded" : "shard0001", "ok" : 1 }
+mongos> use test
+switched to db test
+mongos> test.person.insert({"name":"jack","age":1})
+Mon Dec 21 07:16:35.924 ReferenceError: test is not defined
+mongos> db.person.insert({"name":"jack","age":1})
+mongos> db.person.find()
+{ "_id" : ObjectId("5677edaaceeb3008ebe79831"), "name" : "jack", "age" : 1 }
+mongos> use admin
+switched to db admin
+mongos> db.runCommand({"enablesharding":"test"})
+{ "ok" : 1 }
+mongos> db.runCommand({"shardcollection":"test.person","key":{"age":1}})
+{
+	"proposedKey" : {
+		"age" : 1
+	},
+	"curIndexes" : [
+		{
+			"v" : 1,
+			"key" : {
+				"_id" : 1
+			},
+			"ns" : "test.person",
+			"name" : "_id_"
+		}
+	],
+	"ok" : 0,
+	"errmsg" : "please create an index that starts with the shard key before sharding."
+}
+
+
+一定要在分片之前创建 “片键” 的索引
+
+
+mongos> use test
+switched to db test
+mongos> db.person.createIndex({"age":1})
+mongos> use admin
+switched to db admin
+mongos> db.runCommand({"shardcollection":"test.person","key":{"age":1}})
+{ "collectionsharded" : "test.person", "ok" : 1 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

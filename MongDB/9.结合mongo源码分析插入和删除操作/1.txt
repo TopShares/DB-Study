@@ -1,0 +1,58 @@
+
+一: 插入，更新及删除
+
+1. 插入  可以看到有三个参数  function( obj , options, _allow_dot )
+          
+	 可以一条一条的插入。
+
+	 还可以批量插入，模式是【数组】，foreach操作
+
+> db.mytest.insert([{"name":"jack"},{"name":"mary"}])
+> db.mytest.find()
+{ "_id" : ObjectId("56766a124977e7f9805db203"), "name" : "jack" }
+{ "_id" : ObjectId("56766a124977e7f9805db204"), "name" : "mary" }
+
+   好处：减少带宽量，把原来100或者1000。。。1w次的请求塞给mongod。如果说一次的话，tcp只有3次握手，
+	 全部搞定。
+
+2. mongodb的基本单元：document => Bson => mongod进程
+
+
+二：删除文档
+
+1.  remove  方法有两个参数： function( t , justOne )
+
+        if (justOne) {
+            removeOp.removeOne();
+        }
+        else {
+            removeOp.remove();
+        }
+
+        try {
+            result = bulk.execute(wc).toSingleResult();
+        }
+
+
+     代码演示：
+
+> db.mytest.find()
+{ "_id" : ObjectId("56766a124977e7f9805db203"), "name" : "jack" }
+{ "_id" : ObjectId("56766a124977e7f9805db204"), "name" : "mary" }
+{ "_id" : ObjectId("56766b5c4977e7f9805db205"), "name" : "jack" }
+> db.mytest.remove({"name":"jack"},true)
+> db.mytest.find()
+{ "_id" : ObjectId("56766a124977e7f9805db204"), "name" : "mary" }
+{ "_id" : ObjectId("56766b5c4977e7f9805db205"), "name" : "jack" }
+> db.mytest.insert({"name":"jack"})
+> db.mytest.find()
+{ "_id" : ObjectId("56766a124977e7f9805db204"), "name" : "mary" }
+{ "_id" : ObjectId("56766b5c4977e7f9805db205"), "name" : "jack" }
+{ "_id" : ObjectId("56766b994977e7f9805db206"), "name" : "jack" }
+> db.mytest.remove({"name":"jack"})
+> db.mytest.find()
+{ "_id" : ObjectId("56766a124977e7f9805db204"), "name" : "mary" }
+
+
+
+   

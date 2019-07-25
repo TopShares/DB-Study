@@ -1,0 +1,104 @@
+
+一：$addToSet 
+
+    那么$addtoSet 和 $pop,$push 有什么区别呢？？？
+
+    $pop 和 $push 是把数组当成数组的。。。。
+
+    $addtoSet呢？？？ 它把数组当成了集合。 C# => hashSet
+                                           
+					   Java => ???
+
+   【就是数组中不可能存在在重复的字符串或者数字】，【自动去重的功能】
+
+首先我们用 $push 做一个演示，无法有"去重“的功能。
+
+> db.mytest.update({"age":36},{"$push":{"address":"shanghai"}})
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "shanghai" ], "age" : 36, "name" : "jack" }
+
+
+$addToSet自动排除演示
+
+> db.mytest.update({"age":36},{"$addToSet":{"address":"shanghai"}})
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "shanghai" ], "age" : 36, "name" : "jack" }
+
+
+二：修改器的速度
+
+三：复合型的update
+
+《1》 upsert   =>update+ insert  update没有找到数据，那么就会变为insert。
+
+      
+      从源码中可以看到，将find操作中的第三个参数【upsert=true】就ok了。
+
+        if (upsert) {
+            updateOp = updateOp.upsert();
+        }
+
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "shanghai" ], "age" : 36, "name" : "jack" }
+> db.mytest.update({"name":"john"},{"name":"mary"},true)
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "shanghai" ], "age" : 36, "name" : "jack" }
+{ "_id" : ObjectId("567683d89c9838b7968316f3"), "name" : "mary" }
+
+
+四： 批量更新 => update = function( query , obj , upsert , multi )  
+     
+     multi: 默认为true，判断是否批量更新的基础条件。
+
+            源代码如下：
+
+        if (multi) {
+            updateOp.update(obj);
+        }
+        else {
+            updateOp.updateOne(obj);
+        }
+        
+---- 单条插入 -----
+> db.mytest.insert({"name":"mary"})
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "shanghai" ], "age" : 36, "name" : "jack" }
+{ "_id" : ObjectId("567683d89c9838b7968316f3"), "name" : "mary" }
+{ "_id" : ObjectId("567684954977e7f9805db20a"), "name" : "mary" }
+> db.mytest.update({"name":"mary"},{"name":"jackson"},false)
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "shanghai" ], "age" : 36, "name" : "jack" }
+{ "_id" : ObjectId("567683d89c9838b7968316f3"), "name" : "jackson" }
+{ "_id" : ObjectId("567684954977e7f9805db20a"), "name" : "mary" }
+
+
+---- 多条插入 -----
+
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "shanghai" ], "age" : 36, "name" : "jack" }
+{ "_id" : ObjectId("567683d89c9838b7968316f3"), "name" : "jackson" }
+{ "_id" : ObjectId("567684954977e7f9805db20a"), "name" : "jackson" }
+> db.mytest.update({"name":"jackson"},{"$set":{"name":"mary"}},false,true)
+> db.mytest.find()
+{ "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "shanghai" ], "age" : 36, "name" : "jack" }
+{ "_id" : ObjectId("567683d89c9838b7968316f3"), "name" : "mary" }
+{ "_id" : ObjectId("567684954977e7f9805db20a"), "name" : "mary" }
+
+
+2. FindAndModify  简明释义
+
+
+3. save		  存在就更新， 不存在则插入。
+
+
+    if ( typeof( obj._id ) == "undefined" ){
+        obj._id = new ObjectId();
+        return this.insert( obj , opts );
+    }
+    else {
+        return this.update( { _id : obj._id } , obj , Object.merge({ upsert:true }, opts));
+    }
+     
+
+
+      

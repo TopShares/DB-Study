@@ -1,0 +1,96 @@
+
+一：有序集合类型（SortedSet）
+
+1. SortedSet（SkipList） 用链表的玩法太做到CURD的logN的复杂度。 
+   
+    看到LogN都会想到树（红黑树，平衡二叉树，Treap）
+
+二：简单介绍一些命令
+
+1. ZADD key score member   按照score对member进行排序
+
+127.0.0.1:6379> zadd fruits 3.5 apple
+(integer) 1
+127.0.0.1:6379> zadd fruits 4.2  banana
+(integer) 1
+127.0.0.1:6379> zadd fruits 3.1  nut
+(integer) 1
+127.0.0.1:6379> zadd fruits 1.5  orange
+(integer) 1
+127.0.0.1:6379> zrange fruits 0 -1
+1) "orange"
+2) "nut"
+3) "apple"
+4) "banana"
+
+2. ZScore key member  获取member的分数
+
+127.0.0.1:6379> zscore fruits apple
+"3.5"
+
+3. Zrange key start stop 【withscores】
+   ZRevRange key start stop 【withscores】
+
+127.0.0.1:6379> zrange fruits 0 1 withscores
+1) "orange"
+2) "1.5"
+3) "nut"
+4) "3.1000000000000001"
+127.0.0.1:6379> zrange fruits 1 1 withscores
+1) "nut"
+2) "3.1000000000000001"
+127.0.0.1:6379> zrange fruits 0 0 withscores
+1) "orange"
+2) "1.5"
+127.0.0.1:6379> zrevrange fruits 0 0 withscores
+1) "banana"
+2) "4.2000000000000002"
+
+
+4. Zrangebyscore key min max  【withscores】 【limit offset count】
+
+    树形结构本质上适合“范围查找”，那么就有一个需求：
+
+《1》 找到价格在 2 - 4 块之间的水果名。 O(logN+ M) [M 就是找到匀速的个数]
+
+127.0.0.1:6379> zrange fruits 0 -1 withscores
+1) "orange"
+2) "1.5"
+3) "nut"
+4) "3.1000000000000001"
+5) "apple"
+6) "3.5"
+7) "banana"
+8) "4.2000000000000002"
+127.0.0.1:6379> zrangebyscore fruits 2 4 withscores 
+1) "nut"
+2) "3.1000000000000001"
+3) "apple"
+4) "3.5"
+
+ 《2》 在上面这个题目中，我只需要这个范围内第一个元素。
+
+127.0.0.1:6379> zrangebyscore fruits 2 4 withscores limit 0 1
+1) "nut"
+2) "3.1000000000000001"
+
+5. ZREVRANGEBYSCORE key max min [WITHSCORES] [LIMIT offset count]
+
+《1》 找到最接近4块的水果名【只获取一个】。 【0-4】
+
+127.0.0.1:6379> zrangebyscore fruits 2 4 withscores limit 0 1
+1) "nut"
+2) "3.1000000000000001"
+127.0.0.1:6379> zrevrangebyscore fruits 4 2  withscores limit 0 1
+1) "apple"
+2) "3.5"
+127.0.0.1:6379> zrevrangebyscore fruits 4 2  withscores
+1) "apple"
+2) "3.5"
+3) "nut"
+4) "3.1000000000000001"
+
+
+6. 记录 top10 最热门的文章，【点击数最大的倒序】
+
+    zrevrangebyscore articles +inf 0  limit 0 10   => 获取最热门的top10.

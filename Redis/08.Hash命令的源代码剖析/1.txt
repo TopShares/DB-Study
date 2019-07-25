@@ -1,0 +1,28 @@
+
+一： 剖析hash的源代码
+
+1. 了解Hash的存储结构
+
+   《1》 所有的源代码都是在dict.c文件中，
+
+   《2》 枚举结构
+	  dictEntry
+
+	  dictht
+
+	  dict
+
+
+
+3. 查找hash的基本操作（CURD）
+
+   <1> hget的源代码
+
+       void hgetCommand(redisClient *c) => addHashFieldToReply(c, o, c->argv[2]);
+                                        => ret = hashTypeGetFromHashTable(o, field, &value);
+					=> de = dictFind(o->ptr, field);
+
+					=>	    h = dictHashKey(ht, key) & ht->sizemask;
+					            he = ht->table[h];
+
+					=>  dictCompareHashKeys(ht, key1, key2)

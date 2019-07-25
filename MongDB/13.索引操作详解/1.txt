@@ -1,0 +1,111 @@
+
+一：扩展索引  【复合索引】
+
+    我不是按照一个key去创建索引，而是两个键，或者多个键去创建索引。
+
+不光mongodb有，sqlserver，mysql都是有的。。。
+
+
+> db.person.ensureIndex({"age":1,"name":1})
+> db.person.ensureIndex({"age":1,"name":-1})
+
+
+
+> db.system.indexes.find()
+{ "v" : 1, "key" : { "_id" : 1 }, "ns" : "test.person", "name" : "_id_" }
+{ "v" : 1, "key" : { "_id" : 1 }, "ns" : "test.mytest", "name" : "_id_" }
+{ "v" : 1, "key" : { "age" : 1 }, "ns" : "test.person", "name" : "age_1" }
+{ "v" : 1, "key" : { "name" : 1, "age" : 1 }, "ns" : "test.person", "name" : "name_1_age_1" }
+{ "v" : 1, "key" : { "age" : 1, "name" : 1 }, "ns" : "test.person", "name" : "age_1_name_1" }
+{ "v" : 1, "key" : { "age" : 1, "name" : -1 }, "ns" : "test.person", "name" : "age_1_name_-1" }
+
+
+二：索引内嵌文档中的键
+
+    我们一般来说只建立一级索引。 二级索引能不建就不要键。
+
+
+三：索引名称
+
+索引名称的构建方式：keyname1_direction1_keyname2_direction2
+
+//拼接indexes的代码段
+DBCollection.prototype._genIndexName = function( keys ){
+    var name = "";
+    for ( var k in keys ){
+        var v = keys[k];
+        if ( typeof v == "function" )
+            continue;
+
+        if ( name.length > 0 )
+            name += "_";
+        name += k + "_";
+
+        name += v;
+    }
+    return name;
+}
+
+四：唯一索引
+
+   做sqlserver或者mysql的时候，我们都喜欢建立一个主键索引。
+
+   主键= 聚集索引 + unique.... 
+
+> db.person.ensureIndex({"age":1},{"unique":true})
+> db.person.indexes()
+Sun Dec 20 07:25:03.575 TypeError: Property 'indexes' of object test.person is not a function
+> db.person.getIndexes()
+[
+	{
+		"v" : 1,
+		"key" : {
+			"_id" : 1
+		},
+		"ns" : "test.person",
+		"name" : "_id_"
+	},
+	{
+		"v" : 1,
+		"key" : {
+			"age" : 1
+		},
+		"unique" : true,
+		"ns" : "test.person",
+		"name" : "age_1"
+	}
+]
+
+
+五：删除索引
+
+    collection.js 里面存放着所中集合操作。
+
+    删除单个索引 ：dropIndex
+
+
+六： 消除重复
+
+     创建"唯一索引"的利器，如果索引键有重复，自动消重。
+
+七： explain 和hint
+
+      explain必须熟练掌握，因为这东西是解决我们性能的好工具。
+
+      hint: 强制要求mongodb分析器走hint指定的索引，这个是不建议。
+            
+	    因为mongodb有一套分析器，专门来挑选最优的执行计划。
+
+八：索引管理
+
+    没有db都有一个system.indexes，专门存放我们设置的索引。相当于【系统表】，
+
+
+
+
+
+
+
+
+
+    

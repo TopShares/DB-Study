@@ -1,0 +1,44 @@
+一：主从复制 
+
+不光redis有，其他的db也有，比如说mysql，sqlserver
+
+优先： 
+
+     《1》 读写分离，我们洪流被我们redis集群拆分了。【分而治之】
+
+     《2》 一定程度上防止系统整体瘫痪。【主了挂了，但是你的程序还是可以select，读写比例大多在1：10，1：8】
+
+     《3》 热备份，【阿里云，青云】，热备份+冷备份。
+
+
+缺点：《1》 读延迟。从业务上做点手脚，做一个中间页面，最大程序上不影响用户体验。
+
+
+二：实现
+
+
+1. 准备搭建一个 ”一主两从“
+
+   《1》 设置slaveof <masterip> <masterport> 中主的IP地址
+
+   《2》 正确修改本server的地址，比如说master是6379，slave1是6380 slave2是6381
+
+   《3》大概解析一下console控制台的输出内容
+
+        <1> Slave: Connecting to MASTER  Ping 
+
+	<2> Master: Pong
+
+	<3> Slave: MASTER <-> SLAVE sync started
+        
+	<4>  Slave: Full resync from master: 7915856b7e50e6ad2a097e1dec98d4aa07ae5126:463
+        
+	<5>  Master: no
+
+        <6>  Master: 全同步的信息
+
+ 2. 记住一点：
+
+    Master 和 Slave 是双向通讯。。。
+
+

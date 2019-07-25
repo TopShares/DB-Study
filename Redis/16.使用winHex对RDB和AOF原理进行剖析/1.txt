@@ -1,0 +1,63 @@
+
+一：redis中的两种序列化方式
+
+1. RDB  【快照】 【redis默认的启动方式】 dump.rdb
+	
+2. 配置方法： 指定一下rdb文件的所属目录： dir ./redis/
+
+3. 了解save参数的配置
+
+
+《1》触发条件
+
+save 900 1
+save 300 10
+save 60 10000
+
+《2》检测时间
+
+# appendfsync always
+appendfsync everysec
+# appendfsync no
+
+
+4. 启动reids，开启 “快照“ 模式。
+
+5. 使用winHex解析一下dump.rdb
+
+
+二：AOF模式
+
+《1》AOF appenonlyfile.aof
+
+《2》如何配置
+     
+     第一步：开启是否追加： 
+
+# Please check http://redis.io/topics/persistence for more information.
+appendonly yes
+
+     第二步：关掉RDB模式：
+     
+save ""
+#save 900 1
+#save 300 10
+#save 60 10000
+
+
+《2》检测时间
+
+# appendfsync always
+appendfsync everysec
+# appendfsync no
+
+
+《3》用Winhex解析下 appenonlyfile.aof
+ 
+ AOF确实是把所有的执行命令添加到aof文件中，
+ 
+ 好处： 就是启动的时候执行一下所有的命令，那么结果就自然恢复出来了。。
+
+        Get命令不被记录。
+
+缺点： 性能低下，	AOFReWrite【定时重写】

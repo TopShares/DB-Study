@@ -1,0 +1,102 @@
+
+一：CURD 四种操作 【Create，Update，Read，Delete】 
+
+1. R（Read） 在mongodb中是Find   【有效的防止Sql注入】
+
+   《1》 Find操作：查询所有数据
+   
+   
+{ "_id" : ObjectId("56760f3c5001a3b4af601555"), "name" : "hxc1", "age" : 0.05263157894736842 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601556"), "name" : "hxc2", "age" : 0.10526315789473684 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601557"), "name" : "hxc3", "age" : 0.15789473684210525 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601558"), "name" : "hxc4", "age" : 0.21052631578947367 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601559"), "name" : "hxc5", "age" : 0.2631578947368421 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60155a"), "name" : "hxc6", "age" : 0.3157894736842105 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60155b"), "name" : "hxc7", "age" : 0.3684210526315789 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60155c"), "name" : "hxc8", "age" : 0.42105263157894735 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60155d"), "name" : "hxc9", "age" : 0.47368421052631576 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60155e"), "name" : "hxc10", "age" : 0.5263157894736842 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60155f"), "name" : "hxc11", "age" : 0.5789473684210527 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601560"), "name" : "hxc12", "age" : 0.631578947368421 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601561"), "name" : "hxc13", "age" : 0.6842105263157895 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601562"), "name" : "hxc14", "age" : 0.7368421052631579 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601563"), "name" : "hxc15", "age" : 0.7894736842105263 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601564"), "name" : "hxc16", "age" : 0.8421052631578947 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601565"), "name" : "hxc17", "age" : 0.8947368421052632 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601566"), "name" : "hxc18", "age" : 0.9473684210526315 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601567"), "name" : "hxc19", "age" : 1 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601568"), "name" : "hxc20", "age" : 1.0526315789473684 }
+
+ 《2》 返回指定的键
+
+       相当于sql中的: select age from person where name='hxc19'
+
+       mongodb:       
+
+       > db.person.find({"name":"hxc19"})
+{ "_id" : ObjectId("56760f3c5001a3b4af601567"), "name" : "hxc19", "age" : 1 }
+> db.person.find({"name":"hxc19"},{"age":1})
+{ "_id" : ObjectId("56760f3c5001a3b4af601567"), "age" : 1 }
+> db.person.find({"name":"hxc19"},{"age"})
+Sat Dec 19 21:20:33.369 SyntaxError: Unexpected token }
+> db.person.find({"name":"hxc18"},{"age":1})
+{ "_id" : ObjectId("56760f3c5001a3b4af601566"), "age" : 0.9473684210526315 }
+> db.person.find({"name":"hxc18"},{"age":1,"_id":0})
+{ "age" : 0.9473684210526315 }
+
+
+  《3》 $lt,$lte,$gt,$gte $eq
+         <   <=   >   >=   =
+
+
+ 如果大家学过jquery，那么上面这些命令应该都很熟悉。
+
+        
+> var cond={"age":{"$gte":1,"$lte":2}}
+> db.person.find(cond)
+{ "_id" : ObjectId("56760f3c5001a3b4af601567"), "name" : "hxc19", "age" : 1 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601568"), "name" : "hxc20", "age" : 1.0526315789473684 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601569"), "name" : "hxc21", "age" : 1.105263157894737 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60156a"), "name" : "hxc22", "age" : 1.1578947368421053 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60156b"), "name" : "hxc23", "age" : 1.2105263157894737 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60156c"), "name" : "hxc24", "age" : 1.263157894736842 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60156d"), "name" : "hxc25", "age" : 1.3157894736842106 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60156e"), "name" : "hxc26", "age" : 1.368421052631579 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60156f"), "name" : "hxc27", "age" : 1.4210526315789473 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601570"), "name" : "hxc28", "age" : 1.4736842105263157 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601571"), "name" : "hxc29", "age" : 1.5263157894736843 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601572"), "name" : "hxc30", "age" : 1.5789473684210527 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601573"), "name" : "hxc31", "age" : 1.631578947368421 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601574"), "name" : "hxc32", "age" : 1.6842105263157894 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601575"), "name" : "hxc33", "age" : 1.736842105263158 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601576"), "name" : "hxc34", "age" : 1.7894736842105263 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601577"), "name" : "hxc35", "age" : 1.8421052631578947 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601578"), "name" : "hxc36", "age" : 1.894736842105263 }
+{ "_id" : ObjectId("56760f3c5001a3b4af601579"), "name" : "hxc37", "age" : 1.9473684210526316 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60157a"), "name" : "hxc38", "age" : 2 }
+> 
+
+《4》$in,$nin,$or
+
+     $in,$nin:一个key加上一个子文档。
+
+> var cond={"age":{"$in":[1,2,3,4]}}
+> db.person.find(cond)
+{ "_id" : ObjectId("56760f3c5001a3b4af601567"), "name" : "hxc19", "age" : 1 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60157a"), "name" : "hxc38", "age" : 2 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60158d"), "name" : "hxc57", "age" : 3 }
+{ "_id" : ObjectId("56760f3c5001a3b4af6015a0"), "name" : "hxc76", "age" : 4 }
+
+     $or: 一个key配上数组【数组里面是多个自文档】
+
+> var cond={"$or":[{"age":1},{"age":2}]}
+> db.person.find(cond)
+{ "_id" : ObjectId("56760f3c5001a3b4af601567"), "name" : "hxc19", "age" : 1 }
+{ "_id" : ObjectId("56760f3c5001a3b4af60157a"), "name" : "hxc38", "age" : 2 }
+
+     
+     条件可以嵌套条件：
+
+     在shell里面，构造复杂查询，确实让人崩溃。不过没关系，各种驱动里面帮我们解决了这个问题，全部对象化了。
+
+     比如在C#中，我们可以写Linq的方式去查询，Lamba表达式。

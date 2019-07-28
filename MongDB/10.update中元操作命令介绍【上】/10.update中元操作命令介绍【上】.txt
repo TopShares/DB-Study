@@ -1,12 +1,12 @@
 
 
-Ò»£ºupdate²Ù×÷
+ä¸€ï¼šupdateæ“ä½œ
 
-   1. ²é¿´shellÖĞupdateµÄÔ´Âë   function( query , obj , upsert , multi )
+   1. æŸ¥çœ‹shellä¸­updateçš„æºç    function( query , obj , upsert , multi )
 
        upset => [update => insert]
 
-       multi => ÅúÁ¿¸üĞÂ
+       multi => æ‰¹é‡æ›´æ–°
 
    2.  
         var bulk = this.initializeOrderedBulkOp();
@@ -17,7 +17,7 @@
         
         =>
  
-   3. updateµÄÒ»Ğ©Ô­×Ó²Ù×÷
+   3. updateçš„ä¸€äº›åŸå­æ“ä½œ
 
 1. $set 
 

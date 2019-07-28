@@ -1,38 +1,38 @@
 
-Ò»£º$addToSet 
+ä¸€ï¼š$addToSet 
 
-    ÄÇÃ´$addtoSet ºÍ $pop,$push ÓĞÊ²Ã´Çø±ğÄØ£¿£¿£¿
+    é‚£ä¹ˆ$addtoSet å’Œ $pop,$push æœ‰ä»€ä¹ˆåŒºåˆ«å‘¢ï¼Ÿï¼Ÿï¼Ÿ
 
-    $pop ºÍ $push ÊÇ°ÑÊı×éµ±³ÉÊı×éµÄ¡£¡£¡£¡£
+    $pop å’Œ $push æ˜¯æŠŠæ•°ç»„å½“æˆæ•°ç»„çš„ã€‚ã€‚ã€‚ã€‚
 
-    $addtoSetÄØ£¿£¿£¿ Ëü°ÑÊı×éµ±³ÉÁË¼¯ºÏ¡£ C# => hashSet
+    $addtoSetå‘¢ï¼Ÿï¼Ÿï¼Ÿ å®ƒæŠŠæ•°ç»„å½“æˆäº†é›†åˆã€‚ C# => hashSet
                                            
 					   Java => ???
 
-   ¡¾¾ÍÊÇÊı×éÖĞ²»¿ÉÄÜ´æÔÚÔÚÖØ¸´µÄ×Ö·û´®»òÕßÊı×Ö¡¿£¬¡¾×Ô¶¯È¥ÖØµÄ¹¦ÄÜ¡¿
+   ã€å°±æ˜¯æ•°ç»„ä¸­ä¸å¯èƒ½å­˜åœ¨åœ¨é‡å¤çš„å­—ç¬¦ä¸²æˆ–è€…æ•°å­—ã€‘ï¼Œã€è‡ªåŠ¨å»é‡çš„åŠŸèƒ½ã€‘
 
-Ê×ÏÈÎÒÃÇÓÃ $push ×öÒ»¸öÑİÊ¾£¬ÎŞ·¨ÓĞ"È¥ÖØ¡°µÄ¹¦ÄÜ¡£
+é¦–å…ˆæˆ‘ä»¬ç”¨ $push åšä¸€ä¸ªæ¼”ç¤ºï¼Œæ— æ³•æœ‰"å»é‡â€œçš„åŠŸèƒ½ã€‚
 
 > db.mytest.update({"age":36},{"$push":{"address":"shanghai"}})
 > db.mytest.find()
 { "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "shanghai" ], "age" : 36, "name" : "jack" }
 
 
-$addToSet×Ô¶¯ÅÅ³ıÑİÊ¾
+$addToSetè‡ªåŠ¨æ’é™¤æ¼”ç¤º
 
 > db.mytest.update({"age":36},{"$addToSet":{"address":"shanghai"}})
 > db.mytest.find()
 { "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "shanghai" ], "age" : 36, "name" : "jack" }
 
 
-¶ş£ºĞŞ¸ÄÆ÷µÄËÙ¶È
+äºŒï¼šä¿®æ”¹å™¨çš„é€Ÿåº¦
 
-Èı£º¸´ºÏĞÍµÄupdate
+ä¸‰ï¼šå¤åˆå‹çš„update
 
-¡¶1¡· upsert   =>update+ insert  updateÃ»ÓĞÕÒµ½Êı¾İ£¬ÄÇÃ´¾Í»á±äÎªinsert¡£
+ã€Š1ã€‹ upsert   =>update+ insert  updateæ²¡æœ‰æ‰¾åˆ°æ•°æ®ï¼Œé‚£ä¹ˆå°±ä¼šå˜ä¸ºinsertã€‚
 
       
-      ´ÓÔ´ÂëÖĞ¿ÉÒÔ¿´µ½£¬½«find²Ù×÷ÖĞµÄµÚÈı¸ö²ÎÊı¡¾upsert=true¡¿¾ÍokÁË¡£
+      ä»æºç ä¸­å¯ä»¥çœ‹åˆ°ï¼Œå°†findæ“ä½œä¸­çš„ç¬¬ä¸‰ä¸ªå‚æ•°ã€upsert=trueã€‘å°±okäº†ã€‚
 
         if (upsert) {
             updateOp = updateOp.upsert();
@@ -46,11 +46,11 @@ $addToSet×Ô¶¯ÅÅ³ıÑİÊ¾
 { "_id" : ObjectId("567683d89c9838b7968316f3"), "name" : "mary" }
 
 
-ËÄ£º ÅúÁ¿¸üĞÂ => update = function( query , obj , upsert , multi )  
+å››ï¼š æ‰¹é‡æ›´æ–° => update = function( query , obj , upsert , multi )  
      
-     multi: Ä¬ÈÏÎªtrue£¬ÅĞ¶ÏÊÇ·ñÅúÁ¿¸üĞÂµÄ»ù´¡Ìõ¼ş¡£
+     multi: é»˜è®¤ä¸ºtrueï¼Œåˆ¤æ–­æ˜¯å¦æ‰¹é‡æ›´æ–°çš„åŸºç¡€æ¡ä»¶ã€‚
 
-            Ô´´úÂëÈçÏÂ£º
+            æºä»£ç å¦‚ä¸‹ï¼š
 
         if (multi) {
             updateOp.update(obj);
@@ -59,7 +59,7 @@ $addToSet×Ô¶¯ÅÅ³ıÑİÊ¾
             updateOp.updateOne(obj);
         }
         
----- µ¥Ìõ²åÈë -----
+---- å•æ¡æ’å…¥ -----
 > db.mytest.insert({"name":"mary"})
 > db.mytest.find()
 { "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "shanghai" ], "age" : 36, "name" : "jack" }
@@ -72,7 +72,7 @@ $addToSet×Ô¶¯ÅÅ³ıÑİÊ¾
 { "_id" : ObjectId("567684954977e7f9805db20a"), "name" : "mary" }
 
 
----- ¶àÌõ²åÈë -----
+---- å¤šæ¡æ’å…¥ -----
 
 > db.mytest.find()
 { "_id" : ObjectId("567677824977e7f9805db208"), "address" : [  "shanghai",  "shanghai" ], "age" : 36, "name" : "jack" }
@@ -85,10 +85,10 @@ $addToSet×Ô¶¯ÅÅ³ıÑİÊ¾
 { "_id" : ObjectId("567684954977e7f9805db20a"), "name" : "mary" }
 
 
-2. FindAndModify  ¼òÃ÷ÊÍÒå
+2. FindAndModify  ç®€æ˜é‡Šä¹‰
 
 
-3. save		  ´æÔÚ¾Í¸üĞÂ£¬ ²»´æÔÚÔò²åÈë¡£
+3. save		  å­˜åœ¨å°±æ›´æ–°ï¼Œ ä¸å­˜åœ¨åˆ™æ’å…¥ã€‚
 
 
     if ( typeof( obj._id ) == "undefined" ){

@@ -1,0 +1,53 @@
+
+shell中的代码：
+一：mongo.js   
+
+
+   《1》 connect 连接mongod服务器
+
+           db = new Mongo().getDB(url);  连接数据库
+
+
+二：db.js
+
+   《2》 是依附于db的一些方法。
+
+
+三：collection.js
+
+    find操作：	 function( query , fields , limit , skip, batchSize, options )  一定要记住有6个参数。
+
+    findOne操作：本质上是调用find操作。
+
+
+
+服务器中的代码：  
+
+ 1. 可以看到代码是由 C++ 缩写的。
+
+
+     mongod的入口方法在 db.cpp 文件中
+
+    《1》 
+    
+    int main(int argc, char* argv[], char** envp) {
+    int exitCode = mongoDbMain(argc, argv, envp);
+    quickExit(exitCode);
+}
+
+   《2》 mongoDbMain 
+
+         =>
+
+         runGlobalInitializers  全局初始化函数
+
+	 =>
+        
+	 startupConfigActions    开启一个监听
+         
+	 => 
+
+	 initAndListen
+
+	 server->run();    服务启动
+

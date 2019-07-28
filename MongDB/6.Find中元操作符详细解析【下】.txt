@@ -1,20 +1,20 @@
 
-Ò»£ºÌØ¶¨ÓÚÀàÐÍµÄ²éÑ¯
+ä¸€ï¼šç‰¹å®šäºŽç±»åž‹çš„æŸ¥è¯¢
 
 1. null
 
 2. undefind
 
 
-¶þ£ºÕýÔò±í´ïÊ½
+äºŒï¼šæ­£åˆ™è¡¨è¾¾å¼
 
-1. ºÍsqlÖÐµÄlike²Ù×÷Ò»¸öÑù	 O(N) Table Scan
+1. å’Œsqlä¸­çš„likeæ“ä½œä¸€ä¸ªæ ·	 O(N) Table Scan
 
 > var cond={"name":/18$/}
 > db.person.find(cond)
 { "_id" : ObjectId("56760f3c5001a3b4af601566"), "name" : "hxc18", "age" : 0.9473684210526315 }
 
-2. ²éÑ¯Êý×é
+2. æŸ¥è¯¢æ•°ç»„
   > var single={"name":"jack",address:["anhui","shanghai","beijing"]}
 > db.mytest.insert(single)
 > db.mytest.find()
@@ -24,30 +24,30 @@
 
   C#: XXX.Contains("xxx")
 
-3. $all²Ù×÷
+3. $allæ“ä½œ
 
 > db.mytest.find({"address":{"$all":["anhui","shanghai"]}})
 { "_id" : ObjectId("567632624163f2ea4dd06e96"), "name" : "jack", "address" : [  "anhui",  "shanghai",  "beijing" ] }
 > db.mytest.find({"address":{"$all":["anhui","s"]}})
 
 
-4. $size²Ù×÷
+4. $sizeæ“ä½œ
 
 > db.mytest.find({"address":{"$size":2}})
 > db.mytest.find({"address":{"$size":3}})
 { "_id" : ObjectId("567632624163f2ea4dd06e96"), "name" : "jack", "address" : [  "anhui",  "shanghai",  "beijing" ] }
 
 
-5. $slice²Ù×÷
+5. $sliceæ“ä½œ
 
 > db.mytest.find({"name":"jack"},{"address":{"$slice":1}})
 { "_id" : ObjectId("567632624163f2ea4dd06e96"), "name" : "jack", "address" : [  "anhui" ] }
 > db.mytest.find({"name":"jack"},{"address":{"$slice":2}})
 { "_id" : ObjectId("567632624163f2ea4dd06e96"), "name" : "jack", "address" : [  "anhui",  "shanghai" ] }
 
-6.$where ¡¾¸üÁé»î¸üÇ¿´ó¡¿ 
+6.$where ã€æ›´çµæ´»æ›´å¼ºå¤§ã€‘ 
 
-¿ÉÒÔ¹àÊäjs´úÂë£¬ËùÒÔ»áÓÐ×î´óµÄÁé»îÐÔ¡£
+å¯ä»¥çŒè¾“jsä»£ç ï¼Œæ‰€ä»¥ä¼šæœ‰æœ€å¤§çš„çµæ´»æ€§ã€‚
 
 > db.person.find({"$where":function(){return this.name=="hxc19" && this.age==1}})
 { "_id" : ObjectId("56760f3c5001a3b4af601567"), "name" : "hxc19", "age" : 1 }

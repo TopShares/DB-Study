@@ -1,9 +1,9 @@
 
-Ò»£ºCURD ËÄÖÖ²Ù×÷ ¡¾Create£¬Update£¬Read£¬Delete¡¿ 
+ä¸€ï¼šCURD å››ç§æ“ä½œ ã€Createï¼ŒUpdateï¼ŒReadï¼ŒDeleteã€‘ 
 
-1. R£¨Read£© ÔÚmongodbÖĞÊÇFind   ¡¾ÓĞĞ§µÄ·ÀÖ¹Sql×¢Èë¡¿
+1. Rï¼ˆReadï¼‰ åœ¨mongodbä¸­æ˜¯Find   ã€æœ‰æ•ˆçš„é˜²æ­¢Sqlæ³¨å…¥ã€‘
 
-   ¡¶1¡· Find²Ù×÷£º²éÑ¯ËùÓĞÊı¾İ
+   ã€Š1ã€‹ Findæ“ä½œï¼šæŸ¥è¯¢æ‰€æœ‰æ•°æ®
    
    
 { "_id" : ObjectId("56760f3c5001a3b4af601555"), "name" : "hxc1", "age" : 0.05263157894736842 }
@@ -27,9 +27,9 @@
 { "_id" : ObjectId("56760f3c5001a3b4af601567"), "name" : "hxc19", "age" : 1 }
 { "_id" : ObjectId("56760f3c5001a3b4af601568"), "name" : "hxc20", "age" : 1.0526315789473684 }
 
- ¡¶2¡· ·µ»ØÖ¸¶¨µÄ¼ü
+ ã€Š2ã€‹ è¿”å›æŒ‡å®šçš„é”®
 
-       Ïàµ±ÓÚsqlÖĞµÄ: select age from person where name='hxc19'
+       ç›¸å½“äºsqlä¸­çš„: select age from person where name='hxc19'
 
        mongodb:       
 
@@ -45,11 +45,11 @@ Sat Dec 19 21:20:33.369 SyntaxError: Unexpected token }
 { "age" : 0.9473684210526315 }
 
 
-  ¡¶3¡· $lt,$lte,$gt,$gte $eq
+  ã€Š3ã€‹ $lt,$lte,$gt,$gte $eq
          <   <=   >   >=   =
 
 
- Èç¹û´ó¼ÒÑ§¹ıjquery£¬ÄÇÃ´ÉÏÃæÕâĞ©ÃüÁîÓ¦¸Ã¶¼ºÜÊìÏ¤¡£
+ å¦‚æœå¤§å®¶å­¦è¿‡jqueryï¼Œé‚£ä¹ˆä¸Šé¢è¿™äº›å‘½ä»¤åº”è¯¥éƒ½å¾ˆç†Ÿæ‚‰ã€‚
 
         
 > var cond={"age":{"$gte":1,"$lte":2}}
@@ -76,9 +76,9 @@ Sat Dec 19 21:20:33.369 SyntaxError: Unexpected token }
 { "_id" : ObjectId("56760f3c5001a3b4af60157a"), "name" : "hxc38", "age" : 2 }
 > 
 
-¡¶4¡·$in,$nin,$or
+ã€Š4ã€‹$in,$nin,$or
 
-     $in,$nin:Ò»¸ökey¼ÓÉÏÒ»¸ö×ÓÎÄµµ¡£
+     $in,$nin:ä¸€ä¸ªkeyåŠ ä¸Šä¸€ä¸ªå­æ–‡æ¡£ã€‚
 
 > var cond={"age":{"$in":[1,2,3,4]}}
 > db.person.find(cond)
@@ -87,7 +87,7 @@ Sat Dec 19 21:20:33.369 SyntaxError: Unexpected token }
 { "_id" : ObjectId("56760f3c5001a3b4af60158d"), "name" : "hxc57", "age" : 3 }
 { "_id" : ObjectId("56760f3c5001a3b4af6015a0"), "name" : "hxc76", "age" : 4 }
 
-     $or: Ò»¸ökeyÅäÉÏÊı×é¡¾Êı×éÀïÃæÊÇ¶à¸ö×ÔÎÄµµ¡¿
+     $or: ä¸€ä¸ªkeyé…ä¸Šæ•°ç»„ã€æ•°ç»„é‡Œé¢æ˜¯å¤šä¸ªè‡ªæ–‡æ¡£ã€‘
 
 > var cond={"$or":[{"age":1},{"age":2}]}
 > db.person.find(cond)
@@ -95,8 +95,8 @@ Sat Dec 19 21:20:33.369 SyntaxError: Unexpected token }
 { "_id" : ObjectId("56760f3c5001a3b4af60157a"), "name" : "hxc38", "age" : 2 }
 
      
-     Ìõ¼ş¿ÉÒÔÇ¶Ì×Ìõ¼ş£º
+     æ¡ä»¶å¯ä»¥åµŒå¥—æ¡ä»¶ï¼š
 
-     ÔÚshellÀïÃæ£¬¹¹Ôì¸´ÔÓ²éÑ¯£¬È·ÊµÈÃÈË±ÀÀ£¡£²»¹ıÃ»¹ØÏµ£¬¸÷ÖÖÇı¶¯ÀïÃæ°ïÎÒÃÇ½â¾öÁËÕâ¸öÎÊÌâ£¬È«²¿¶ÔÏó»¯ÁË¡£
+     åœ¨shellé‡Œé¢ï¼Œæ„é€ å¤æ‚æŸ¥è¯¢ï¼Œç¡®å®è®©äººå´©æºƒã€‚ä¸è¿‡æ²¡å…³ç³»ï¼Œå„ç§é©±åŠ¨é‡Œé¢å¸®æˆ‘ä»¬è§£å†³äº†è¿™ä¸ªé—®é¢˜ï¼Œå…¨éƒ¨å¯¹è±¡åŒ–äº†ã€‚
 
-     ±ÈÈçÔÚC#ÖĞ£¬ÎÒÃÇ¿ÉÒÔĞ´LinqµÄ·½Ê½È¥²éÑ¯£¬Lamba±í´ïÊ½¡£
+     æ¯”å¦‚åœ¨C#ä¸­ï¼Œæˆ‘ä»¬å¯ä»¥å†™Linqçš„æ–¹å¼å»æŸ¥è¯¢ï¼ŒLambaè¡¨è¾¾å¼ã€‚

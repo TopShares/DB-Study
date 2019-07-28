@@ -1,0 +1,57 @@
+
+一：游标 【能不用游标的地方就不要用游标，它是占用数据库资源的】
+ 
+  1. find操作是返回一个游标，为了方便我们查看结果，mongodb shell会自动迭代结果。【游标也是递增的】
+
+
+  2.迭代结果的两种方式
+
+    《1》forEach
+cursor.forEach(function(x){
+... print(x.name);
+... });
+hxc41
+hxc42
+hxc43
+
+《3》while加上next
+
+> var cursor=db.person.find()
+> while(cursor.hasNext()){ var single=cursor.next(); print(single.name) }
+
+
+3. 既然是游标（Cursor），那么就不会立即去查询数据库，这样的话，就有利于我们做【链式查找】。
+
+   《1》在find之后执行count。
+   《2》在find之后执行skip，limit，sort。。。。等等。
+
+    那么这些写法有点像C#中的linq to object。 lambda  。。。
+
+> db.person.find({}).limit(2).sort({"age":-1})
+{ "_id" : ObjectId("56760f3c5001a3b4af6015b7"), "name" : "hxc99", "age" : 5.2105263157894735 }
+{ "_id" : ObjectId("56760f3c5001a3b4af6015b6"), "name" : "hxc98", "age" : 5.157894736842105 }
+> db.person.find({}).skip(2).limit(2).sort({"age":-1})
+{ "_id" : ObjectId("56760f3c5001a3b4af6015b5"), "name" : "hxc97", "age" : 5.105263157894737 }
+{ "_id" : ObjectId("56760f3c5001a3b4af6015b4"), "name" : "hxc96", "age" : 5.052631578947368 }
+
+
+4. sort方法参数描叙：【1：升序， -1：降序】  sql => asc，desc。。。
+   
+
+5. limit,skip 分页演示。
+
+   pageIndex 表示页码
+
+   pageSize: 每页展示的数量
+
+   recordcount:总记录数
+
+
+> db.person.find({}).skip((pageindex-1)*pageSize).limit(pageSize)
+
+
+
+
+
+
+     

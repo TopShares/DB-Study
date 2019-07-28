@@ -1,7 +1,7 @@
 
-Ò»£ºmongodbµÄÊý¾ÝÀàÐÍ
+ä¸€ï¼šmongodbçš„æ•°æ®ç±»åž‹
 
-1. mongodbµÄÎÄµµÀàÐÍÓëjson¡£
+1. mongodbçš„æ–‡æ¡£ç±»åž‹ä¸Žjsonã€‚
 
 
 {
@@ -10,14 +10,14 @@
   "date" : "2015-12-19"
 }
 
-2. ²»ÊÇjson£¬¶øÊÇÔÚjsonÉÏ½øÐÐÁËÀ©Õ¹£¬½Ð×öBSON¡£±ÈÈçËµ£º_id¼ü¡£
+2. ä¸æ˜¯jsonï¼Œè€Œæ˜¯åœ¨jsonä¸Šè¿›è¡Œäº†æ‰©å±•ï¼Œå«åšBSONã€‚æ¯”å¦‚è¯´ï¼š_idé”®ã€‚
    
-   BSON±ÈJson¸üÇ¿´ó£¬Ç¿´óÔÚÄÄÀï£¿£¿£¿ Êý¾ÝÀàÐÍÉÏ¡£
+   BSONæ¯”Jsonæ›´å¼ºå¤§ï¼Œå¼ºå¤§åœ¨å“ªé‡Œï¼Ÿï¼Ÿï¼Ÿ æ•°æ®ç±»åž‹ä¸Šã€‚
 
 
-3. Bson½á¹¹±íÊ¾³öÀ´µÄ¶àÓàÀàÐÍ
+3. Bsonç»“æž„è¡¨ç¤ºå‡ºæ¥çš„å¤šä½™ç±»åž‹
 
-   ¡¶1¡·º¯Êý£º
+   ã€Š1ã€‹å‡½æ•°ï¼š
 
 connecting to: 127.0.0.1:27017/test
 > db.person.find()
@@ -44,9 +44,9 @@ connecting to: 127.0.0.1:27017/test
   }
 }
 
- ¡¶2¡·DateÀàÐÍ
+ ã€Š2ã€‹Dateç±»åž‹
 
-     ÎÒÃÇµÄshellÊÇÔ¤¼ÓÔØÁËjs»·¾³£¬ËùÒÔËµÖ§³ÖjsÖÐµÄ´ó²¿·Ö²Ù×÷£¨99%²Ù×÷£©¡£ new date()
+     æˆ‘ä»¬çš„shellæ˜¯é¢„åŠ è½½äº†jsçŽ¯å¢ƒï¼Œæ‰€ä»¥è¯´æ”¯æŒjsä¸­çš„å¤§éƒ¨åˆ†æ“ä½œï¼ˆ99%æ“ä½œï¼‰ã€‚ new date()
 
 > var d=new Date()
 > d
@@ -65,7 +65,7 @@ ISODate("2015-12-19T12:43:26.403Z")
   "date" : new Date("19/12/2015 20:43:26")
 }
 
-¡¶3¡·ÕýÔò
+ã€Š3ã€‹æ­£åˆ™
 
 
 > db.person.insert({"name":"hxc",regex:/^a/})
@@ -82,19 +82,19 @@ ISODate("2015-12-19T12:43:26.403Z")
   "regex" : /^a/
 }
 
-¡¶4¡· ¶þ½øÖÆÊý¾Ý
+ã€Š4ã€‹ äºŒè¿›åˆ¶æ•°æ®
 
-    ²»ÏÞÓÚmongodb£¬sqlserver»òÕßmysql¶¼ÊÇÖ§³Ö¡°¶þ½øÖÆÊý¾Ý¡±µÄ¡£
+    ä¸é™äºŽmongodbï¼Œsqlserveræˆ–è€…mysqléƒ½æ˜¯æ”¯æŒâ€œäºŒè¿›åˆ¶æ•°æ®â€çš„ã€‚
 
-¡¶5¡· ×î´óÖµ£¬×îÐ¡Öµ
+ã€Š5ã€‹ æœ€å¤§å€¼ï¼Œæœ€å°å€¼
 
       int.MaxValue, int.MinValue
 
-¡¶6¡· Êý×é£¬ÄÚÇ¶ÎÄµµ ¡¾jsonºÍBson¶¼ÄÜ¹»Ö§³Ö¡¿£¬¸ü¼Ó¶ÔÏó»¯µÄ±íÊ¾ÐÅÏ¢¡£
+ã€Š6ã€‹ æ•°ç»„ï¼Œå†…åµŒæ–‡æ¡£ ã€jsonå’ŒBsonéƒ½èƒ½å¤Ÿæ”¯æŒã€‘ï¼Œæ›´åŠ å¯¹è±¡åŒ–çš„è¡¨ç¤ºä¿¡æ¯ã€‚
 
       { "_id" : ObjectId("5675539d3a7088702dbcd091"), "name" : "hxc", "address" : { "city" : "shanghai", "country" : "318" }, "email" : "38032222@qq.com" }
       
-/* 4 */   ºÜÏñJava»òÕßC#ÖÐµÄÀà
+/* 4 */   å¾ˆåƒJavaæˆ–è€…C#ä¸­çš„ç±»
 {
   "_id" : ObjectId("5675539d3a7088702dbcd091"),
   "name" : "hxc",
@@ -106,26 +106,26 @@ ISODate("2015-12-19T12:43:26.403Z")
 }
 
 
-¡¶7¡· "_id" ¾ÍÊÇObjectº¯ÊýÉú³É¡£ 
+ã€Š7ã€‹ "_id" å°±æ˜¯Objectå‡½æ•°ç”Ÿæˆã€‚ 
 
-       ¼òµ¥½â¶ÁÒ»ÏÂ£º  ObjectId("5675539d 3a7088 702d  bcd091"),  ¸üºÃµÄÎ¨Ò»ÐÔ¡£
+       ç®€å•è§£è¯»ä¸€ä¸‹ï¼š  ObjectId("5675539d 3a7088 702d  bcd091"),  æ›´å¥½çš„å”¯ä¸€æ€§ã€‚
 
-       Ç°ËÄ¸ö×Ö½Ú£º±íÊ¾Ê±¼ä£º 5675539d £¨Ê®Áù½øÖÆ£©
+       å‰å››ä¸ªå­—èŠ‚ï¼šè¡¨ç¤ºæ—¶é—´ï¼š 5675539d ï¼ˆåå…­è¿›åˆ¶ï¼‰
 
-			      1450529693 £¨Ê®½øÖÆ£©¡¾Ê±¼ä´Á¡¿
+			      1450529693 ï¼ˆåè¿›åˆ¶ï¼‰ã€æ—¶é—´æˆ³ã€‘
 
-                              2015/12/19 20:54:53   ²åÈëÊ±¼ä
+                              2015/12/19 20:54:53   æ’å…¥æ—¶é—´
       
-      Ð¯³Ì£ºorderID Éú³ÉÓÚÒ»¸ösqlserverµÄ×Ô¶¨Òåº¯Êý¡£ 
+      æºç¨‹ï¼šorderID ç”ŸæˆäºŽä¸€ä¸ªsqlserverçš„è‡ªå®šä¹‰å‡½æ•°ã€‚ 
 
 
-       3a7088£º »úÆ÷µÄÉ¢ÁÐÖµ 
+       3a7088ï¼š æœºå™¨çš„æ•£åˆ—å€¼ 
 
-       702d£º   ½ø³ÌµÄ±êÊ¶
+       702dï¼š   è¿›ç¨‹çš„æ ‡è¯†
 
-       bcd091£º ¼ÆÊýÆ÷
+       bcd091ï¼š è®¡æ•°å™¨
 
-       Ê±¼ä´Á+»úÆ÷É¢ÁÐÖµ+½ø³ÌID+¼ÆÊýÆ÷ =   È«¾ÖÎ¨Ò»
+       æ—¶é—´æˆ³+æœºå™¨æ•£åˆ—å€¼+è¿›ç¨‹ID+è®¡æ•°å™¨ =   å…¨å±€å”¯ä¸€
 
 
       

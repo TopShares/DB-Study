@@ -1,7 +1,7 @@
 
-Ò»£»StringÀàÐÍ
+ä¸€ï¼›Stringç±»åž‹
 
-    1. Êý¾Ý×î´óÈÝÁ¿ÊÇ512M¡£ ¡¾ÍøÂç´ø¿í¡¿
+    1. æ•°æ®æœ€å¤§å®¹é‡æ˜¯512Mã€‚ ã€ç½‘ç»œå¸¦å®½ã€‘
 	static int checkStringLength(redisClient *c, long long size) {
           if (size > 512*1024*1024) {
               addReplyError(c,"string exceeds maximum allowed size (512MB)");
@@ -10,30 +10,30 @@
           return REDIS_OK;
         }
 
-     2. ¸³ÖµÓëÈ¡Öµ ¡¾get/set¡¿
+     2. èµ‹å€¼ä¸Žå–å€¼ ã€get/setã€‘
 
-     3. incr key ¡¾µÝÔö¡¿ ++i/i++
+     3. incr key ã€é€’å¢žã€‘ ++i/i++
          
-	  ÓÐÐ©¹«Ë¾»áÓÃincrÀ´Éú³É¶©µ¥ºÅ¡£¡¾Ô­×ÓÐÔµÝÔö¡¿ 
+	  æœ‰äº›å…¬å¸ä¼šç”¨incræ¥ç”Ÿæˆè®¢å•å·ã€‚ã€åŽŸå­æ€§é€’å¢žã€‘ 
 
      4. incrby key increment  
 
-           Ä¬ÈÏ×ÔÔöÖ¸¶¨µÄÖµ¡£
+           é»˜è®¤è‡ªå¢žæŒ‡å®šçš„å€¼ã€‚
   
-     5. decr key   Ä¬ÈÏµÄ×Ô¼õ-
+     5. decr key   é»˜è®¤çš„è‡ªå‡-
         decrby key decrement 
 
-     6. Ôö¼ÓÖ¸¶¨¸¡µãÊý incrbyfloat 
+     6. å¢žåŠ æŒ‡å®šæµ®ç‚¹æ•° incrbyfloat 
 
      7. append key value  =>C# String.Concat (+)
 
-     8. StrLen »ñÈ¡×Ö·û´®µÄ³¤¶È
+     8. StrLen èŽ·å–å­—ç¬¦ä¸²çš„é•¿åº¦
 
-     9. MGET£¬MSET  Ò»´ÎÐÔÉèÖÃ¶à¸öÖµ
+     9. MGETï¼ŒMSET  ä¸€æ¬¡æ€§è®¾ç½®å¤šä¸ªå€¼
 
      10. SetRange  => Replace
          GetRange  => SubString => SubStr
 
-     11. SetEx => Set + Expire ¡¾ÃëÎªµ¥Î»¡¿
-         PSetEx=> Set + PExpire¡¾ºÁÃëÎªµ¥Î»¡¿
+     11. SetEx => Set + Expire ã€ç§’ä¸ºå•ä½ã€‘
+         PSetEx=> Set + PExpireã€æ¯«ç§’ä¸ºå•ä½ã€‘
    

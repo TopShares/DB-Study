@@ -1,14 +1,14 @@
 
-Ò»£ºÉ¢ÁĞÀàĞÍ
+ä¸€ï¼šæ•£åˆ—ç±»å‹
 
-   1. ¶ÔÓ¦±à³ÌÓïÑÔ£º C#   => Dictionary
+   1. å¯¹åº”ç¼–ç¨‹è¯­è¨€ï¼š C#   => Dictionary
 		     Java => Map
 
 
 
-¶ş£º¹şÏ£ÔÚdictionaryÖĞµÄ´æ´¢
+äºŒï¼šå“ˆå¸Œåœ¨dictionaryä¸­çš„å­˜å‚¨
 
- dictionary key£ºstringÀàĞÍ value=> dictionary
+ dictionary keyï¼šstringç±»å‹ value=> dictionary
 
  1. hset key field value
 
@@ -32,7 +32,7 @@
 	127.0.0.1:6379> 
 
 
- 3. hmset key field value field value   => ¼õÇáÍøÂç´ø¿í ¡¾¸ßĞÔÄÜ¡¿
+ 3. hmset key field value field value   => å‡è½»ç½‘ç»œå¸¦å®½ ã€é«˜æ€§èƒ½ã€‘
 
 127.0.0.1:6379> hmset  person name jack age 20 sex male
 OK
@@ -45,7 +45,7 @@ OK
 2) "20"
 
 
-5. hgetall  ±éÀú×ÖµäÖĞµÄËùÓĞkey/value¡£
+5. hgetall  éå†å­—å…¸ä¸­çš„æ‰€æœ‰key/valueã€‚
 
 127.0.0.1:6379> hgetall person
 1) "name"
@@ -56,7 +56,7 @@ OK
 6) "male"
 
 
-6.HExists  ÅĞ¶Ï×ÖµäÖĞµÄkeyÊÇ·ñ´æÔÚ
+6.HExists  åˆ¤æ–­å­—å…¸ä¸­çš„keyæ˜¯å¦å­˜åœ¨
 
 127.0.0.1:6379> hexists person name
 (integer) 1
@@ -66,7 +66,7 @@ OK
 (integer) 1
 127.0.0.1:6379> 
 
-7. HSetNX  (NX=>Not Exists) Ô­×ÓĞÔ
+7. HSetNX  (NX=>Not Exists) åŸå­æ€§
 
 127.0.0.1:6379> hsetnx person email 380343382@qq.com
 (integer) 1
@@ -85,7 +85,7 @@ OK
 
 8. Hincreby key field increment
 
-   ¶ÔÓ¦×ÅstringÖĞµÄincrby
+   å¯¹åº”ç€stringä¸­çš„incrby
 
 127.0.0.1:6379> hget person age
 "20"
@@ -127,8 +127,8 @@ OK
 2) "60"
 3) "male"
 
-11. Hlen key  »ñÈ¡hashµÄkeyµÄ³¤¶È¡£
+11. Hlen key  è·å–hashçš„keyçš„é•¿åº¦ã€‚
 
 
-HashµÄÓÅµã£º ²éÕÒ O(1) ·Ç³£ÊÊºÏÓÚ£¨¶¨Öµ²éÕÒ£©
+Hashçš„ä¼˜ç‚¹ï¼š æŸ¥æ‰¾ O(1) éå¸¸é€‚åˆäºï¼ˆå®šå€¼æŸ¥æ‰¾ï¼‰
 

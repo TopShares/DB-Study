@@ -1,11 +1,11 @@
 
-һ�� ����hash��Դ����
+一： 剖析hash的源代码
 
-1. �˽�Hash�Ĵ洢�ṹ
+1. 了解Hash的存储结构
 
-   ��1�� ���е�Դ���붼����dict.c�ļ��У�
+   《1》 所有的源代码都是在dict.c文件中，
 
-   ��2�� ö�ٽṹ
+   《2》 枚举结构
 	  dictEntry
 
 	  dictht
@@ -14,9 +14,9 @@
 
 
 
-3. ����hash�Ļ���������CURD��
+3. 查找hash的基本操作（CURD）
 
-   <1> hget��Դ����
+   <1> hget的源代码
 
        void hgetCommand(redisClient *c) => addHashFieldToReply(c, o, c->argv[2]);
                                         => ret = hashTypeGetFromHashTable(o, field, &value);

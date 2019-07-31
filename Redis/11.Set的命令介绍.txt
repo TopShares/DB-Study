@@ -1,17 +1,17 @@
 
-Ò»£º¼¯ºÏÀàÐÍ 
+ä¸€ï¼šé›†åˆç±»åž‹ 
 
-1. Ó¦ÓÃ³¡¾°£º ½»²æ²¢¡£ O£¨M+N£©
+1. åº”ç”¨åœºæ™¯ï¼š äº¤å‰å¹¶ã€‚ Oï¼ˆM+Nï¼‰
 
-2. ¼¯ºÏÀàÐÍ±¾ÖÊÉÏÀ´ËµÊÇÖ»ÓÐkeyµÄhash¡£
+2. é›†åˆç±»åž‹æœ¬è´¨ä¸Šæ¥è¯´æ˜¯åªæœ‰keyçš„hashã€‚
 
-3. ±Èhash¸ü½ÚÊ¡ÄÚ´æ£¬ËüµÄ´ú¼Û¾ÍÊÇÓ¦ÓÃ³¡¾°±ÈHashÉÙ¡£
+3. æ¯”hashæ›´èŠ‚çœå†…å­˜ï¼Œå®ƒçš„ä»£ä»·å°±æ˜¯åº”ç”¨åœºæ™¯æ¯”Hashå°‘ã€‚
 
-¶þ£ºÃüÁî½éÉÜ
+äºŒï¼šå‘½ä»¤ä»‹ç»
 
-   ËùÓÐ¼¯ºÏµÄÃüÁî¶¼ÊÇ¡®S'´òÍ·µÄ¡£
+   æ‰€æœ‰é›†åˆçš„å‘½ä»¤éƒ½æ˜¯â€˜S'æ‰“å¤´çš„ã€‚
 
-1. SAdd key member  Ìí¼ÓÊý¾Ýµ½¼¯ºÏÖÐ O(1)
+1. SAdd key member  æ·»åŠ æ•°æ®åˆ°é›†åˆä¸­ O(1)
 
  127.0.0.1:6379> sadd fruits orange
 (integer) 1
@@ -26,7 +26,7 @@
 
      
 
-2. SRem key member    É¾³ý¼¯ºÏÖÐµÄÖ¸¶¨Êý¾Ý O(1)
+2. SRem key member    åˆ é™¤é›†åˆä¸­çš„æŒ‡å®šæ•°æ® O(1)
 
 127.0.0.1:6379> srem fruits apple
 (integer) 1
@@ -34,9 +34,9 @@
 1) "orange"
 
 
-3.  Smembers key      »ñÈ¡¼¯ºÏÖÐµÄËùÓÐÔªËØ O(N)
+3.  Smembers key      èŽ·å–é›†åˆä¸­çš„æ‰€æœ‰å…ƒç´  O(N)
 
-4.  Sismeber key member  ÅÐ¶ÏmemberÊÇ·ñÔÚ¼¯ºÏÖÐ
+4.  Sismeber key member  åˆ¤æ–­memberæ˜¯å¦åœ¨é›†åˆä¸­
   
 127.0.0.1:6379> sismember fruits orange
 (integer) 1
@@ -45,9 +45,9 @@
 127.0.0.1:6379> 
 
 
-5. SDiff£¬ Sinner£¬SUnion
+5. SDiffï¼Œ Sinnerï¼ŒSUnion
 
-1¡·SDiff  ¼¯ºÏAºÍ¼¯ºÏBµÄ²î¼¯ ¡¾A-B¡¿
+1ã€‹SDiff  é›†åˆAå’Œé›†åˆBçš„å·®é›† ã€A-Bã€‘
 
 127.0.0.1:6379> sadd collection1 1 2 3
 (integer) 3
@@ -56,13 +56,13 @@
 127.0.0.1:6379> sdiff collection1 collection2
 1) "1"
 
-¡¶2¡·Sinner  ¼¯ºÏAºÍ¼¯ºÏBµÄ½»¼¯
+ã€Š2ã€‹Sinner  é›†åˆAå’Œé›†åˆBçš„äº¤é›†
 
 127.0.0.1:6379> sinter  collection1 collection2
 1) "2"
 2) "3"
 
-3¡·SUnion ¼¯ºÏAºÍ¼¯ºÏBµÄ²¢¼¯
+3ã€‹SUnion é›†åˆAå’Œé›†åˆBçš„å¹¶é›†
 
 127.0.0.1:6379> sunion collection1 collection2
 1) "1"
@@ -84,7 +84,7 @@
 127.0.0.1:6379> 
 
 
-7. SRandMember  ÎÒ´Ó¼¯ºÏÖÐËæ»úµÄ»ñÈ¡Ò»¸öÔªËØ
+7. SRandMember  æˆ‘ä»Žé›†åˆä¸­éšæœºçš„èŽ·å–ä¸€ä¸ªå…ƒç´ 
 
 127.0.0.1:6379> scard frutis
 (integer) 3
@@ -105,7 +105,7 @@
 127.0.0.1:6379> srandmember frutis
 
 
-8. SPOP key ¡¾ÓÐÒ»µãÏñList¼¯ºÏ¡¿
+8. SPOP key ã€æœ‰ä¸€ç‚¹åƒListé›†åˆã€‘
 
 127.0.0.1:6379> spop frutis
 "orange"
